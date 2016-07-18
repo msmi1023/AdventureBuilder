@@ -1,0 +1,29 @@
+//
+//  Booking.h
+//  AdventureBuilder
+//
+//  Created by tstone10 on 7/18/16.
+//  Copyright © 2016 DetroitLabs. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Customer.h"
+#import "Adventure.h"
+#import "Flight.h"
+
+@interface Booking : NSObject
+
+@property (strong, nonatomic) NSString *uuid;
+@property (strong, nonatomic) NSNumber *confirmationNumber;
+@property (strong, nonatomic) NSString *note;
+@property (strong, nonatomic) Customer *customer;
+@property (strong, nonatomic) Adventure *adventure;
+@property (strong, nonatomic) Flight *departingFlight;
+@property (strong, nonatomic) Flight *returningFlight;
+@property (strong, nonatomic) NSDate *startDate;
+@property (strong, nonatomic) NSDate *endDate;
+@property (strong, nonatomic) NSDate *updateTime;
+
+-(id)initWithDictionary:(NSDictionary *)jsonBooking;
+
+@end
