@@ -38,8 +38,10 @@
 
 -(void)retrieveBookingData {
 	[_bookingService getBookingsWithCompletionBlock:^(id response) {
-		_bookingList = response;
-		[_tableView reloadData];
+		if(![response isKindOfClass:[NSError class]]) {
+			_bookingList = response;
+			[_tableView reloadData];
+		}
 	}];
 }
 

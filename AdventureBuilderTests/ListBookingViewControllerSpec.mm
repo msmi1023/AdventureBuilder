@@ -88,11 +88,12 @@ describe(@"ListBookingViewController", ^{
 		});
 	});
 	
-	describe(@"retrieveBookingData", ^{
+	describe(@"retrieveBookingData - success", ^{
 		Booking *booking1 = [[Booking alloc] initWithDictionary:@{@"confirmationNumber":@1}];
 		Booking *booking2 = [[Booking alloc] initWithDictionary:@{@"confirmationNumber":@2}];
 
 		beforeEach(^{
+			vc.bookingList = nil;
 			vc.tableView = nice_fake_for([UITableView class]);
 			
 			vc.bookingService = fake_for([BookingService class]);
@@ -107,6 +108,27 @@ describe(@"ListBookingViewController", ^{
 			
 			vc.bookingList should equal(@[booking1, booking2]);
 			vc.tableView should have_received(@selector(reloadData));
+		});
+		
+	});
+	
+	describe(@"retrieveBookingData - failure", ^{
+		beforeEach(^{
+			vc.bookingList = nil;
+			vc.tableView = nice_fake_for([UITableView class]);
+			
+			vc.bookingService = fake_for([BookingService class]);
+			vc.bookingService stub_method(@selector(getBookingsWithCompletionBlock:))
+			.and_do_block(^(completion_t callback){
+				callback([[NSError alloc] init]);
+			});
+		});
+		
+		it(@"should do nothing if the data retrieval came back with an error", ^{
+			[vc retrieveBookingData];
+			
+			vc.bookingList should equal(nil);
+			vc.tableView should_not have_received(@selector(reloadData));
 		});
 	});
 });
