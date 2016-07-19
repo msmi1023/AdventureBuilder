@@ -6,7 +6,7 @@ using namespace Cedar::Doubles;
 
 SPEC_BEGIN(BookingSpec)
 
-fdescribe(@"Booking", ^{
+describe(@"Booking", ^{
     __block Booking *subject;
 
     beforeEach(^{

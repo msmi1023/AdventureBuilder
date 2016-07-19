@@ -42,9 +42,7 @@ describe(@"BookingService", ^{
 		});
 		
 		it(@"should call the api manager's GET selector when getBookings is called", ^{
-			[subject getBookingsWithCompletionBlock:^(id response){
-				
-			}];
+			[subject getBookingsWithCompletionBlock:^(id response){}];
 			apiManager should have_received(@selector(GET:parameters:progress:success:failure:));
 		});
 		
@@ -69,9 +67,7 @@ describe(@"BookingService", ^{
 				
 				testData should equal(sampleReturn);
 			});
-			
 		});
-		
 		
 		context(@"when the service returns an error", ^{
 			__block NSError *testError = nil;
@@ -95,7 +91,6 @@ describe(@"BookingService", ^{
 				
 				testError should equal(sampleError);
 			});
-			
 		});
 	});
 	

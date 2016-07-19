@@ -10,4 +10,9 @@
 
 @interface Flight : NSObject
 
+@property (strong, nonatomic) NSString *flightNumber;
+@property (strong, nonatomic) NSNumber *price;
+
+-(id)initWithDictionary:(NSDictionary *)jsonFlight;
+
 @end

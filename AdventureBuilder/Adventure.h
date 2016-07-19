@@ -10,4 +10,11 @@
 
 @interface Adventure : NSObject
 
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSNumber *dailyPrice;
+@property (strong, nonatomic) NSArray *activities;
+
+-(id)initWithDictionary:(NSDictionary *)jsonAdventure;
+
 @end

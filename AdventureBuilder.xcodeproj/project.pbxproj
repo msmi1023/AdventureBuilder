@@ -29,6 +29,9 @@
 		D49F305B1D3D672C00382F5C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F305A1D3D672C00382F5C /* Customer.m */; };
 		D49F305E1D3D673A00382F5C /* Adventure.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F305D1D3D673A00382F5C /* Adventure.m */; };
 		D49F30611D3D674900382F5C /* Flight.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F30601D3D674900382F5C /* Flight.m */; };
+		D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30621D3E5AB200382F5C /* CustomerSpec.mm */; };
+		D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30641D3E66AE00382F5C /* AdventureSpec.mm */; };
+		D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30661D3E6A6000382F5C /* FlightSpec.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		D49F305D1D3D673A00382F5C /* Adventure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adventure.m; sourceTree = "<group>"; };
 		D49F305F1D3D674900382F5C /* Flight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flight.h; sourceTree = "<group>"; };
 		D49F30601D3D674900382F5C /* Flight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flight.m; sourceTree = "<group>"; };
+		D49F30621D3E5AB200382F5C /* CustomerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CustomerSpec.mm; sourceTree = "<group>"; };
+		D49F30641D3E66AE00382F5C /* AdventureSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdventureSpec.mm; sourceTree = "<group>"; };
+		D49F30661D3E6A6000382F5C /* FlightSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FlightSpec.mm; sourceTree = "<group>"; };
 		FF2B928207F2EB2C444B58D8 /* Pods-AdventureBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,11 +198,11 @@
 		D45057551D33E15100AC630E /* AdventureBuilderTests */ = {
 			isa = PBXGroup;
 			children = (
+				D49F30681D3E6B6400382F5C /* Models */,
 				D45057711D3412BF00AC630E /* Info.plist */,
 				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
 				D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */,
 				D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */,
-				D49F30571D3D613900382F5C /* BookingSpec.mm */,
 			);
 			path = AdventureBuilderTests;
 			sourceTree = "<group>";
@@ -231,6 +237,17 @@
 				D49F305D1D3D673A00382F5C /* Adventure.m */,
 				D49F305F1D3D674900382F5C /* Flight.h */,
 				D49F30601D3D674900382F5C /* Flight.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D49F30681D3E6B6400382F5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D49F30571D3D613900382F5C /* BookingSpec.mm */,
+				D49F30621D3E5AB200382F5C /* CustomerSpec.mm */,
+				D49F30641D3E66AE00382F5C /* AdventureSpec.mm */,
+				D49F30661D3E6A6000382F5C /* FlightSpec.mm */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -519,8 +536,11 @@
 			files = (
 				D45CE8E51D3818F400132ED3 /* ListBookingViewController.m in Sources */,
 				D45057701D3410BA00AC630E /* AppDelegateSpec.mm in Sources */,
+				D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */,
+				D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */,
 				D49F30581D3D613900382F5C /* BookingSpec.mm in Sources */,
 				D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */,
+				D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */,
 				D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

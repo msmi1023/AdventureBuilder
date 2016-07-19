@@ -10,4 +10,11 @@
 
 @interface Customer : NSObject
 
+@property (strong, nonatomic) NSString *emailAddress;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSString *phone;
+
+-(id)initWithDictionary:(NSDictionary *)jsonCustomer;
+
 @end
