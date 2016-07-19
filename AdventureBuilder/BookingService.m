@@ -22,6 +22,12 @@ JabApiManager *apiManager;
 	return self;
 }
 
+//override normal init to use the shared api manager.
+//makes it so our storyboard injected instance will already have the api manager
+-(instancetype)init {
+	return [self initWithApiManager:[JabApiManager sharedManager]];
+}
+
 -(void)getBookingsWithCompletionBlock:(completion_t)completionBlock {
 	[apiManager GET:@"bookings" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
 		NSMutableArray *toReturn = [[NSMutableArray alloc] init];

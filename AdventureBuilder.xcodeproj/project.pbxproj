@@ -198,11 +198,11 @@
 		D45057551D33E15100AC630E /* AdventureBuilderTests */ = {
 			isa = PBXGroup;
 			children = (
+				D49F30691D3E810900382F5C /* API */,
 				D49F30681D3E6B6400382F5C /* Models */,
 				D45057711D3412BF00AC630E /* Info.plist */,
 				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
 				D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */,
-				D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */,
 			);
 			path = AdventureBuilderTests;
 			sourceTree = "<group>";
@@ -250,6 +250,14 @@
 				D49F30661D3E6A6000382F5C /* FlightSpec.mm */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D49F30691D3E810900382F5C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

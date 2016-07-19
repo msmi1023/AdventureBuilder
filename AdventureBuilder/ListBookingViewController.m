@@ -12,14 +12,34 @@
 
 @implementation ListBookingViewController
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+}
 
-- (IBAction)buttonPressed:(id)sender {
+- (void)viewWillAppear:(BOOL)animated {
+	[self retrieveBookingData];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return _bookingList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 	
-	//set up our service with DI pattern
-	BookingService *svc = [[BookingService alloc] initWithApiManager:[JabApiManager sharedManager]];
+	if(!cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+	}
 	
-	[svc getBookingsWithCompletionBlock:^(id response) {
-		NSLog(@"++++++++++++responsy stuff: %@", response);
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", ((Booking *)_bookingList[indexPath.row]).confirmationNumber];
+	
+	return cell;
+}
+
+-(void)retrieveBookingData {
+	[_bookingService getBookingsWithCompletionBlock:^(id response) {
+		_bookingList = response;
+		[_tableView reloadData];
 	}];
 }
 
