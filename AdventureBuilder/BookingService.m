@@ -24,7 +24,14 @@ JabApiManager *apiManager;
 
 -(void)getBookingsWithCompletionBlock:(completion_t)completionBlock {
 	[apiManager GET:@"bookings" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-		completionBlock(responseObject);
+		NSMutableArray *toReturn = [[NSMutableArray alloc] init];
+		
+		//create array of booking objects
+		for(NSDictionary *jsonBooking in responseObject) {
+			[toReturn addObject:[[Booking alloc] initWithDictionary:jsonBooking]];
+		}
+		
+		completionBlock([toReturn copy]);
 	} failure:^(NSURLSessionTask *task, NSError *error) {
 		completionBlock(error);
 	}];

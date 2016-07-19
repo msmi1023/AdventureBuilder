@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JabApiManager.h"
+#import "Booking.h"
 
 @interface BookingService : NSObject
 

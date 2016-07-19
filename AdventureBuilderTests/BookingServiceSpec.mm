@@ -60,12 +60,20 @@ describe(@"BookingService", ^{
 				localSuccess should_not be_nil;
 			});
 			
-			it(@"should call the success callback with the data", ^{
-				__block NSArray *sampleReturn = @[@{@"confirmationNumber": @1}, @{@"confirmationNumber": @2}];
+			it(@"should call the success callback with the data processed as a bookings array", ^{
+				Booking *booking1 = [[Booking alloc] initWithDictionary:@{@"confirmationNumber": @1}];
+				Booking *booking2 = [[Booking alloc] initWithDictionary:@{@"confirmationNumber": @2}];
+				__block NSArray *sampleReturn = @[booking1, booking2];
 				
-				localSuccess(nil, sampleReturn);
+				localSuccess(nil, @[@{@"confirmationNumber": @1}, @{@"confirmationNumber": @2}]);
+			
+				for(int i=0; i<testData.count; i++) {
+					[testData[i] isKindOfClass:[Booking class]] should be_truthy;
+					//make sure the id is of type booking first. then typecast for the property check
+					((Booking *)testData[i]).confirmationNumber should equal(((Booking *)sampleReturn[i]).confirmationNumber);
+				}
 				
-				testData should equal(sampleReturn);
+				//testData should equal(sampleReturn);
 			});
 		});
 		
@@ -87,7 +95,7 @@ describe(@"BookingService", ^{
 			it(@"should call the error callback with the error", ^{
 				__block NSError *sampleError = [NSError errorWithDomain:@"testing" code:000 userInfo:nil];
 				
-				localSuccess(nil, sampleError);
+				localError(nil, sampleError);
 				
 				testError should equal(sampleError);
 			});
