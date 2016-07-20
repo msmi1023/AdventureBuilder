@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookingService.h"
 
 @interface EnterCustomerInformationViewController : UIViewController
 
@@ -18,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *state;
 @property (weak, nonatomic) IBOutlet UITextField *zip;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
+
+@property (strong, nonatomic) IBOutlet BookingService *bookingService;
 
 @end

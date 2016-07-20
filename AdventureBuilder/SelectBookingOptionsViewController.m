@@ -1,20 +1,17 @@
 //
-//  EnterCustomerInformationViewController.m
+//  SelectBookingOptionsViewController.m
 //  AdventureBuilder
 //
 //  Created by tstone10 on 7/20/16.
 //  Copyright © 2016 DetroitLabs. All rights reserved.
 //
 
-#import "EnterCustomerInformationViewController.h"
+#import "SelectBookingOptionsViewController.h"
 
-@implementation EnterCustomerInformationViewController
+@implementation SelectBookingOptionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	
-	NSLog(@"%@", _bookingService);
     // Do any additional setup after loading the view.
 }
 

@@ -8,6 +8,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)retrieveBookingData;
+- (IBAction)unwindToListBooking:(UIStoryboardSegue *)segue;
 
 @end
 
@@ -129,6 +130,12 @@ describe(@"ListBookingViewController", ^{
 			
 			vc.bookingList should equal(nil);
 			vc.tableView should_not have_received(@selector(reloadData));
+		});
+	});
+	
+	describe(@"unwindToListBooking", ^{
+		it(@"should respond to the unwind selector", ^{
+			[vc respondsToSelector:@selector(unwindToListBooking:)] should be_truthy;
 		});
 	});
 });

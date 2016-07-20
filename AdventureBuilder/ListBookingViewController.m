@@ -14,6 +14,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	
+	
+	NSLog(@"%@", _bookingService);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

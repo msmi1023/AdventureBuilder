@@ -13,6 +13,7 @@
 JabApiManager *apiManager;
 
 //DI constructor to bring in the api manager
+//our api manager is a singleton, so we can hard-code the dependency in init
 -(instancetype)initWithApiManager:(JabApiManager *)jabApiManager {
 	self = [super init];
 	if(!self) {
@@ -27,6 +28,17 @@ JabApiManager *apiManager;
 -(instancetype)init {
 	return [self initWithApiManager:[JabApiManager sharedManager]];
 }
+
+//-(instancetype)init {
+//	static dispatch_once_t pred;
+//	static BookingService *_sharedInstance = nil;
+//	
+//	dispatch_once(&pred, ^{
+//		_sharedInstance = [self initWithApiManager:[JabApiManager sharedManager]];
+//	});
+//	
+//	return _sharedInstance;
+//}
 
 -(void)getBookingsWithCompletionBlock:(completion_t)completionBlock {
 	[apiManager GET:@"bookings" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {

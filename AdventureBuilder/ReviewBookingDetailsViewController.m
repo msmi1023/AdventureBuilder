@@ -1,20 +1,21 @@
 //
-//  EnterCustomerInformationViewController.m
+//  ReviewBookingDetailsViewController.m
 //  AdventureBuilder
 //
 //  Created by tstone10 on 7/20/16.
 //  Copyright © 2016 DetroitLabs. All rights reserved.
 //
 
-#import "EnterCustomerInformationViewController.h"
+#import "ReviewBookingDetailsViewController.h"
 
-@implementation EnterCustomerInformationViewController
+@interface ReviewBookingDetailsViewController ()
+
+@end
+
+@implementation ReviewBookingDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	
-	NSLog(@"%@", _bookingService);
     // Do any additional setup after loading the view.
 }
 

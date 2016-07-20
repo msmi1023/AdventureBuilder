@@ -12,6 +12,11 @@
 		8C5D08F393D75FE466A98597 /* libPods-AdventureBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */; };
 		D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */; };
 		D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */; };
+		D44860071D3FFE2C001A2FDF /* SelectAdventureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860061D3FFE2C001A2FDF /* SelectAdventureViewController.m */; };
+		D448600A1D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860091D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m */; };
+		D448600D1D40031A001A2FDF /* SelectDepartingFlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D448600C1D40031A001A2FDF /* SelectDepartingFlightViewController.m */; };
+		D44860101D400591001A2FDF /* SelectReturningFlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D448600F1D400591001A2FDF /* SelectReturningFlightViewController.m */; };
+		D44860131D400706001A2FDF /* ReviewBookingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860121D400706001A2FDF /* ReviewBookingDetailsViewController.m */; };
 		D450573E1D33E15100AC630E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D450573D1D33E15100AC630E /* main.m */; };
 		D45057411D33E15100AC630E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D45057401D33E15100AC630E /* AppDelegate.m */; };
 		D45057471D33E15100AC630E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45057451D33E15100AC630E /* Main.storyboard */; };
@@ -65,6 +70,16 @@
 		D4485FFD1D3FB844001A2FDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBooking.storyboard; sourceTree = "<group>"; };
 		D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterCustomerInformationViewController.h; sourceTree = "<group>"; };
 		D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterCustomerInformationViewController.m; sourceTree = "<group>"; };
+		D44860051D3FFE2C001A2FDF /* SelectAdventureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAdventureViewController.h; sourceTree = "<group>"; };
+		D44860061D3FFE2C001A2FDF /* SelectAdventureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAdventureViewController.m; sourceTree = "<group>"; };
+		D44860081D3FFF7D001A2FDF /* SelectBookingOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBookingOptionsViewController.h; sourceTree = "<group>"; };
+		D44860091D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBookingOptionsViewController.m; sourceTree = "<group>"; };
+		D448600B1D40031A001A2FDF /* SelectDepartingFlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDepartingFlightViewController.h; sourceTree = "<group>"; };
+		D448600C1D40031A001A2FDF /* SelectDepartingFlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDepartingFlightViewController.m; sourceTree = "<group>"; };
+		D448600E1D400591001A2FDF /* SelectReturningFlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReturningFlightViewController.h; sourceTree = "<group>"; };
+		D448600F1D400591001A2FDF /* SelectReturningFlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectReturningFlightViewController.m; sourceTree = "<group>"; };
+		D44860111D400706001A2FDF /* ReviewBookingDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewBookingDetailsViewController.h; sourceTree = "<group>"; };
+		D44860121D400706001A2FDF /* ReviewBookingDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewBookingDetailsViewController.m; sourceTree = "<group>"; };
 		D45057391D33E15100AC630E /* AdventureBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventureBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D450573D1D33E15100AC630E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D450573F1D33E15100AC630E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,8 +172,18 @@
 			children = (
 				D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */,
 				D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */,
+				D44860051D3FFE2C001A2FDF /* SelectAdventureViewController.h */,
+				D44860061D3FFE2C001A2FDF /* SelectAdventureViewController.m */,
 				D45CE8E21D3818F400132ED3 /* ListBookingViewController.h */,
 				D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */,
+				D44860081D3FFF7D001A2FDF /* SelectBookingOptionsViewController.h */,
+				D44860091D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m */,
+				D448600B1D40031A001A2FDF /* SelectDepartingFlightViewController.h */,
+				D448600C1D40031A001A2FDF /* SelectDepartingFlightViewController.m */,
+				D448600E1D400591001A2FDF /* SelectReturningFlightViewController.h */,
+				D44860111D400706001A2FDF /* ReviewBookingDetailsViewController.h */,
+				D44860121D400706001A2FDF /* ReviewBookingDetailsViewController.m */,
+				D448600F1D400591001A2FDF /* SelectReturningFlightViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -562,12 +587,17 @@
 				D49F30511D3D076300382F5C /* JabApiManager.m in Sources */,
 				D45057411D33E15100AC630E /* AppDelegate.m in Sources */,
 				D45CE8EF1D39706400132ED3 /* BookingService.m in Sources */,
+				D448600A1D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m in Sources */,
 				D49F30561D3D610400382F5C /* Booking.m in Sources */,
+				D448600D1D40031A001A2FDF /* SelectDepartingFlightViewController.m in Sources */,
+				D44860131D400706001A2FDF /* ReviewBookingDetailsViewController.m in Sources */,
 				D49F305E1D3D673A00382F5C /* Adventure.m in Sources */,
 				D450573E1D33E15100AC630E /* main.m in Sources */,
 				D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */,
 				D45CE8E41D3818F400132ED3 /* ListBookingViewController.m in Sources */,
 				D49F305B1D3D672C00382F5C /* Customer.m in Sources */,
+				D44860101D400591001A2FDF /* SelectReturningFlightViewController.m in Sources */,
+				D44860071D3FFE2C001A2FDF /* SelectAdventureViewController.m in Sources */,
 				D49F30611D3D674900382F5C /* Flight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

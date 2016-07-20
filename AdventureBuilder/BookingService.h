@@ -14,10 +14,8 @@
 
 typedef void (^completion_t)(id response);
 
-//make init unavailable for use to force use of DI constructor
--(instancetype)init NS_UNAVAILABLE;
+-(instancetype)init;
 -(instancetype)initWithApiManager:(JabApiManager *)jabApiManager;
-
 -(void)getBookingsWithCompletionBlock:(completion_t)completionBlock;
 
 @end
