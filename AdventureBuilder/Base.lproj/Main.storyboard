@@ -6,11 +6,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--List Booking View Controller-->
+        <!--List Bookings-->
         <scene sceneID="YmL-5f-4vQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nqt-dl-NiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="qhR-oG-QGM" userLabel="BookingService" customClass="BookingService" colorLabel="IBBuiltInLabel-Purple"/>
                 <viewController storyboardIdentifier="listBookingViewController" id="pya-mW-9xU" customClass="ListBookingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLl-Gk-NCi"/>
@@ -20,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Adventures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBC-Da-VER">
-                                <rect key="frame" x="243" y="85" width="115" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyI-nd-6ys">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -33,7 +25,7 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-jf-JuG">
-                                <rect key="frame" x="0.0" y="124" width="600" height="422"/>
+                                <rect key="frame" x="0.0" y="89" width="600" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="pya-mW-9xU" id="Dnv-Cg-r4b"/>
@@ -44,24 +36,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gyI-nd-6ys" firstAttribute="leading" secondItem="uoc-ru-1r0" secondAttribute="leadingMargin" constant="-20" id="2TQ-S1-veC"/>
-                            <constraint firstItem="MBC-Da-VER" firstAttribute="centerX" secondItem="uoc-ru-1r0" secondAttribute="centerX" id="Bos-DE-75o"/>
-                            <constraint firstItem="Ggd-jf-JuG" firstAttribute="top" secondItem="MBC-Da-VER" secondAttribute="bottom" constant="18" id="MVb-nW-m0Q"/>
+                            <constraint firstItem="Ggd-jf-JuG" firstAttribute="top" secondItem="yLl-Gk-NCi" secondAttribute="bottom" constant="25" id="I2k-Ft-ELM"/>
                             <constraint firstItem="gyI-nd-6ys" firstAttribute="top" secondItem="Ggd-jf-JuG" secondAttribute="bottom" constant="10" id="SK9-R5-O0B"/>
                             <constraint firstItem="Ggd-jf-JuG" firstAttribute="leading" secondItem="uoc-ru-1r0" secondAttribute="leadingMargin" constant="-20" id="VPP-27-EqR"/>
                             <constraint firstItem="zBL-Ay-i9F" firstAttribute="top" secondItem="gyI-nd-6ys" secondAttribute="bottom" id="X0L-yD-w4h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gyI-nd-6ys" secondAttribute="trailing" constant="-20" id="f47-JJ-6m9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ggd-jf-JuG" secondAttribute="trailing" constant="-20" id="mKC-sY-qZc"/>
-                            <constraint firstItem="MBC-Da-VER" firstAttribute="top" secondItem="yLl-Gk-NCi" secondAttribute="bottom" constant="21" id="uXn-u0-Muy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4Rn-Fq-gyB">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="lut-bc-tZX"/>
+                    <navigationItem key="navigationItem" title="List Bookings" id="4Rn-Fq-gyB">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="lut-bc-tZX">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Bmb-Lt-nGF" kind="presentation" id="gEU-Ph-hmh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bookingService" destination="qhR-oG-QGM" id="KcP-dy-flb"/>
                         <outlet property="tableView" destination="Ggd-jf-JuG" id="kzq-1S-lft"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqt-dl-NiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="qhR-oG-QGM" userLabel="BookingService" customClass="BookingService" colorLabel="IBBuiltInLabel-Purple"/>
             </objects>
             <point key="canvasLocation" x="1222" y="412"/>
         </scene>
@@ -70,9 +67,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K36-yv-SFb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2jA-HZ-yOG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="2jA-HZ-yOG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.1160392831" blue="0.53453525639999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -82,6 +83,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UsO-t0-Wqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="410" y="412"/>
+        </scene>
+        <!--AddBooking-->
+        <scene sceneID="jRL-qB-GYm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddBooking" id="Bmb-Lt-nGF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-B4-Thr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733" y="412"/>
         </scene>
     </scenes>
 </document>

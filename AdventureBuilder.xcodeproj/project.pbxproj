@@ -10,6 +10,8 @@
 		2469E3872DD8B9B845FA5D46 /* libPods-AdventureBuilderUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 355655D15C5F9568C0838655 /* libPods-AdventureBuilderUITests.a */; };
 		3496328667F7ACD9A1AB2408 /* libPods-AdventureBuilderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EE31C21E7504B8F974CD5 /* libPods-AdventureBuilderTests.a */; };
 		8C5D08F393D75FE466A98597 /* libPods-AdventureBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */; };
+		D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */; };
+		D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */; };
 		D450573E1D33E15100AC630E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D450573D1D33E15100AC630E /* main.m */; };
 		D45057411D33E15100AC630E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D45057401D33E15100AC630E /* AppDelegate.m */; };
 		D45057471D33E15100AC630E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45057451D33E15100AC630E /* Main.storyboard */; };
@@ -60,6 +62,9 @@
 		6F000A1220A730D0B5BAB9FC /* Pods-AdventureBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.release.xcconfig"; sourceTree = "<group>"; };
 		7513C79C360E229E8A096D9F /* Pods-AdventureBuilderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilderTests/Pods-AdventureBuilderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdventureBuilder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4485FFD1D3FB844001A2FDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBooking.storyboard; sourceTree = "<group>"; };
+		D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterCustomerInformationViewController.h; sourceTree = "<group>"; };
+		D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterCustomerInformationViewController.m; sourceTree = "<group>"; };
 		D45057391D33E15100AC630E /* AdventureBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventureBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D450573D1D33E15100AC630E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D450573F1D33E15100AC630E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -147,6 +152,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D44860021D3FC73F001A2FDF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */,
+				D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */,
+				D45CE8E21D3818F400132ED3 /* ListBookingViewController.h */,
+				D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D44860031D3FC760001A2FDF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D45057451D33E15100AC630E /* Main.storyboard */,
+				D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */,
+				D450574A1D33E15100AC630E /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		D44860041D3FC784001A2FDF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		D45057301D33E15100AC630E = {
 			isa = PBXGroup;
 			children = (
@@ -172,17 +206,15 @@
 		D450573B1D33E15100AC630E /* AdventureBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				D450573C1D33E15100AC630E /* Supporting Files */,
+				D44860031D3FC760001A2FDF /* Storyboards */,
+				D44860021D3FC73F001A2FDF /* Controllers */,
 				D49F30531D3D60FA00382F5C /* Models */,
 				D49F30521D3D23B900382F5C /* API */,
 				D450573F1D33E15100AC630E /* AppDelegate.h */,
 				D45057401D33E15100AC630E /* AppDelegate.m */,
-				D45057451D33E15100AC630E /* Main.storyboard */,
-				D45CE8E21D3818F400132ED3 /* ListBookingViewController.h */,
-				D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */,
 				D45057481D33E15100AC630E /* Assets.xcassets */,
-				D450574A1D33E15100AC630E /* LaunchScreen.storyboard */,
 				D450574D1D33E15100AC630E /* Info.plist */,
-				D450573C1D33E15100AC630E /* Supporting Files */,
 			);
 			path = AdventureBuilder;
 			sourceTree = "<group>";
@@ -198,11 +230,11 @@
 		D45057551D33E15100AC630E /* AdventureBuilderTests */ = {
 			isa = PBXGroup;
 			children = (
+				D44860041D3FC784001A2FDF /* Controllers */,
 				D49F30691D3E810900382F5C /* API */,
 				D49F30681D3E6B6400382F5C /* Models */,
 				D45057711D3412BF00AC630E /* Info.plist */,
 				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
-				D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */,
 			);
 			path = AdventureBuilderTests;
 			sourceTree = "<group>";
@@ -376,6 +408,7 @@
 			files = (
 				D450574C1D33E15100AC630E /* LaunchScreen.storyboard in Resources */,
 				D45057491D33E15100AC630E /* Assets.xcassets in Resources */,
+				D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */,
 				D45057471D33E15100AC630E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +565,7 @@
 				D49F30561D3D610400382F5C /* Booking.m in Sources */,
 				D49F305E1D3D673A00382F5C /* Adventure.m in Sources */,
 				D450573E1D33E15100AC630E /* main.m in Sources */,
+				D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */,
 				D45CE8E41D3818F400132ED3 /* ListBookingViewController.m in Sources */,
 				D49F305B1D3D672C00382F5C /* Customer.m in Sources */,
 				D49F30611D3D674900382F5C /* Flight.m in Sources */,
@@ -576,6 +610,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4485FFD1D3FB844001A2FDF /* Base */,
+			);
+			name = AddBooking.storyboard;
+			sourceTree = "<group>";
+		};
 		D45057451D33E15100AC630E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
