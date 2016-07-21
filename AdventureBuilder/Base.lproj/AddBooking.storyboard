@@ -115,13 +115,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5Cj-VI-bf8">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="J4Y-QF-HpI" kind="unwind" unwindAction="unwindToListBooking:" id="RQB-Ei-DEM"/>
+                                <action selector="cancelButtonPressed:" destination="Boy-Tw-2Py" id="Lmw-TX-5pZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8Vi-Ar-bjU">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="LvY-ui-djp" kind="show" id="IEq-iy-pZV"/>
+                                <segue destination="LvY-ui-djp" kind="show" customClass="JabUIStoryboardSegue" id="IEq-iy-pZV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -138,7 +138,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVG-1Z-KSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="J4Y-QF-HpI" userLabel="Exit" sceneMemberID="exit"/>
                 <customObject id="Ses-Mv-dB0" customClass="BookingService"/>
             </objects>
             <point key="canvasLocation" x="2695" y="412"/>
@@ -192,7 +191,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="qEV-7u-rsB">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="mu4-jV-Gwa" kind="show" id="54U-O5-RDW"/>
+                                <segue destination="mu4-jV-Gwa" kind="show" customClass="JabUIStoryboardSegue" id="54U-O5-RDW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -290,7 +289,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="OrF-zD-tsp">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="lTa-3m-EAA" kind="show" id="KIB-TX-UBf"/>
+                                <segue destination="lTa-3m-EAA" kind="show" customClass="JabUIStoryboardSegue" id="KIB-TX-UBf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -342,7 +341,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8Gh-kN-nIy">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="hDD-RD-qcs" kind="show" id="r4H-ze-yIV"/>
+                                <segue destination="hDD-RD-qcs" kind="show" customClass="JabUIStoryboardSegue" id="r4H-ze-yIV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -389,7 +388,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="QN9-n2-Fe8">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="bAX-cJ-2GP" kind="show" id="R4R-Bx-85b"/>
+                                <segue destination="bAX-cJ-2GP" kind="show" customClass="JabUIStoryboardSegue" id="R4R-Bx-85b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -659,7 +658,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="4lh-JX-726">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="kI7-7h-4iY" kind="unwind" unwindAction="unwindToListBooking:" id="bPb-sW-zH9"/>
+                                <action selector="saveButtonPressed:" destination="bAX-cJ-2GP" id="9xc-lh-mPH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -678,7 +677,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAU-d3-V6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="kI7-7h-4iY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6168" y="412"/>
         </scene>

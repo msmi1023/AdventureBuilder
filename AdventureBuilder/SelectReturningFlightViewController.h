@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookingService.h"
 
 @interface SelectReturningFlightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) IBOutlet BookingService *bookingService;
 
 @end

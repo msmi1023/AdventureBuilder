@@ -9,6 +9,7 @@
 #import "ListBookingViewController.h"
 #import "BookingService.h"
 #import "JabApiManager.h"
+#import "JabUIStoryboard.h"
 
 @implementation ListBookingViewController
 
@@ -51,4 +52,13 @@
 	
 }
 
+- (IBAction)addButtonPressed:(id)sender {
+	JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"AddBooking" bundle:nil];
+	UIViewController *vc = [storyboard instantiateInitialViewController];
+	
+	[self presentViewController:vc animated:YES completion:nil];
+	
+	//self.view.window.rootViewController = vc;
+	//[self.view.window makeKeyAndVisible];
+}
 @end

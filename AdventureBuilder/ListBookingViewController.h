@@ -14,5 +14,6 @@
 @property (strong, nonatomic) BookingService *bookingService;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *bookingList;
+- (IBAction)addButtonPressed:(id)sender;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "EnterCustomerInformationViewController.h"
+#import "JabUIStoryboard.h"
 
 @implementation EnterCustomerInformationViewController
 
@@ -20,6 +21,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)cancelButtonPressed:(id)sender {
+//	JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
+//	UIViewController *vc = [storyboard instantiateInitialViewController];
+//	self.view.window.rootViewController = vc;
+//	
+//	[self.view.window makeKeyAndVisible];
+	//[[self navigationController] popToRootViewControllerAnimated:YES];
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

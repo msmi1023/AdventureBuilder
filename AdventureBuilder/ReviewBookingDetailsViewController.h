@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookingService.h"
 
 @interface ReviewBookingDetailsViewController : UIViewController
 
@@ -21,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *departingFlight;
 @property (weak, nonatomic) IBOutlet UILabel *returningFlight;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+
+@property (strong, nonatomic) IBOutlet BookingService *bookingService;
 
 @end

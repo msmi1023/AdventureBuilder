@@ -51,7 +51,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="lut-bc-tZX">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Bmb-Lt-nGF" kind="presentation" id="gEU-Ph-hmh"/>
+                                <action selector="addButtonPressed:" destination="pya-mW-9xU" id="b8Y-IU-rbF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -84,14 +84,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UsO-t0-Wqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="410" y="412"/>
-        </scene>
-        <!--AddBooking-->
-        <scene sceneID="jRL-qB-GYm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddBooking" id="Bmb-Lt-nGF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-B4-Thr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1733" y="412"/>
         </scene>
     </scenes>
 </document>

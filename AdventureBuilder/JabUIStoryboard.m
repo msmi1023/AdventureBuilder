@@ -9,6 +9,11 @@
 #import "JabUIStoryboard.h"
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
+#import "SelectAdventureViewController.h"
+#import "SelectBookingOptionsViewController.h"
+#import "SelectDepartingFlightViewController.h"
+#import "SelectReturningFlightViewController.h"
+#import "ReviewBookingDetailsViewController.h"
 
 //this storyboard subclass will override the default controller initialization code.
 //this will allow us to add code here to give the controllers the dependencies they need.
@@ -29,21 +34,37 @@
 	UIViewController *viewController;
 	viewController = [super instantiateViewControllerWithIdentifier:identifier];
 	
-	[self setDependenciesForViewController:viewController];
-	
+	if([viewController isKindOfClass:[UINavigationController class]]) {
+		for (id childController in [viewController childViewControllers]) {
+			[self setDependenciesForViewController:childController];
+		}
+	} else {
+		[self setDependenciesForViewController:viewController];
+	}
 	return viewController;
 }
 
 - (void)setDependenciesForViewController:(UIViewController *)vc {
-	if([vc isKindOfClass:[UINavigationController class]]) {
-		for (id childController in [vc childViewControllers]) {
-			if([childController isKindOfClass:[ListBookingViewController class]]) {
-				((ListBookingViewController *)childController).bookingService = _bookingServiceInstance;
-			}
-			else if([childController isKindOfClass:[EnterCustomerInformationViewController class]]) {
-				((EnterCustomerInformationViewController *)childController).bookingService = _bookingServiceInstance;
-			}
-		}
+	if([vc isKindOfClass:[ListBookingViewController class]]) {
+		((ListBookingViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[EnterCustomerInformationViewController class]]) {
+		((EnterCustomerInformationViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[SelectAdventureViewController class]]) {
+		((SelectAdventureViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[SelectBookingOptionsViewController class]]) {
+		((SelectBookingOptionsViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[SelectDepartingFlightViewController class]]) {
+		((SelectDepartingFlightViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[SelectReturningFlightViewController class]]) {
+		((SelectReturningFlightViewController *)vc).bookingService = _bookingServiceInstance;
+	}
+	else if([vc isKindOfClass:[ReviewBookingDetailsViewController class]]) {
+		((ReviewBookingDetailsViewController *)vc).bookingService = _bookingServiceInstance;
 	}
 }
 

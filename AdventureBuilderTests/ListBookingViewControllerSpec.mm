@@ -1,5 +1,6 @@
 #import <Cedar/Cedar.h>
 #import "ListBookingViewController.h"
+#import "JabUIStoryboard.h"
 
 @interface ListBookingViewController (Test)
 
@@ -22,7 +23,7 @@ describe(@"ListBookingViewController", ^{
 
     beforeEach(^{
 		//get our storyboard and load our controller from within it.
-		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+		JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
 		vc = [storyboard instantiateViewControllerWithIdentifier:@"listBookingViewController"];
 		[vc performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
     });

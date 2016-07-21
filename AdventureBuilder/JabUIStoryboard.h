@@ -15,5 +15,6 @@
 
 + (instancetype)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil;
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier;
+- (void)setDependenciesForViewController:(UIViewController *)vc;
 
 @end
