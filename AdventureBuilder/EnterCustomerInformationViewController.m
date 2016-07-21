@@ -12,10 +12,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    // Do any additional setup after loading the view.
 	
 	NSLog(@"%@", _bookingService);
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

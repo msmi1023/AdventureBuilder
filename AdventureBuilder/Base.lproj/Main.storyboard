@@ -56,12 +56,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bookingService" destination="qhR-oG-QGM" id="KcP-dy-flb"/>
                         <outlet property="tableView" destination="Ggd-jf-JuG" id="kzq-1S-lft"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqt-dl-NiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="qhR-oG-QGM" userLabel="BookingService" customClass="BookingService" colorLabel="IBBuiltInLabel-Purple"/>
             </objects>
             <point key="canvasLocation" x="1222" y="412"/>
         </scene>

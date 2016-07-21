@@ -7,16 +7,21 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-
-@end
+#import "JabUIStoryboard.h"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	
+	//since we are using our custom storyboard, need to init it here
+	JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
+	UIViewController *vc = [storyboard instantiateInitialViewController];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window.rootViewController = vc;
+	
+	[self.window makeKeyAndVisible];
 	
 	return YES;
 }
