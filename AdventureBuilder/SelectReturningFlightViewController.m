@@ -7,7 +7,6 @@
 //
 
 #import "SelectReturningFlightViewController.h"
-#import "JabUIFlowController.h"
 
 @implementation SelectReturningFlightViewController
 
@@ -37,11 +36,6 @@
 	
 	return cell;
 }
-
-- (IBAction)nextButtonPressed:(id)sender {
-	[[JabUIFlowController sharedController] transitionForwardFromController:self];
-}
-
 
 /*
 #pragma mark - Navigation

@@ -27,7 +27,7 @@
                                 </items>
                                 <color key="barTintColor" red="0.0" green="0.1160392831" blue="0.53453525639999999" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-jf-JuG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-jf-JuG">
                                 <rect key="frame" x="0.0" y="89" width="600" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -50,9 +50,6 @@
                     <navigationItem key="navigationItem" title="List Bookings" id="4Rn-Fq-gyB">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="lut-bc-tZX">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addButtonPressed:" destination="pya-mW-9xU" id="b8Y-IU-rbF"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

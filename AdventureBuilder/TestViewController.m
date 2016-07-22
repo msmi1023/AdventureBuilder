@@ -1,19 +1,22 @@
 //
-//  SelectAdventureViewController.m
+//  TestViewController.m
 //  AdventureBuilder
 //
-//  Created by tstone10 on 7/20/16.
+//  Created by tstone10 on 7/22/16.
 //  Copyright © 2016 DetroitLabs. All rights reserved.
 //
 
-#import "SelectAdventureViewController.h"
+#import "TestViewController.h"
 
-@implementation SelectAdventureViewController
+@interface TestViewController ()
+
+@end
+
+@implementation TestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-	NSLog(@"%@", _bookingService);
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

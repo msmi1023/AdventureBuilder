@@ -114,19 +114,12 @@
                     <navigationItem key="navigationItem" title="Enter Customer Information" id="Fss-h0-v2y">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5Cj-VI-bf8">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="Boy-Tw-2Py" id="Lmw-TX-5pZ"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8Vi-Ar-bjU">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="Boy-Tw-2Py" id="8WP-Gp-fMA"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bookingService" destination="Ses-Mv-dB0" id="T4Z-Zg-OhC"/>
                         <outlet property="city" destination="Zzf-p6-Hgy" id="ewn-Xg-yTj"/>
                         <outlet property="emailAddress" destination="csT-Ni-ady" id="4zN-nn-BoG"/>
                         <outlet property="firstName" destination="2fh-6B-eiG" id="USF-6U-959"/>
@@ -138,7 +131,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVG-1Z-KSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Ses-Mv-dB0" customClass="BookingService"/>
             </objects>
             <point key="canvasLocation" x="2695" y="412"/>
         </scene>
@@ -185,14 +177,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Adventure" id="231-RO-uXl">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="kQ9-UR-jrH">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="qEV-7u-rsB">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="LvY-ui-djp" id="efB-bF-NUb"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -213,6 +199,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="lrJ-6K-LTf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.1160392831" blue="0.53453525639999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -283,14 +270,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Booking Options" id="duy-e8-28D" userLabel="Select Booking Options">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="TYZ-Ce-Mwj">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="OrF-zD-tsp">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="mu4-jV-Gwa" id="1Lv-BQ-dAF"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -335,14 +316,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Departing Flight" id="EWT-jV-pq6">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="ubI-H7-LLv">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8Gh-kN-nIy">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="lTa-3m-EAA" id="BFc-fr-68D"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -382,14 +357,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Returning Flight" id="7j9-Us-B2d">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="s57-UD-56H">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="QN9-n2-Fe8">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="hDD-RD-qcs" id="Kmm-Cq-Dyc"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -652,14 +621,8 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Review Booking Details" id="8ct-BM-8hZ">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="XAR-1c-0zo">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="4lh-JX-726">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="saveButtonPressed:" destination="bAX-cJ-2GP" id="BDU-mc-cuW"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

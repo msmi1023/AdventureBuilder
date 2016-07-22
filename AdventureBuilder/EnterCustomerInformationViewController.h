@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookingService.h"
+#import "JabUIViewController.h"
 
-@interface EnterCustomerInformationViewController : UIViewController
+@interface EnterCustomerInformationViewController : JabUIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *emailAddress;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
@@ -20,6 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *zip;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
-@property (strong, nonatomic) IBOutlet BookingService *bookingService;
+@property (strong, nonatomic) BookingService *bookingService;
 
 @end

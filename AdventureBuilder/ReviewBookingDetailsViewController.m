@@ -7,7 +7,6 @@
 //
 
 #import "ReviewBookingDetailsViewController.h"
-#import "JabUIFlowController.h"
 
 @interface ReviewBookingDetailsViewController ()
 
@@ -24,10 +23,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)saveButtonPressed:(id)sender {
-	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 /*

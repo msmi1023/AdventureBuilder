@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookingService.h"
+#import "JabUIViewController.h"
 
-@interface ListBookingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ListBookingViewController : JabUIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) BookingService *bookingService;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *bookingList;
-- (IBAction)addButtonPressed:(id)sender;
 
 @end

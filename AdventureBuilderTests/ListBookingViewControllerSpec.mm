@@ -1,6 +1,5 @@
 #import <Cedar/Cedar.h>
 #import "ListBookingViewController.h"
-#import "JabUIStoryboard.h"
 
 @interface ListBookingViewController (Test)
 
@@ -22,10 +21,8 @@ describe(@"ListBookingViewController", ^{
 	__block ListBookingViewController *vc;
 
     beforeEach(^{
-		//get our storyboard and load our controller from within it.
-		JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
-		vc = [storyboard instantiateViewControllerWithIdentifier:@"listBookingViewController"];
-		[vc performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
+		UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialAppViewControllerOnWindow:window].childViewControllers.firstObject;
     });
 	
 	it(@"should exist", ^{
@@ -131,12 +128,6 @@ describe(@"ListBookingViewController", ^{
 			
 			vc.bookingList should equal(nil);
 			vc.tableView should_not have_received(@selector(reloadData));
-		});
-	});
-	
-	describe(@"unwindToListBooking", ^{
-		it(@"should respond to the unwind selector", ^{
-			[vc respondsToSelector:@selector(unwindToListBooking:)] should be_truthy;
 		});
 	});
 });

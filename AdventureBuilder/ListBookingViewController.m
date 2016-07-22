@@ -7,9 +7,6 @@
 //
 
 #import "ListBookingViewController.h"
-#import "BookingService.h"
-#import "JabApiManager.h"
-#import "JabUIFlowController.h"
 
 @implementation ListBookingViewController
 
@@ -20,6 +17,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
 	[self retrieveBookingData];
 }
 
@@ -48,7 +47,4 @@
 	}];
 }
 
-- (IBAction)addButtonPressed:(id)sender {
-	[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:self];
-}
 @end

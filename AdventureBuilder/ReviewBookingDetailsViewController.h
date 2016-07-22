@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookingService.h"
+#import "JabUIViewController.h"
 
-@interface ReviewBookingDetailsViewController : UIViewController
+@interface ReviewBookingDetailsViewController : JabUIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UILabel *emailAddress;
@@ -23,6 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *returningFlight;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 
-@property (strong, nonatomic) IBOutlet BookingService *bookingService;
+@property (strong, nonatomic) BookingService *bookingService;
 
 @end

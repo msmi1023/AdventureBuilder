@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookingService.h"
+#import "JabUIViewController.h"
 
-@interface SelectAdventureViewController : UIViewController
+@interface SelectAdventureViewController : JabUIViewController
 
 @property (weak, nonatomic) IBOutlet UIPickerView *adventureType;
 @property (weak, nonatomic) IBOutlet UIPickerView *adventure;
 @property (weak, nonatomic) IBOutlet UITextView *details;
 
-@property (strong, nonatomic) IBOutlet BookingService *bookingService;
+@property (strong, nonatomic) BookingService *bookingService;
 
 @end

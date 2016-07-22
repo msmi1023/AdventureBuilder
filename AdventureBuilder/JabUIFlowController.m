@@ -8,6 +8,15 @@
 
 #import "JabUIFlowController.h"
 
+//need these here for dependency logic. can't have in .h, causes circular deps
+#import "ListBookingViewController.h"
+#import "EnterCustomerInformationViewController.h"
+#import "SelectAdventureViewController.h"
+#import "SelectBookingOptionsViewController.h"
+#import "SelectDepartingFlightViewController.h"
+#import "SelectReturningFlightViewController.h"
+#import "ReviewBookingDetailsViewController.h"
+
 @implementation JabUIFlowController
 
 +(instancetype)sharedController {
@@ -36,7 +45,7 @@
 	return self;
 };
 
--(void)presentInitialAppViewControllerOnWindow:(UIWindow *)window {
+-(UIViewController *)presentInitialAppViewControllerOnWindow:(UIWindow *)window {
 	UIViewController *vc = [_mainStoryboard instantiateInitialViewController];
 	
 	[self setDependenciesForNavigationController:vc];
@@ -44,6 +53,8 @@
 	window.rootViewController = vc;
 	
 	[window makeKeyAndVisible];
+	
+	return vc;
 }
 
 -(void)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc {
@@ -103,22 +114,6 @@
 	return nil;
 }
 
-- (id)instantiateViewControllerWithIdentifier:(NSString *)identifier {
-//	UIViewController *viewController;
-//	viewController = [super instantiateViewControllerWithIdentifier:identifier];
-//	
-//	if([viewController isKindOfClass:[UINavigationController class]]) {
-//		for (id childController in [viewController childViewControllers]) {
-//			[self setDependenciesForViewController:childController];
-//		}
-//	} else {
-//		[self setDependenciesForViewController:viewController];
-//	}
-//	return viewController;
-	
-	return nil;
-}
-
 - (void)setDependenciesForNavigationController:(UIViewController *)nvc {
 	for (id childController in [nvc childViewControllers]) {
 		[self setDependenciesForViewController:childController];
@@ -148,13 +143,5 @@
 		((ReviewBookingDetailsViewController *)vc).bookingService = _bookingServiceInstance;
 	}
 }
-
-//since we are using our custom storyboard, need to init it here
-//JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
-//UIViewController *vc = [storyboard instantiateInitialViewController];
-//self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//self.window.rootViewController = vc;
-//
-//[self.window makeKeyAndVisible];
 
 @end
