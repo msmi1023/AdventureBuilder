@@ -9,7 +9,7 @@
 #import "ListBookingViewController.h"
 #import "BookingService.h"
 #import "JabApiManager.h"
-#import "JabUIStoryboard.h"
+#import "JabUIFlowController.h"
 
 @implementation ListBookingViewController
 
@@ -48,17 +48,7 @@
 	}];
 }
 
--(IBAction)unwindToListBooking:(UIStoryboardSegue *)segue {
-	
-}
-
 - (IBAction)addButtonPressed:(id)sender {
-	JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"AddBooking" bundle:nil];
-	UIViewController *vc = [storyboard instantiateInitialViewController];
-	
-	[self presentViewController:vc animated:YES completion:nil];
-	
-	//self.view.window.rootViewController = vc;
-	//[self.view.window makeKeyAndVisible];
+	[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:self];
 }
 @end

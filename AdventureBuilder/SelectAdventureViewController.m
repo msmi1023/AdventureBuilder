@@ -7,6 +7,7 @@
 //
 
 #import "SelectAdventureViewController.h"
+#import "JabUIFlowController.h"
 
 @implementation SelectAdventureViewController
 
@@ -19,6 +20,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
+	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 /*

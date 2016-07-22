@@ -7,7 +7,7 @@
 //
 
 #import "EnterCustomerInformationViewController.h"
-#import "JabUIStoryboard.h"
+#import "JabUIFlowController.h"
 
 @implementation EnterCustomerInformationViewController
 
@@ -31,7 +31,11 @@
 //	[self.view.window makeKeyAndVisible];
 	//[[self navigationController] popToRootViewControllerAnimated:YES];
 	
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[[JabUIFlowController sharedController] transitionBackFromController:self];
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
+	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 /*

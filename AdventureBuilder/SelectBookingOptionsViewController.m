@@ -7,6 +7,7 @@
 //
 
 #import "SelectBookingOptionsViewController.h"
+#import "JabUIFlowController.h"
 
 @implementation SelectBookingOptionsViewController
 
@@ -19,6 +20,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
+	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 /*

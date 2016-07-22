@@ -7,6 +7,7 @@
 //
 
 #import "SelectDepartingFlightViewController.h"
+#import "JabUIFlowController.h"
 
 @implementation SelectDepartingFlightViewController
 
@@ -35,6 +36,10 @@
 	//cell.textLabel.text = [NSString stringWithFormat:@"%@", ((Booking *)_bookingList[indexPath.row]).confirmationNumber];
 	
 	return cell;
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
+	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 

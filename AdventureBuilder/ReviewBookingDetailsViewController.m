@@ -7,7 +7,7 @@
 //
 
 #import "ReviewBookingDetailsViewController.h"
-#import "JabUIStoryboard.h"
+#import "JabUIFlowController.h"
 
 @interface ReviewBookingDetailsViewController ()
 
@@ -27,16 +27,7 @@
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
-	//[[self navigationController] popToRootViewControllerAnimated:YES];
-	
-	[self dismissViewControllerAnimated:YES completion:nil];
-	
-//	JabUIStoryboard *storyboard = [JabUIStoryboard storyboardWithName:@"Main" bundle:nil];
-//	UIViewController *vc = [storyboard instantiateInitialViewController];
-//	self.view.window.rootViewController = vc;
-//	
-//	[self.view.window makeKeyAndVisible];
-
+	[[JabUIFlowController sharedController] transitionForwardFromController:self];
 }
 
 /*
