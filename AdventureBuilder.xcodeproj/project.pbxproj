@@ -28,7 +28,6 @@
 		D45057721D3412BF00AC630E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D45057711D3412BF00AC630E /* Info.plist */; };
 		D45057741D3412C700AC630E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D45057731D3412C700AC630E /* Info.plist */; };
 		D45CE8E41D3818F400132ED3 /* ListBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */; };
-		D45CE8E51D3818F400132ED3 /* ListBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */; };
 		D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */; };
 		D45CE8EF1D39706400132ED3 /* BookingService.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EE1D39706400132ED3 /* BookingService.m */; };
 		D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */; };
@@ -41,7 +40,6 @@
 		D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30621D3E5AB200382F5C /* CustomerSpec.mm */; };
 		D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30641D3E66AE00382F5C /* AdventureSpec.mm */; };
 		D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30661D3E6A6000382F5C /* FlightSpec.mm */; };
-		D4F721461D4292470082549B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F721451D4292470082549B /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,8 +118,6 @@
 		D49F30621D3E5AB200382F5C /* CustomerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CustomerSpec.mm; sourceTree = "<group>"; };
 		D49F30641D3E66AE00382F5C /* AdventureSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdventureSpec.mm; sourceTree = "<group>"; };
 		D49F30661D3E6A6000382F5C /* FlightSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FlightSpec.mm; sourceTree = "<group>"; };
-		D4F721441D4292470082549B /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		D4F721451D4292470082549B /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		FF2B928207F2EB2C444B58D8 /* Pods-AdventureBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,10 +241,6 @@
 				D44860021D3FC73F001A2FDF /* Controllers */,
 				D49F30531D3D60FA00382F5C /* Models */,
 				D49F30521D3D23B900382F5C /* API */,
-				D450573F1D33E15100AC630E /* AppDelegate.h */,
-				D45057401D33E15100AC630E /* AppDelegate.m */,
-				D45057481D33E15100AC630E /* Assets.xcassets */,
-				D450574D1D33E15100AC630E /* Info.plist */,
 			);
 			path = AdventureBuilder;
 			sourceTree = "<group>";
@@ -261,8 +253,10 @@
 				D448601E1D425C5E001A2FDF /* JabUIFlowController.m */,
 				D44860201D427BB6001A2FDF /* JabUIViewController.h */,
 				D44860211D427BB6001A2FDF /* JabUIViewController.m */,
-				D4F721441D4292470082549B /* TestViewController.h */,
-				D4F721451D4292470082549B /* TestViewController.m */,
+				D450573F1D33E15100AC630E /* AppDelegate.h */,
+				D45057401D33E15100AC630E /* AppDelegate.m */,
+				D45057481D33E15100AC630E /* Assets.xcassets */,
+				D450574D1D33E15100AC630E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -270,11 +264,10 @@
 		D45057551D33E15100AC630E /* AdventureBuilderTests */ = {
 			isa = PBXGroup;
 			children = (
+				D4F721471D4650AD0082549B /* Supporting Files */,
 				D44860041D3FC784001A2FDF /* Controllers */,
 				D49F30691D3E810900382F5C /* API */,
 				D49F30681D3E6B6400382F5C /* Models */,
-				D45057711D3412BF00AC630E /* Info.plist */,
-				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
 			);
 			path = AdventureBuilderTests;
 			sourceTree = "<group>";
@@ -330,6 +323,15 @@
 				D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		D4F721471D4650AD0082549B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D45057711D3412BF00AC630E /* Info.plist */,
+				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,7 +607,6 @@
 				D448600A1D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m in Sources */,
 				D448601F1D425C5E001A2FDF /* JabUIFlowController.m in Sources */,
 				D49F30561D3D610400382F5C /* Booking.m in Sources */,
-				D4F721461D4292470082549B /* TestViewController.m in Sources */,
 				D448600D1D40031A001A2FDF /* SelectDepartingFlightViewController.m in Sources */,
 				D44860221D427BB6001A2FDF /* JabUIViewController.m in Sources */,
 				D44860131D400706001A2FDF /* ReviewBookingDetailsViewController.m in Sources */,
@@ -624,7 +625,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45CE8E51D3818F400132ED3 /* ListBookingViewController.m in Sources */,
 				D45057701D3410BA00AC630E /* AppDelegateSpec.mm in Sources */,
 				D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */,
 				D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */,
