@@ -14,10 +14,10 @@
 
 @implementation JabApiManager
 
--(void)setUsername:(NSString *)username andPassword:(NSString *)password {
+/*-(void)setUsername:(NSString *)username andPassword:(NSString *)password {
 	[self.requestSerializer clearAuthorizationHeader];
 	[self.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
-}
+}*/
 
 -(id)initWithBaseURL:(NSURL *)url {
 	self = [super initWithBaseURL:url];
@@ -32,15 +32,17 @@
 }
 
 +(JabApiManager *)sharedManager {
+	//have these hang out here so we can utilize them in test context
 	static dispatch_once_t pred;
-	static JabApiManager *_sharedManager = nil;
-	
+	static JabApiManager *sharedManager = nil;
 	dispatch_once(&pred, ^{
-		_sharedManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:9500/api"]];
-		[_sharedManager setUsername:@"wasadm01" andPassword:@"wasadm01"];
+		sharedManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:9500/api"]];
+		//[_sharedManager setUsername:@"wasadm01" andPassword:@"wasadm01"];
 	});
 	
-	return _sharedManager;
+	return sharedManager;
 }
+
+
 
 @end

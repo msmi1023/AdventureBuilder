@@ -19,10 +19,7 @@
 -(void)transitionBackFromController:(UIViewController *)vc;
 -(id)transitionForwardFromController:(UIViewController *)vc;
 
--(UIViewController *)presentInitialAppViewControllerOnWindow:(UIWindow *)window;
--(void)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc;
-
--(instancetype)init;
+-(UIViewController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window;
 
 +(instancetype)sharedController;
 

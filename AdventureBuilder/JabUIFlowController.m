@@ -45,26 +45,23 @@
 	return self;
 };
 
--(UIViewController *)presentInitialAppViewControllerOnWindow:(UIWindow *)window {
-	UIViewController *vc = [_mainStoryboard instantiateInitialViewController];
-	
-	[self setDependenciesForNavigationController:vc];
-	
-	window.rootViewController = vc;
-	
-	[window makeKeyAndVisible];
-	
-	return vc;
-}
-
--(void)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc {
-	if([identifier isEqualToString:@"AddBooking"]) {
-		UIViewController *vc = [_addBookingStoryboard instantiateInitialViewController];
+-(UIViewController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window {
+	UIViewController *vc;
+	if([identifier isEqualToString:@"Main"]) {
+		vc = [_mainStoryboard instantiateInitialViewController];
+		[self setDependenciesForNavigationController:vc];
 		
+		window.rootViewController = vc;
+		[window makeKeyAndVisible];
+	}
+	else if([identifier isEqualToString:@"AddBooking"]) {
+		vc = [_addBookingStoryboard instantiateInitialViewController];
 		[self setDependenciesForNavigationController:vc];
 		
 		[currentVc presentViewController:vc animated:YES completion:nil];
 	}
+	
+	return vc;
 }
 
 -(id)prepareControllerFromStoryboard:(UIStoryboard *)storyboard WithIdentifier:(NSString *)identifier {

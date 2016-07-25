@@ -22,7 +22,7 @@ describe(@"ListBookingViewController", ^{
 
     beforeEach(^{
 		UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-		vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialAppViewControllerOnWindow:window].childViewControllers.firstObject;
+		vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"Main" fromController:nil onWindow:window].childViewControllers.firstObject;
     });
 	
 	it(@"should exist", ^{

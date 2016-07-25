@@ -11,7 +11,7 @@
 
 @interface JabApiManager : AFHTTPSessionManager
 
--(void)setUsername:(NSString *)username andPassword:(NSString *)password;
+//-(void)setUsername:(NSString *)username andPassword:(NSString *)password;
 
 +(JabApiManager *)sharedManager;
 

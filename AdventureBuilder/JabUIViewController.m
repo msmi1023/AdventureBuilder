@@ -17,7 +17,6 @@
 #import "SelectReturningFlightViewController.h"
 #import "ReviewBookingDetailsViewController.h"
 
-
 @implementation JabUIViewController
 
 - (void)viewDidLoad {
@@ -38,10 +37,7 @@
 		self.navigationItem.leftBarButtonItem.target = self;
 		self.navigationItem.leftBarButtonItem.action = @selector(cancelButtonPressed:);
 	}
-	
-	
 }
-
 
 - (IBAction)cancelButtonPressed:(id)sender {
 	[[JabUIFlowController sharedController] transitionBackFromController:self];
@@ -49,21 +45,11 @@
 
 - (IBAction)nextButtonPressed:(id)sender {
 	if([self isKindOfClass:[ListBookingViewController class]]) {
-		[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:self];
+		[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:self onWindow:nil ];
 	}
 	else {
 		[[JabUIFlowController sharedController] transitionForwardFromController:self];
 	}
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

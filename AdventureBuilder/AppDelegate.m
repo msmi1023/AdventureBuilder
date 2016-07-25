@@ -21,7 +21,7 @@
 	//if we init before passing, any changes we make in the flow controller will apply out here.
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	[[JabUIFlowController sharedController] presentInitialAppViewControllerOnWindow:_window];
+	[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"Main" fromController:nil onWindow:_window];
 	
 	return YES;
 }
