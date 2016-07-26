@@ -45,8 +45,10 @@
 	return self;
 };
 
--(UIViewController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window {
-	UIViewController *vc;
+//return navigation controller for some type safety. could be a plain view controller
+//return type, but it SHOULD be a navigation controller.
+-(UINavigationController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window {
+	UINavigationController *vc;
 	if([identifier isEqualToString:@"Main"]) {
 		vc = [_mainStoryboard instantiateInitialViewController];
 		[self setDependenciesForNavigationController:vc];
@@ -64,7 +66,7 @@
 	return vc;
 }
 
--(id)prepareControllerFromStoryboard:(UIStoryboard *)storyboard WithIdentifier:(NSString *)identifier {
+-(id)prepareControllerFromStoryboard:(UIStoryboard *)storyboard withIdentifier:(NSString *)identifier {
 	UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:identifier];
 	
 	[self setDependenciesForViewController:vc];
@@ -78,40 +80,38 @@
 	}
 }
 
--(id)transitionForwardFromController:(UIViewController *)vc {
+-(void)transitionForwardFromController:(UIViewController *)vc {
 	if([vc isKindOfClass:[EnterCustomerInformationViewController class]]) {
-		SelectAdventureViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard WithIdentifier:@"SelectAdventure"];
+		SelectAdventureViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"SelectAdventure"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];
 	}
 	else if([vc isKindOfClass:[SelectAdventureViewController class]]) {
-		SelectBookingOptionsViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard WithIdentifier:@"SelectBookingOptions"];
+		SelectBookingOptionsViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"SelectBookingOptions"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];
 	}
 	else if([vc isKindOfClass:[SelectBookingOptionsViewController class]]) {
-		SelectDepartingFlightViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard WithIdentifier:@"SelectDepartingFlight"];
+		SelectDepartingFlightViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"SelectDepartingFlight"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];
 	}
 	else if([vc isKindOfClass:[SelectDepartingFlightViewController class]]) {
-		SelectReturningFlightViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard WithIdentifier:@"SelectReturningFlight"];
+		SelectReturningFlightViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"SelectReturningFlight"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];
 	}
 	else if([vc isKindOfClass:[SelectReturningFlightViewController class]]) {
-		ReviewBookingDetailsViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard WithIdentifier:@"ReviewBookingDetails"];
+		ReviewBookingDetailsViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"ReviewBookingDetails"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];
 	}
 	else if([vc isKindOfClass:[ReviewBookingDetailsViewController class]]) {
 		[vc dismissViewControllerAnimated:YES completion:nil];
 	}
-	
-	return nil;
 }
 
-- (void)setDependenciesForNavigationController:(UIViewController *)nvc {
+- (void)setDependenciesForNavigationController:(UINavigationController *)nvc {
 	for (id childController in [nvc childViewControllers]) {
 		[self setDependenciesForViewController:childController];
 	}

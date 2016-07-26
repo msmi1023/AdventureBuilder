@@ -17,9 +17,9 @@
 @property(strong, nonatomic) UIStoryboard *addBookingStoryboard;
 
 -(void)transitionBackFromController:(UIViewController *)vc;
--(id)transitionForwardFromController:(UIViewController *)vc;
+-(void)transitionForwardFromController:(UIViewController *)vc;
 
--(UIViewController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window;
+-(UINavigationController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window;
 
 +(instancetype)sharedController;
 
