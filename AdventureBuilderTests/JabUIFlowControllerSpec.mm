@@ -245,6 +245,74 @@ describe(@"JabUIFlowController", ^{
 		});
 	});
 	
+	describe(@"setDependenciesForNavigationController:", ^{
+		__block UINavigationController *mockNavVc;
+		__block EnterCustomerInformationViewController *vc1;
+		__block SelectAdventureViewController *vc2;
+
+		beforeEach(^{
+			subject = [[JabUIFlowController alloc] init];
+			spy_on(subject);
+			
+			vc1 = [[EnterCustomerInformationViewController alloc] init];
+			vc2 = [[SelectAdventureViewController alloc] init];
+			
+			//need to mock a nav controller with some fake children
+			mockNavVc = nice_fake_for([UINavigationController class]);
+			//doesn't matter what the children are, but we need to test child iteration of known types
+			mockNavVc stub_method(@selector(childViewControllers)).and_return(@[vc1, vc2]);
+		});
+		
+		it(@"should loop through the navigation controller's children and set dependencies for each", ^{
+			[subject setDependenciesForNavigationController:mockNavVc];
+			
+			subject should have_received(@selector(setDependenciesForViewController:)).with(vc1);
+			subject should have_received(@selector(setDependenciesForViewController:)).with(vc2);
+		});
+
+	});
+	
+	describe(@"setDependenciesForViewController:", ^{
+		__block EnterCustomerInformationViewController *vc1;
+		__block SelectAdventureViewController *vc2;
+		__block SelectBookingOptionsViewController *vc3;
+		__block SelectDepartingFlightViewController *vc4;
+		__block SelectReturningFlightViewController *vc5;
+		__block ReviewBookingDetailsViewController *vc6;
+		__block ListBookingViewController *vc7;
+		
+		beforeEach(^{
+			subject = [[JabUIFlowController alloc] init];
+			spy_on(subject);
+			
+			vc1 = [[EnterCustomerInformationViewController alloc] init];
+			vc2 = [[SelectAdventureViewController alloc] init];
+			vc3 = [[SelectBookingOptionsViewController alloc] init];
+			vc4 = [[SelectDepartingFlightViewController alloc] init];
+			vc5 = [[SelectReturningFlightViewController alloc] init];
+			vc6 = [[ReviewBookingDetailsViewController alloc] init];
+			vc7 = [[ListBookingViewController alloc] init];
+		});
+		
+		it(@"should set the bookingService dependency for all known controller types", ^{
+			[subject setDependenciesForViewController:vc1];
+			vc1.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc2];
+			vc2.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc3];
+			vc3.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc4];
+			vc4.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc5];
+			vc5.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc6];
+			vc6.bookingService should equal(subject.bookingServiceInstance);
+			[subject setDependenciesForViewController:vc7];
+			vc7.bookingService should equal(subject.bookingServiceInstance);
+		});
+		
+	});
+	
 });
 
 SPEC_END

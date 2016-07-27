@@ -11,23 +11,8 @@
 //need these here for dependency logic. can't have in .h, causes circular deps
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
-#import "SelectAdventureViewController.h"
-#import "SelectBookingOptionsViewController.h"
-#import "SelectDepartingFlightViewController.h"
-#import "SelectReturningFlightViewController.h"
-#import "ReviewBookingDetailsViewController.h"
 
 @implementation JabUIViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void)viewWillAppear:(BOOL)animated {
 	self.navigationItem.rightBarButtonItem.target = self;

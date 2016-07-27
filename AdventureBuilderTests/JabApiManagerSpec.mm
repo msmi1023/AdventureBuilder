@@ -5,7 +5,7 @@ using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
 /*
- http://twobitlabs.com/2013/01/objective-c-singleton-pattern-unit-testing/
+//http://twobitlabs.com/2013/01/objective-c-singleton-pattern-unit-testing/
  
 //use a category to adjust our singleton for testing purposes
 @interface JabApiManager (Test)
@@ -34,7 +34,6 @@ static JabApiManager *sharedManager = nil;
 	
 	return sharedManager;
 }
-
 @end
 */
  
@@ -42,11 +41,6 @@ SPEC_BEGIN(JabApiManagerSpec)
 
 describe(@"JabApiManager", ^{
     __block JabApiManager *subject;
-	
-	beforeEach(^{
-		//[JabApiManager setSharedManager:nil];
-		//subject = nil;
-	});
 	
 	it(@"should respond to the sharedManager class method", ^{
 		[JabApiManager respondsToSelector:@selector(sharedManager)] should be_truthy;
@@ -70,15 +64,11 @@ describe(@"JabApiManager", ^{
 		subject.baseURL.absoluteString should equal(@"http://localhost:9500/api/");
 	});
 	
-	//TODO: come back and try with spy_on!!!
-	
 	/*describe(@"api manager setup", ^{
 		beforeEach(^{
-			JabApiManager *fake = nice_fake_for([JabApiManager class]);
-			fake stub_method(@selector(initWithBaseURL:));
+			spy_on([JabApiManager sharedManager]);
 			
-			//set up our test object with the instance we just created.
-			[JabApiManager setSharedManager:fake];
+			[JabApiManager sharedManager] stub_method(@selector(initWithBaseURL:));
 		});
 		it(@"should set up the instance with the appropriate api url", ^{
 			subject = [JabApiManager sharedManager];

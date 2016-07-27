@@ -41,6 +41,7 @@
 		D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30641D3E66AE00382F5C /* AdventureSpec.mm */; };
 		D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30661D3E6A6000382F5C /* FlightSpec.mm */; };
 		D4A1B3561D46939B008A00D8 /* JabUIFlowControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4A1B3551D46939B008A00D8 /* JabUIFlowControllerSpec.mm */; };
+		D4A1B3581D47D683008A00D8 /* JabUIViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4A1B3571D47D683008A00D8 /* JabUIViewControllerSpec.mm */; };
 		D4F7214A1D4668BA0082549B /* JabApiManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4F721491D4668BA0082549B /* JabApiManagerSpec.mm */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		D49F30641D3E66AE00382F5C /* AdventureSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdventureSpec.mm; sourceTree = "<group>"; };
 		D49F30661D3E6A6000382F5C /* FlightSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FlightSpec.mm; sourceTree = "<group>"; };
 		D4A1B3551D46939B008A00D8 /* JabUIFlowControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JabUIFlowControllerSpec.mm; sourceTree = "<group>"; };
+		D4A1B3571D47D683008A00D8 /* JabUIViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JabUIViewControllerSpec.mm; sourceTree = "<group>"; };
 		D4F721491D4668BA0082549B /* JabApiManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JabApiManagerSpec.mm; sourceTree = "<group>"; };
 		FF2B928207F2EB2C444B58D8 /* Pods-AdventureBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -336,6 +338,7 @@
 				D45057711D3412BF00AC630E /* Info.plist */,
 				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
 				D4A1B3551D46939B008A00D8 /* JabUIFlowControllerSpec.mm */,
+				D4A1B3571D47D683008A00D8 /* JabUIViewControllerSpec.mm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */,
 				D4A1B3561D46939B008A00D8 /* JabUIFlowControllerSpec.mm in Sources */,
 				D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */,
+				D4A1B3581D47D683008A00D8 /* JabUIViewControllerSpec.mm in Sources */,
 				D49F30581D3D613900382F5C /* BookingSpec.mm in Sources */,
 				D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */,
 				D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */,

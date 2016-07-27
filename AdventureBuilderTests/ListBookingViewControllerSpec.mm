@@ -29,6 +29,10 @@ describe(@"ListBookingViewController", ^{
 		vc should_not be_nil;
 	});
 	
+	it(@"should inherit from the JabUIController class", ^{
+		vc.superclass should equal([JabUIViewController class]);
+	});
+	
 	it(@"should be tied to the main storyboard and should have an instance of the booking service", ^{
 		NSLog(@"our controller: %@", vc);
 		
