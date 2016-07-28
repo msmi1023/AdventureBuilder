@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) BookingService *bookingService;
+@property (strong, nonatomic) FlightService *flightService;
 
 @end

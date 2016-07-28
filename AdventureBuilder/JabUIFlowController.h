@@ -10,11 +10,13 @@
 #import <UIKit/UIKit.h>
 #import "BookingService.h"
 #import "AdventureService.h"
+#import "FlightService.h"
 
 @interface JabUIFlowController : NSObject
 
 @property(strong, nonatomic) BookingService *bookingServiceInstance;
 @property(strong, nonatomic) AdventureService *adventureServiceInstance;
+@property(strong, nonatomic) FlightService *flightServiceInstance;
 @property(strong, nonatomic) UIStoryboard *mainStoryboard;
 @property(strong, nonatomic) UIStoryboard *addBookingStoryboard;
 

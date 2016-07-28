@@ -25,7 +25,7 @@ using namespace Cedar::Doubles;
 
 SPEC_BEGIN(SelectAdventureViewControllerSpec)
 
-fdescribe(@"SelectAdventureViewController", ^{
+describe(@"SelectAdventureViewController", ^{
 	__block SelectAdventureViewController *vc;
 	
 	beforeEach(^{

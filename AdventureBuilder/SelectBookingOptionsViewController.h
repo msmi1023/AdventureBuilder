@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JabUIViewController.h"
 
-@interface SelectBookingOptionsViewController : JabUIViewController
-@property (weak, nonatomic) IBOutlet UIDatePicker *startDate;
-@property (weak, nonatomic) IBOutlet UIDatePicker *endDate;
-@property (weak, nonatomic) IBOutlet UIPickerView *maxFlightPrice;
-@property (weak, nonatomic) IBOutlet UITextView *notes;
+@interface SelectBookingOptionsViewController : JabUIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@property (strong, nonatomic) IBOutlet UIDatePicker *startDate;
+@property (strong, nonatomic) IBOutlet UIDatePicker *endDate;
+@property (strong, nonatomic) IBOutlet UIPickerView *maxFlightPrice;
+@property (strong, nonatomic) IBOutlet UITextView *notes;
 
 @property (strong, nonatomic) BookingService *bookingService;
+@property (strong, nonatomic) FlightService *flightService;
 
 @end

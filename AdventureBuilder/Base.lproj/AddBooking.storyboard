@@ -178,7 +178,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LTc-jp-KqG">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LTc-jp-KqG">
                                 <rect key="frame" x="0.0" y="104" width="600" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="09s-TA-tdl"/>
@@ -186,6 +186,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="490733471.08975101">
                                     <!--2016-07-20 18:51:11 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="startDateSelected:" destination="mu4-jV-Gwa" eventType="valueChanged" id="DPl-0c-eT5"/>
+                                </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLk-f3-kyG">
                                 <rect key="frame" x="0.0" y="354" width="600" height="100"/>
@@ -199,7 +202,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aOM-Kx-wBn">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aOM-Kx-wBn">
                                 <rect key="frame" x="0.0" y="229" width="600" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="iKS-mk-Ikx"/>
@@ -207,6 +210,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="490733471.08975101">
                                     <!--2016-07-20 18:51:11 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="endDateSelected:" destination="mu4-jV-Gwa" eventType="valueChanged" id="czS-Lp-VVz"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
