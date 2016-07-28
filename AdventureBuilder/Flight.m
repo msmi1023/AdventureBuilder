@@ -28,4 +28,21 @@
 	return self;
 }
 
+-(NSDictionary *)getDictionaryRepresentation {
+	return @{@"flightNumber":_flightNumber,
+			 @"price":_price};;
+}
+
+-(NSString *)serializeToJSON {
+	NSDictionary *classDictionary = [self getDictionaryRepresentation];
+	
+	NSError *error;
+	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:classDictionary options:0 error:&error];
+	return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+-(BOOL)compareTo:(Flight *)anotherFlight {
+	return ([self.flightNumber isEqualToString:anotherFlight.flightNumber]);
+}
+
 @end

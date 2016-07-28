@@ -42,6 +42,21 @@ describe(@"Flight", ^{
 			subject.price should equal(@100);
 		});
 	});
+	
+	describe(@"serializeToJSON", ^{
+		it(@"should create a JSON string from the properties of the class", ^{
+			NSDictionary *flight = @{@"flightNumber":@"A123", @"price":@100};
+			
+			subject = [subject initWithDictionary:flight];
+			
+			NSString *string = [subject serializeToJSON];
+			NSError *error;
+			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:flight options:0 error:&error];
+			NSString *answer = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+			
+			string should equal(answer);
+		});
+	});
 });
 
 SPEC_END

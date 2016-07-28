@@ -11,6 +11,7 @@
 //need these here for dependency logic. can't have in .h, causes circular deps
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
+#import "ReviewBookingDetailsViewController.h"
 
 @implementation JabUIViewController
 
@@ -33,6 +34,12 @@
 		[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:self onWindow:nil ];
 	}
 	else {
+		if([self isKindOfClass:[ReviewBookingDetailsViewController class]]) {
+			[((ReviewBookingDetailsViewController *) self).bookingService createBookingWithCompletionBlock:^(id response){
+				
+			}];
+		}
+		
 		[[JabUIFlowController sharedController] transitionForwardFromController:self];
 	}
 }

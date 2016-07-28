@@ -25,5 +25,8 @@
 @property (strong, nonatomic) NSDate *updateTime;
 
 -(id)initWithDictionary:(NSDictionary *)jsonBooking;
+-(NSDictionary *)getDictionaryRepresentation;
+-(NSData *)serializeToJSONData;
+-(NSString *)serializeToJSONString;
 
 @end

@@ -14,5 +14,8 @@
 @property (strong, nonatomic) NSNumber *price;
 
 -(id)initWithDictionary:(NSDictionary *)jsonFlight;
+-(NSDictionary *)getDictionaryRepresentation;
+-(NSString *)serializeToJSON;
+-(BOOL)compareTo:(Flight *)anotherFlight;
 
 @end

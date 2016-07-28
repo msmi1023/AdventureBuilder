@@ -32,4 +32,23 @@
 	return self;
 }
 
+-(NSDictionary *)getDictionaryRepresentation {
+	return @{@"type":_type,
+			 @"name":_name,
+			 @"dailyPrice":_dailyPrice,
+			 @"activities":_activities};
+}
+
+-(NSString *)serializeToJSON {
+	NSDictionary *classDictionary = [self getDictionaryRepresentation];
+	NSError *error;
+	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:classDictionary options:0 error:&error];
+	return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+-(BOOL)compareTo:(Adventure *)anotherAdventure {
+	return ([self.type isEqualToString:anotherAdventure.type] &&
+			[self.name isEqualToString:anotherAdventure.name]);
+}
+
 @end

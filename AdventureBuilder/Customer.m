@@ -32,4 +32,25 @@
 	return self;
 }
 
+-(NSDictionary *)getDictionaryRepresentation {
+	return @{@"emailAddress":_emailAddress,
+			 @"firstName":_firstName,
+			 @"lastName":_lastName,
+			 @"phone":_phone};
+}
+
+-(NSString *)serializeToJSON {
+	NSDictionary *classDictionary = [self getDictionaryRepresentation];
+	
+	NSError *error;
+	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:classDictionary options:0 error:&error];
+	NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+	
+	return str;
+}
+
+-(BOOL)compareTo:(Customer *)anotherCustomer {
+	return ([self.emailAddress isEqualToString:anotherCustomer.emailAddress]);
+}
+
 @end

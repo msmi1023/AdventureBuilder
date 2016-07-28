@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JabUIViewController.h"
 
-@interface SelectAdventureViewController : JabUIViewController
+@interface SelectAdventureViewController : JabUIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *adventureType;
 @property (weak, nonatomic) IBOutlet UIPickerView *adventure;
 @property (weak, nonatomic) IBOutlet UITextView *details;
 
 @property (strong, nonatomic) BookingService *bookingService;
+@property (strong, nonatomic) AdventureService *adventureService;
 
 @end

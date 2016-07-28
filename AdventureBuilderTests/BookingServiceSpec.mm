@@ -14,20 +14,16 @@ describe(@"BookingService", ^{
 	//doing it this way gives us access to the success and failure callbacks, so we can test them appropriately.
 	//unfortunately the GET call takes lots of params, so we have to prep the stub with the appropriate types (including these block typedefs)
 	typedef void (^downloadProgress)(NSProgress * _Nonnull);
+	typedef void (^bodyBlock)(id<AFMultipartFormData> _Nonnull __strong);
 	typedef void (^successHandler)(NSURLSessionDataTask * _Nonnull, id _Nullable);
 	typedef void (^errorHandler)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull);
 	
 	__block successHandler localSuccess = nil;
 	__block errorHandler localError = nil;
+	__block bodyBlock localBodyBlock = nil;
 
     beforeEach(^{
 		apiManager = fake_for([JabApiManager class]);
-		apiManager stub_method(@selector(GET:parameters:progress:success:failure:))
-		.and_do_block(^NSURLSessionDataTask *(NSString *url, id parameters, downloadProgress progress, successHandler success, errorHandler failure) {
-			localSuccess = success;
-			localError = failure;
-			return nil;
-		});
 		
 		subject = [[BookingService alloc] initWithApiManager:apiManager];
     });
@@ -37,6 +33,15 @@ describe(@"BookingService", ^{
 	});
 	
 	describe(@"getBookingsWithCompletionBlock", ^{
+		beforeEach(^{
+			apiManager stub_method(@selector(GET:parameters:progress:success:failure:))
+			.and_do_block(^NSURLSessionDataTask *(NSString *url, id parameters, downloadProgress progress, successHandler success, errorHandler failure) {
+				localSuccess = success;
+				localError = failure;
+				return nil;
+			});
+		});
+		
 		it(@"should have a method for retrieving bookings", ^{
 			[subject respondsToSelector:@selector(getBookingsWithCompletionBlock:)] should be_truthy;
 		});
@@ -100,6 +105,45 @@ describe(@"BookingService", ^{
 				testError should equal(sampleError);
 			});
 		});
+	});
+	
+	describe(@"booking creation", ^{
+		
+		beforeEach(^{
+			apiManager stub_method(@selector(POST:parameters:constructingBodyWithBlock:progress:success:failure:))
+			.and_do_block(^NSURLSessionDataTask *(NSString *url, id parameters, bodyBlock block, downloadProgress progress, successHandler success, errorHandler failure) {
+				localBodyBlock = block;
+				localSuccess = success;
+				localError = failure;
+				return nil;
+			});
+		});
+	
+		it(@"should have a property to hold an in-progress booking", ^{
+			[subject respondsToSelector:@selector(booking)] should be_truthy;
+		});
+		
+		it(@"should be able to submit a prepped booking to the api", ^{
+			[subject respondsToSelector:@selector(createBookingWithCompletionBlock:)] should be_truthy;
+		});
+		
+		describe(@"createBookingWithCompletionBlock", ^{
+			it(@"should call the api manager's POST selector when createBooking is called", ^{
+				[subject createBookingWithCompletionBlock:^(id response){}];
+				apiManager should have_received(@selector(POST:parameters:constructingBodyWithBlock:progress:success:failure:));
+			});
+			
+			it(@"should use the passed in bodyBlock to construct the POST's body appropriately", ^{
+				[subject createBookingWithCompletionBlock:^(id response){}];
+				
+				
+				
+				//localBodyBlock();
+				
+				
+			});
+		});
+	
 	});
 	
 });

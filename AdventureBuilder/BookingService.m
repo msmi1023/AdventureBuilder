@@ -8,10 +8,10 @@
 
 #import "BookingService.h"
 
-@implementation BookingService
-
-JabApiManager *apiManager;
-
+@implementation BookingService {
+	JabApiManager *apiManager;
+}
+	
 //DI constructor to bring in the api manager
 //our api manager is a singleton, so we can hard-code the dependency in init
 -(instancetype)initWithApiManager:(JabApiManager *)jabApiManager {
@@ -20,6 +20,7 @@ JabApiManager *apiManager;
 		return nil;
 	}
 	apiManager = jabApiManager;
+	_booking = [[Booking alloc] initWithDictionary:nil];
 	return self;
 }
 
@@ -39,6 +40,16 @@ JabApiManager *apiManager;
 		}
 		
 		completionBlock([toReturn copy]);
+	} failure:^(NSURLSessionTask *task, NSError *error) {
+		completionBlock(error);
+	}];
+}
+
+-(void)createBookingWithCompletionBlock:(completion_t)completionBlock {
+	[apiManager POST:@"bookings" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+		[formData appendPartWithFormData:[_booking serializeToJSONData] name:@"booking"];
+	} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+		completionBlock(responseObject);
 	} failure:^(NSURLSessionTask *task, NSError *error) {
 		completionBlock(error);
 	}];

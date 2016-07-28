@@ -9,15 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "JabUIViewController.h"
 
-@interface EnterCustomerInformationViewController : JabUIViewController
+@interface EnterCustomerInformationViewController : JabUIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailAddress;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *streetAddress;
-@property (weak, nonatomic) IBOutlet UITextField *city;
-@property (weak, nonatomic) IBOutlet UITextField *state;
-@property (weak, nonatomic) IBOutlet UITextField *zip;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
 @property (strong, nonatomic) BookingService *bookingService;

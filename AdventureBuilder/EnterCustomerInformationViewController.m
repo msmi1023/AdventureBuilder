@@ -14,7 +14,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	NSLog(@"%@", _bookingService);
+	_emailAddress.delegate = self;
+	_firstName.delegate = self;
+	_lastName.delegate = self;
+	_phone.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -22,14 +25,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+	if(textField == _emailAddress) {
+		_bookingService.booking.customer.emailAddress = _emailAddress.text;
+	}
+	else if(textField == _firstName) {
+		_bookingService.booking.customer.firstName = _firstName.text;
+	}
+	else if(textField == _lastName) {
+		_bookingService.booking.customer.lastName = _lastName.text;
+	}
+	else if(textField == _phone) {
+		_bookingService.booking.customer.phone = _phone.text;
+	}
+	
+	//other fields don't matter right now
 }
-*/
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+	return YES;
+}
+
+// It is important for you to hide the keyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
 
 @end

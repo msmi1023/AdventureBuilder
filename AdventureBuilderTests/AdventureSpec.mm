@@ -51,6 +51,24 @@ describe(@"Adventure", ^{
 			subject.activities should equal(@[@"thing1", @"thing2"]);
 		});
 	});
+	
+	describe(@"serializeToJSON", ^{
+		it(@"should create a JSON string from the properties of the class", ^{
+			NSDictionary *adventure = @{@"type":@"TestAdventure",
+									 @"name":@"TestFun",
+									 @"dailyPrice":@100,
+									 @"activities":@[@"thing1", @"thing2"]};
+			
+			subject = [subject initWithDictionary:adventure];
+			
+			NSString *string = [subject serializeToJSON];
+			NSError *error;
+			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:adventure options:0 error:&error];
+			NSString *answer = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+			
+			string should equal(answer);
+		});
+	});
 });
 
 SPEC_END

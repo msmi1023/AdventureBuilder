@@ -52,6 +52,24 @@ describe(@"Customer", ^{
 			subject.phone should equal(@"123-4567890");
 		});
 	});
+	
+	describe(@"serializeToJSON", ^{
+		it(@"should create a JSON string from the properties of the class", ^{
+			NSDictionary *customer = @{@"emailAddress":@"test@test.com",
+										@"firstName":@"Test",
+										@"lastName":@"User",
+										@"phone":@"123-4567890"};
+			
+			subject = [subject initWithDictionary:customer];
+			
+			NSString *string = [subject serializeToJSON];
+			NSError *error;
+			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:customer options:0 error:&error];
+			NSString *answer = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+			
+			string should equal(answer);
+		});
+	});
 });
 
 SPEC_END

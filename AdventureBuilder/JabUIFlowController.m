@@ -39,6 +39,7 @@
 	
 	//first time setup - get instances we need and configure the window
 	_bookingServiceInstance = [[BookingService alloc] init];
+	_adventureServiceInstance = [[AdventureService alloc] init];
 	_mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 	_addBookingStoryboard = [UIStoryboard storyboardWithName:@"AddBooking" bundle:nil];
 	
@@ -126,6 +127,7 @@
 	}
 	else if([vc isKindOfClass:[SelectAdventureViewController class]]) {
 		((SelectAdventureViewController *)vc).bookingService = _bookingServiceInstance;
+		((SelectAdventureViewController *)vc).adventureService = _adventureServiceInstance;
 	}
 	else if([vc isKindOfClass:[SelectBookingOptionsViewController class]]) {
 		((SelectBookingOptionsViewController *)vc).bookingService = _bookingServiceInstance;

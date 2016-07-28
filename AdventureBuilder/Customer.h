@@ -16,5 +16,8 @@
 @property (strong, nonatomic) NSString *phone;
 
 -(id)initWithDictionary:(NSDictionary *)jsonCustomer;
+-(NSDictionary *)getDictionaryRepresentation;
+-(NSString *)serializeToJSON;
+-(BOOL)compareTo:(Customer *)anotherCustomer;
 
 @end

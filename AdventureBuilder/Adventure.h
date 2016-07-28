@@ -16,5 +16,8 @@
 @property (strong, nonatomic) NSArray *activities;
 
 -(id)initWithDictionary:(NSDictionary *)jsonAdventure;
+-(NSDictionary *)getDictionaryRepresentation;
+-(NSString *)serializeToJSON;
+-(BOOL)compareTo:(Adventure *)anotherAdventure;
 
 @end
