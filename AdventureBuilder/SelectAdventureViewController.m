@@ -37,6 +37,7 @@
 		adventureTypes = [self getTypesForListOfAdventures:response];
 		[_adventureType reloadAllComponents];
 		
+		//on load we default to 0,0 selection. kick off our didSelect calls
 		[self pickerView:_adventureType didSelectRow:0 inComponent:0];
 		[self pickerView:_adventure didSelectRow:0 inComponent:0];
 	}];
@@ -54,10 +55,6 @@
 	return [types copy];
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-	return 1;
-}
-
 -(NSArray *)getAdventuresForType:(NSString *)type {
 	NSMutableArray *toReturn = [[NSMutableArray alloc] init];
 	
@@ -68,6 +65,21 @@
 	}
 	
 	return [toReturn copy];
+}
+
+-(NSString *)formatDetailStringForAdventure:(Adventure *)adv {
+	NSMutableString *details = [[NSMutableString alloc] initWithFormat:@"Activities: %@", adv.activities];
+	
+	NSCharacterSet *setToRemove = [NSCharacterSet characterSetWithCharactersInString:@"(),\""];
+	[details setString:[[details componentsSeparatedByCharactersInSet: setToRemove] componentsJoinedByString: @""]];
+	
+	[details appendFormat:@"\nDaily Price: $%@", adv.dailyPrice];
+	
+	return [details copy];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -110,17 +122,6 @@
 		
 		_details.text = [self formatDetailStringForAdventure:((Adventure *)adventuresOfType[row])];
 	}
-}
-
--(NSString *)formatDetailStringForAdventure:(Adventure *)adv {
-	NSMutableString *details = [[NSMutableString alloc] initWithFormat:@"Activities: %@", adv.activities];
-	
-	NSCharacterSet *setToRemove = [NSCharacterSet characterSetWithCharactersInString:@"(),\""];
-	[details setString:[[details componentsSeparatedByCharactersInSet: setToRemove] componentsJoinedByString: @""]];
-	
-	[details appendFormat:@"\nDaily Price: $%@", adv.dailyPrice];
-	
-	return [details copy];
 }
 
 @end

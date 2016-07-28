@@ -14,13 +14,19 @@ using namespace Cedar::Doubles;
 
 @end
 
+@interface JabUIFlowController (Test)
+
+-(id)prepareControllerFromStoryboard:(UIStoryboard *)storyboard withIdentifier:(NSString *)identifier;
+
+@end
+
 SPEC_BEGIN(EnterCustomerInformationViewControllerSpec)
 
 describe(@"EnterCustomerInformationViewController", ^{
 	__block EnterCustomerInformationViewController *vc;
 	
 	beforeEach(^{
-		vc = [[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"AddBooking" fromController:nil onWindow:nil].childViewControllers.firstObject;
+		vc = [[JabUIFlowController sharedController] prepareControllerFromStoryboard:[JabUIFlowController sharedController].addBookingStoryboard withIdentifier:@"EnterCustomerInformation"];
 		
 		vc.emailAddress = [[UITextField alloc] init];
 		vc.firstName = [[UITextField alloc] init];

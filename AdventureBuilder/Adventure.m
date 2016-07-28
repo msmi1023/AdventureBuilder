@@ -10,6 +10,10 @@
 
 @implementation Adventure
 
+-(id)init {
+	return [self initWithDictionary:nil];
+}
+
 -(id)initWithDictionary:(NSDictionary *)jsonAdventure {
 	self = [super init];
 	if(!self) {

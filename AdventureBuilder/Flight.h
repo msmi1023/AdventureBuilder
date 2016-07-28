@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString *flightNumber;
 @property (strong, nonatomic) NSNumber *price;
 
+-(id)init;
 -(id)initWithDictionary:(NSDictionary *)jsonFlight;
 -(NSDictionary *)getDictionaryRepresentation;
 -(NSString *)serializeToJSON;

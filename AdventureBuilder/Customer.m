@@ -10,6 +10,10 @@
 
 @implementation Customer
 
+-(id)init {
+	return [self initWithDictionary:nil];
+}
+
 -(id)initWithDictionary:(NSDictionary *)jsonCustomer {
 	self = [super init];
 	if(!self) {

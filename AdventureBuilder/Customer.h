@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *phone;
 
+-(id)init;
 -(id)initWithDictionary:(NSDictionary *)jsonCustomer;
 -(NSDictionary *)getDictionaryRepresentation;
 -(NSString *)serializeToJSON;

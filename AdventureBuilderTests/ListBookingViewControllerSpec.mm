@@ -12,6 +12,12 @@
 
 @end
 
+@interface JabUIFlowController (Test)
+
+-(id)prepareControllerFromStoryboard:(UIStoryboard *)storyboard withIdentifier:(NSString *)identifier;
+
+@end
+
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
@@ -21,8 +27,9 @@ describe(@"ListBookingViewController", ^{
 	__block ListBookingViewController *vc;
 
     beforeEach(^{
-		UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-		vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"Main" fromController:nil onWindow:window].childViewControllers.firstObject;
+		//UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		//vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"Main" fromController:nil onWindow:window].childViewControllers.firstObject;
+		vc = [[JabUIFlowController sharedController] prepareControllerFromStoryboard:[JabUIFlowController sharedController].mainStoryboard withIdentifier:@"listBookingViewController"];
     });
 	
 	it(@"should exist", ^{

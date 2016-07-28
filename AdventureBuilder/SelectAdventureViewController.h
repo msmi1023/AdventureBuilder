@@ -11,9 +11,9 @@
 
 @interface SelectAdventureViewController : JabUIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIPickerView *adventureType;
-@property (weak, nonatomic) IBOutlet UIPickerView *adventure;
-@property (weak, nonatomic) IBOutlet UITextView *details;
+@property (strong, nonatomic) IBOutlet UIPickerView *adventureType;
+@property (strong, nonatomic) IBOutlet UIPickerView *adventure;
+@property (strong, nonatomic) IBOutlet UITextView *details;
 
 @property (strong, nonatomic) BookingService *bookingService;
 @property (strong, nonatomic) AdventureService *adventureService;

@@ -10,6 +10,10 @@
 
 @implementation Flight
 
+-(id)init {
+	return [self initWithDictionary:nil];
+}
+
 -(id)initWithDictionary:(NSDictionary *)jsonFlight {
 	self = [super init];
 	if(!self) {

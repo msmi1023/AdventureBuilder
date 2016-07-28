@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSNumber *dailyPrice;
 @property (strong, nonatomic) NSArray *activities;
 
+-(id)init;
 -(id)initWithDictionary:(NSDictionary *)jsonAdventure;
 -(NSDictionary *)getDictionaryRepresentation;
 -(NSString *)serializeToJSON;

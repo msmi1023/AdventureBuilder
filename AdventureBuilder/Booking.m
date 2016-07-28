@@ -10,6 +10,10 @@
 
 @implementation Booking
 
+-(id)init {
+	return [self initWithDictionary:nil];
+}
+
 -(id)initWithDictionary:(NSDictionary *)jsonBooking {
 	self = [super init];
 	if(!self) {

@@ -25,13 +25,19 @@ describe(@"Booking", ^{
 		it(@"should create a blank object if no dictionary or an empty dictionary is passed in", ^{
 			subject = [subject initWithDictionary:nil];
 			
+			Customer *testCust = [[Customer alloc] init];
+			Adventure *testAdv = [[Adventure alloc] init];
+			Flight *testDepFlight = [[Flight alloc] init];
+			Flight *testRetFlight = [[Flight alloc] init];
+
+			
 			subject.uuid should equal(@"");
 			subject.confirmationNumber should be_nil;
 			subject.note should equal(@"");
-			subject.customer should be_nil;
-			subject.adventure should be_nil;
-			subject.departingFlight should be_nil;
-			subject.returningFlight should be_nil;
+			[subject.customer compareTo:testCust] should be_truthy;
+			[subject.adventure compareTo:testAdv] should be_truthy;
+			[subject.departingFlight compareTo:testDepFlight] should be_truthy;
+			[subject.returningFlight compareTo:testRetFlight] should be_truthy;
 			subject.startDate should be_nil;
 			subject.endDate should be_nil;
 			subject.updateTime should be_nil;
@@ -41,10 +47,10 @@ describe(@"Booking", ^{
 			subject.uuid should equal(@"");
 			subject.confirmationNumber should be_nil;
 			subject.note should equal(@"");
-			subject.customer should be_nil;
-			subject.adventure should be_nil;
-			subject.departingFlight should be_nil;
-			subject.returningFlight should be_nil;
+			[subject.customer compareTo:testCust] should be_truthy;
+			[subject.adventure compareTo:testAdv] should be_truthy;
+			[subject.departingFlight compareTo:testDepFlight] should be_truthy;
+			[subject.returningFlight compareTo:testRetFlight] should be_truthy;
 			subject.startDate should be_nil;
 			subject.endDate should be_nil;
 			subject.updateTime should be_nil;

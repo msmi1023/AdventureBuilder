@@ -11,10 +11,10 @@
 
 @interface EnterCustomerInformationViewController : JabUIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *emailAddress;
-@property (weak, nonatomic) IBOutlet UITextField *firstName;
-@property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (strong, nonatomic) IBOutlet UITextField *emailAddress;
+@property (strong, nonatomic) IBOutlet UITextField *firstName;
+@property (strong, nonatomic) IBOutlet UITextField *lastName;
+@property (strong, nonatomic) IBOutlet UITextField *phone;
 
 @property (strong, nonatomic) BookingService *bookingService;
 
