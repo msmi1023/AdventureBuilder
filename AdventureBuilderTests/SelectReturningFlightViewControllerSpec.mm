@@ -1,5 +1,5 @@
 #import <Cedar/Cedar.h>
-#import "SelectDepartingFlightViewController.h"
+#import "SelectReturningFlightViewController.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
@@ -11,7 +11,7 @@ using namespace Cedar::Doubles;
 
 @end
 
-@interface SelectDepartingFlightViewController (Test)
+@interface SelectReturningFlightViewController (Test)
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -19,13 +19,13 @@ using namespace Cedar::Doubles;
 
 @end
 
-SPEC_BEGIN(SelectDepartingFlightViewControllerSpec)
+SPEC_BEGIN(SelectReturningFlightViewControllerSpec)
 
-describe(@"SelectDepartingFlightViewController", ^{
-	__block SelectDepartingFlightViewController *vc;
+describe(@"SelectReturningFlightViewController", ^{
+	__block SelectReturningFlightViewController *vc;
 	
 	beforeEach(^{
-		vc = [[JabUIFlowController sharedController] prepareControllerFromStoryboard:[JabUIFlowController sharedController].addBookingStoryboard withIdentifier:@"SelectDepartingFlight"];
+		vc = [[JabUIFlowController sharedController] prepareControllerFromStoryboard:[JabUIFlowController sharedController].addBookingStoryboard withIdentifier:@"SelectReturningFlight"];
 		
 		vc.tableView = [[UITableView alloc] init];
 	});
@@ -77,7 +77,7 @@ describe(@"SelectDepartingFlightViewController", ^{
 		it(@"should retrieve flights from the flight service inside of viewWillAppear", ^{
 			[vc viewWillAppear:NO];
 			
-			vc.flightService should have_received(@selector(getFlightsOfType:withCompletionBlock:)).with(@"departing", Arguments::anything);
+			vc.flightService should have_received(@selector(getFlightsOfType:withCompletionBlock:)).with(@"returning", Arguments::anything);
 		});
 		
 		it(@"should create the appropriate local objects once the flight list is retrieved", ^{
@@ -105,15 +105,15 @@ describe(@"SelectDepartingFlightViewController", ^{
 		
 		beforeEach(^{
 			flights = @[[[Flight alloc] initWithDictionary:@{@"flightNumber":@"CA12",
-																	 @"airline":@"Continental Airlines",
-																	 @"arrivalTime":@"17:30",
-																	 @"departureTime":@"15:30",
-																	 @"price":@625.5}],
-								[[Flight alloc] initWithDictionary:@{@"flightNumber":@"CA41",
-																	 @"airline":@"Continental Airlines",
-																	 @"arrivalTime":@"23:30",
-																	 @"departureTime":@"15:30",
-																	 @"price":@6245.5}]];
+															 @"airline":@"Continental Airlines",
+															 @"arrivalTime":@"17:30",
+															 @"departureTime":@"15:30",
+															 @"price":@625.5}],
+						[[Flight alloc] initWithDictionary:@{@"flightNumber":@"CA41",
+															 @"airline":@"Continental Airlines",
+															 @"arrivalTime":@"23:30",
+															 @"departureTime":@"15:30",
+															 @"price":@6245.5}]];
 			[vc setValue:flights forKey:@"flights"];
 		});
 		
@@ -135,7 +135,7 @@ describe(@"SelectDepartingFlightViewController", ^{
 			it(@"should set the bookingService's booking object with the selected flight", ^{
 				[vc tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
 				
-				[vc.bookingService.booking.departingFlight compareTo:flights[1]] should be_truthy;
+				[vc.bookingService.booking.returningFlight compareTo:flights[1]] should be_truthy;
 			});
 		});
 	});

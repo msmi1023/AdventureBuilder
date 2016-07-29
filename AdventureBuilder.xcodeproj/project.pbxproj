@@ -49,6 +49,8 @@
 		D4FE30161D4A8438001742B5 /* SelectBookingOptionsViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE30151D4A8438001742B5 /* SelectBookingOptionsViewControllerSpec.mm */; };
 		D4FE30191D4A8749001742B5 /* FlightService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FE30181D4A8749001742B5 /* FlightService.m */; };
 		D4FE301B1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301A1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm */; };
+		D4FE301D1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301C1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm */; };
+		D4FE301F1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301E1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		D4FE30171D4A8749001742B5 /* FlightService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightService.h; sourceTree = "<group>"; };
 		D4FE30181D4A8749001742B5 /* FlightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightService.m; sourceTree = "<group>"; };
 		D4FE301A1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectDepartingFlightViewControllerSpec.mm; sourceTree = "<group>"; };
+		D4FE301C1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectReturningFlightViewControllerSpec.mm; sourceTree = "<group>"; };
+		D4FE301E1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ReviewBookingDetailsViewControllerSpec.mm; sourceTree = "<group>"; };
 		FF2B928207F2EB2C444B58D8 /* Pods-AdventureBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +235,8 @@
 				D4FE30131D4A48AE001742B5 /* SelectAdventureViewControllerSpec.mm */,
 				D4FE30151D4A8438001742B5 /* SelectBookingOptionsViewControllerSpec.mm */,
 				D4FE301A1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm */,
+				D4FE301C1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm */,
+				D4FE301E1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -670,8 +676,10 @@
 				D49F30581D3D613900382F5C /* BookingSpec.mm in Sources */,
 				D4FE30141D4A48AE001742B5 /* SelectAdventureViewControllerSpec.mm in Sources */,
 				D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */,
+				D4FE301F1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm in Sources */,
 				D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */,
 				D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */,
+				D4FE301D1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

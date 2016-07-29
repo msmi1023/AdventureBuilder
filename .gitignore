@@ -39,6 +39,10 @@ xcshareddate
 #
 Pods/
 
+# Node Modules
+# ignore the node_modules folder for the backend code
+AdventureBuilderBackend/node_modules/
+
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.

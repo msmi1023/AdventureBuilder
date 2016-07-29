@@ -8,7 +8,10 @@
 
 #import "Booking.h"
 
-@implementation Booking
+@implementation Booking {
+	NSDateFormatter *dateFormatter, *timeFormatter;
+	NSTimeZone *gmt;
+}
 
 -(id)init {
 	return [self initWithDictionary:nil];
@@ -16,6 +19,16 @@
 
 -(id)initWithDictionary:(NSDictionary *)jsonBooking {
 	self = [super init];
+	
+	dateFormatter = [[NSDateFormatter alloc]init];
+	[dateFormatter setDateFormat:@"MMM-dd-yyyy"];
+	gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+	[dateFormatter setTimeZone:gmt];
+	
+	timeFormatter = [[NSDateFormatter alloc]init];
+	[timeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+	[timeFormatter setTimeZone:gmt];
+	
 	if(!self) {
 		return nil;
 	}
@@ -69,11 +82,6 @@
 			_startDate = jsonBooking[@"startDate"];
 		}
 		else if([jsonBooking[@"startDate"] isKindOfClass:[NSString class]]) {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-			[dateFormatter setDateFormat:@"MMM-dd-yyyy"];
-			NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-			[dateFormatter setTimeZone:gmt];
-			
 			_startDate = [dateFormatter dateFromString:jsonBooking[@"startDate"]];
 		}
 		
@@ -81,11 +89,6 @@
 			_endDate = jsonBooking[@"endDate"];
 		}
 		else if([jsonBooking[@"endDate"] isKindOfClass:[NSString class]]) {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-			[dateFormatter setDateFormat:@"MMM-dd-yyyy"];
-			NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-			[dateFormatter setTimeZone:gmt];
-			
 			_endDate = [dateFormatter dateFromString:jsonBooking[@"endDate"]];
 		}
 		
@@ -93,50 +96,61 @@
 			_updateTime = jsonBooking[@"updateTime"];
 		}
 		else if([jsonBooking[@"updateTime"] isKindOfClass:[NSString class]]) {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-			[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-			NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-			[dateFormatter setTimeZone:gmt];
-			
-			_updateTime = [dateFormatter dateFromString:jsonBooking[@"updateTime"]];
+			_updateTime = [timeFormatter dateFromString:jsonBooking[@"updateTime"]];
 		}
 	}
 	
 	return self;
 }
 
--(NSDictionary *)getDictionaryRepresentation {
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-	[dateFormatter setDateFormat:@"MMM-dd-yyyy"];
-	NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-	[dateFormatter setTimeZone:gmt];
-	
-	NSDateFormatter *timeFormatter = [[NSDateFormatter alloc]init];
-	[timeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-	[timeFormatter setTimeZone:gmt];
-	
-	
-	return @{@"uuid": _uuid,
-			@"confirmationNumber": _confirmationNumber,
-			@"note": _note,
-			@"customer": [_customer getDictionaryRepresentation],
-			@"adventure": [_adventure getDictionaryRepresentation],
-			@"departingFlight": [_departingFlight getDictionaryRepresentation],
-			@"returningFlight": [_returningFlight getDictionaryRepresentation],
-			@"startDate": [dateFormatter stringFromDate:_startDate],
-			@"endDate": [dateFormatter stringFromDate:_endDate],
-			@"updateTime": [timeFormatter stringFromDate:_updateTime]};
+-(NSDictionary *)getDictionaryRepresentationForAction:(NSString *)action {
+	if([action isEqualToString:@"create"]) {
+		//don't include confirmationNumber, uuid or updateTime. they don't exist yet on a create.
+		return @{@"note": _note,
+				 @"customer": [_customer getDictionaryRepresentation],
+				 @"adventure": [_adventure getDictionaryRepresentation],
+				 @"departingFlight": [_departingFlight getDictionaryRepresentation],
+				 @"returningFlight": [_returningFlight getDictionaryRepresentation],
+				 @"startDate": [self startDateString],
+				 @"endDate": [self endDateString]};
+	}
+	else {
+		return @{@"uuid": _uuid,
+				 @"confirmationNumber": _confirmationNumber,
+				 @"note": _note,
+				 @"customer": [_customer getDictionaryRepresentation],
+				 @"adventure": [_adventure getDictionaryRepresentation],
+				 @"departingFlight": [_departingFlight getDictionaryRepresentation],
+				 @"returningFlight": [_returningFlight getDictionaryRepresentation],
+				 @"startDate": [self startDateString],
+				 @"endDate": [self endDateString],
+				 @"updateTime": [timeFormatter stringFromDate:_updateTime]};
+	}
 }
 
--(NSData *)serializeToJSONData {
-	NSDictionary *classDictionary = [self getDictionaryRepresentation];
+-(NSData *)serializeToJSONDataForAction:(NSString *)action {
+	NSDictionary *classDictionary = [self getDictionaryRepresentationForAction:action];
 
 	NSError *error;
 	return [NSJSONSerialization dataWithJSONObject:classDictionary options:0 error:&error];
 }
 
--(NSString *)serializeToJSONString {
-	return [[NSString alloc] initWithData:[self serializeToJSONData] encoding:NSUTF8StringEncoding];
+-(NSString *)serializeToJSONStringForAction:(NSString *)action {
+	return [[NSString alloc] initWithData:[self serializeToJSONDataForAction:action] encoding:NSUTF8StringEncoding];
+}
+
+-(NSString *)startDateString {
+	return [dateFormatter stringFromDate:_startDate];
+}
+
+-(NSString *)endDateString {
+	return [dateFormatter stringFromDate:_endDate];
+}
+
+-(NSNumber *)totalPrice {
+	NSDateComponents *dateComponent = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:_startDate toDate:_endDate options:0];
+	
+	return [NSNumber numberWithFloat:((dateComponent.day * [_adventure.dailyPrice floatValue]) + [_departingFlight.price floatValue] + [_returningFlight.price floatValue])];
 }
 
 @end

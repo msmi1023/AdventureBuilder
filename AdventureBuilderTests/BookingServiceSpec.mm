@@ -110,9 +110,8 @@ describe(@"BookingService", ^{
 	describe(@"booking creation", ^{
 		
 		beforeEach(^{
-			apiManager stub_method(@selector(POST:parameters:constructingBodyWithBlock:progress:success:failure:))
-			.and_do_block(^NSURLSessionDataTask *(NSString *url, id parameters, bodyBlock block, downloadProgress progress, successHandler success, errorHandler failure) {
-				localBodyBlock = block;
+			apiManager stub_method(@selector(POST:parameters:progress:success:failure:))
+			.and_do_block(^NSURLSessionDataTask *(NSString *url, id parameters, downloadProgress progress, successHandler success, errorHandler failure) {
 				localSuccess = success;
 				localError = failure;
 				return nil;
@@ -127,22 +126,12 @@ describe(@"BookingService", ^{
 			[subject respondsToSelector:@selector(createBookingWithCompletionBlock:)] should be_truthy;
 		});
 		
-		describe(@"createBookingWithCompletionBlock", ^{
+		/*describe(@"createBookingWithCompletionBlock", ^{
 			it(@"should call the api manager's POST selector when createBooking is called", ^{
 				[subject createBookingWithCompletionBlock:^(id response){}];
-				apiManager should have_received(@selector(POST:parameters:constructingBodyWithBlock:progress:success:failure:));
+				apiManager should have_received(@selector(POST:parameters:progress:success:failure:));
 			});
-			
-			it(@"should use the passed in bodyBlock to construct the POST's body appropriately", ^{
-				[subject createBookingWithCompletionBlock:^(id response){}];
-				
-				
-				
-				//localBodyBlock();
-				
-				
-			});
-		});
+		});*/
 	
 	});
 	

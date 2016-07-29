@@ -8,19 +8,33 @@
 
 #import "SelectReturningFlightViewController.h"
 
-@implementation SelectReturningFlightViewController
+@implementation SelectReturningFlightViewController {
+	NSArray *flights;
+}
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	_tableView.delegate = self;
+	_tableView.dataSource = self;
+	
+	[_flightService getFlightsOfType:@"returning" withCompletionBlock:^(id response){
+		flights = response;
+		[_tableView reloadData];
+	}];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 0;
+	return flights.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -30,19 +44,13 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
 	}
 	
-	//cell.textLabel.text = [NSString stringWithFormat:@"%@", ((Booking *)_bookingList[indexPath.row]).confirmationNumber];
+	cell.textLabel.text = ((Flight *)flights[indexPath.row]).flightNumber;
 	
 	return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	_bookingService.booking.returningFlight = flights[indexPath.row];
 }
-*/
 
 @end

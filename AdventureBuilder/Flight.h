@@ -11,6 +11,9 @@
 @interface Flight : NSObject
 
 @property (strong, nonatomic) NSString *flightNumber;
+@property (strong, nonatomic) NSString *airline;
+@property (strong, nonatomic) NSString *arrivalTime;
+@property (strong, nonatomic) NSString *departureTime;
 @property (strong, nonatomic) NSNumber *price;
 
 -(id)init;

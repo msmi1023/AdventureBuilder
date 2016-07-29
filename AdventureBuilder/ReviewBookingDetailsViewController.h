@@ -11,17 +11,17 @@
 
 @interface ReviewBookingDetailsViewController : JabUIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *fullName;
-@property (weak, nonatomic) IBOutlet UILabel *emailAddress;
-@property (weak, nonatomic) IBOutlet UILabel *fullAddress;
-@property (weak, nonatomic) IBOutlet UILabel *phone;
-@property (weak, nonatomic) IBOutlet UILabel *adventureType;
-@property (weak, nonatomic) IBOutlet UILabel *adventure;
-@property (weak, nonatomic) IBOutlet UILabel *startDate;
-@property (weak, nonatomic) IBOutlet UILabel *endDate;
-@property (weak, nonatomic) IBOutlet UILabel *departingFlight;
-@property (weak, nonatomic) IBOutlet UILabel *returningFlight;
-@property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (strong, nonatomic) IBOutlet UILabel *fullName;
+@property (strong, nonatomic) IBOutlet UILabel *emailAddress;
+@property (strong, nonatomic) IBOutlet UILabel *fullAddress;
+@property (strong, nonatomic) IBOutlet UILabel *phone;
+@property (strong, nonatomic) IBOutlet UILabel *adventureType;
+@property (strong, nonatomic) IBOutlet UILabel *adventure;
+@property (strong, nonatomic) IBOutlet UILabel *startDate;
+@property (strong, nonatomic) IBOutlet UILabel *endDate;
+@property (strong, nonatomic) IBOutlet UILabel *departingFlight;
+@property (strong, nonatomic) IBOutlet UILabel *returningFlight;
+@property (strong, nonatomic) IBOutlet UILabel *totalPrice;
 
 @property (strong, nonatomic) BookingService *bookingService;
 

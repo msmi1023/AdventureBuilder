@@ -46,9 +46,7 @@
 }
 
 -(void)createBookingWithCompletionBlock:(completion_t)completionBlock {
-	[apiManager POST:@"bookings" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-		[formData appendPartWithFormData:[_booking serializeToJSONData] name:@"booking"];
-	} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+	[apiManager POST:@"bookings" parameters:[_booking getDictionaryRepresentationForAction:@"create"] progress:nil success:^(NSURLSessionTask *task, id responseObject) {
 		completionBlock(responseObject);
 	} failure:^(NSURLSessionTask *task, NSError *error) {
 		completionBlock(error);

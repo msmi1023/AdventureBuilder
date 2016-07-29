@@ -22,10 +22,16 @@
 	
 	if(jsonFlight == nil || [jsonFlight allKeys].count == 0) {
 		_flightNumber = @"";
+		_airline = @"";
+		_arrivalTime = @"";
+		_departureTime = @"";
 		_price = @0;
 	}
 	else {
 		_flightNumber = jsonFlight[@"flightNumber"];
+		_airline = jsonFlight[@"airline"] ? jsonFlight[@"airline"] : @"";
+		_arrivalTime = jsonFlight[@"arrivalTime"] ? jsonFlight[@"arrivalTime"] : @"";
+		_departureTime = jsonFlight[@"departureTime"] ? jsonFlight[@"departureTime"] : @"";
 		_price = jsonFlight[@"price"];
 	}
 	
@@ -34,6 +40,9 @@
 
 -(NSDictionary *)getDictionaryRepresentation {
 	return @{@"flightNumber":_flightNumber,
+			 @"airline":_airline,
+			 @"arrivalTime":_arrivalTime,
+			 @"departureTime":_departureTime,
 			 @"price":_price};;
 }
 

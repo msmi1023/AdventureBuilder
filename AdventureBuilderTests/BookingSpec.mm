@@ -169,10 +169,16 @@ describe(@"Booking", ^{
 				},
 				@"departingFlight": @{
 					@"flightNumber":@"NK211",
+					@"airline":@"",
+					@"arrivalTime":@"",
+					@"departureTime":@"",
 					@"price":@389.7
 				},
 				@"returningFlight": @{
 					@"flightNumber":@"NK701",
+					@"airline":@"",
+					@"arrivalTime":@"",
+					@"departureTime":@"",
 					@"price":@289.7
 				},
 				@"startDate":@"Aug-12-2016",
@@ -182,7 +188,7 @@ describe(@"Booking", ^{
 			
 			subject = [subject initWithDictionary:booking];
 			
-			NSString *string = [subject serializeToJSONString];
+			NSString *string = [subject serializeToJSONStringForAction:@"non-create"];
 			NSError *error;
 			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:booking options:0 error:&error];
 			NSString *answer = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

@@ -10,7 +10,7 @@
 #import "JabUIViewController.h"
 
 @interface SelectReturningFlightViewController : JabUIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) BookingService *bookingService;
 @property (strong, nonatomic) FlightService *flightService;

@@ -8,7 +8,9 @@
 
 #import "SelectDepartingFlightViewController.h"
 
-@implementation SelectDepartingFlightViewController
+@implementation SelectDepartingFlightViewController {
+	NSArray *flights;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -19,6 +21,11 @@
 	
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
+	
+	[_flightService getFlightsOfType:@"departing" withCompletionBlock:^(id response){
+		flights = response;
+		[_tableView reloadData];
+	}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,7 +34,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 0;
+	return flights.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -37,9 +44,13 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
 	}
 	
-	//cell.textLabel.text = [NSString stringWithFormat:@"%@", ((Booking *)_bookingList[indexPath.row]).confirmationNumber];
+	cell.textLabel.text = ((Flight *)flights[indexPath.row]).flightNumber;
 	
 	return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	_bookingService.booking.departingFlight = flights[indexPath.row];
 }
 
 @end

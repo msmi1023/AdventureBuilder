@@ -26,8 +26,11 @@
 
 -(id)init;
 -(id)initWithDictionary:(NSDictionary *)jsonBooking;
--(NSDictionary *)getDictionaryRepresentation;
--(NSData *)serializeToJSONData;
--(NSString *)serializeToJSONString;
+-(NSDictionary *)getDictionaryRepresentationForAction:(NSString *)action;
+-(NSData *)serializeToJSONDataForAction:(NSString *)action;
+-(NSString *)serializeToJSONStringForAction:(NSString *)action;
+-(NSString *)startDateString;
+-(NSString *)endDateString;
+-(NSNumber *)totalPrice;
 
 @end

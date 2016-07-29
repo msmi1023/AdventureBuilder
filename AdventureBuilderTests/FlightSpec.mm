@@ -45,7 +45,11 @@ describe(@"Flight", ^{
 	
 	describe(@"serializeToJSON", ^{
 		it(@"should create a JSON string from the properties of the class", ^{
-			NSDictionary *flight = @{@"flightNumber":@"A123", @"price":@100};
+			NSDictionary *flight = @{@"flightNumber":@"A123",
+									 @"airline":@"",
+									 @"arrivalTime":@"",
+									 @"departureTime":@"",
+									 @"price":@100};
 			
 			subject = [subject initWithDictionary:flight];
 			
