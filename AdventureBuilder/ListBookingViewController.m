@@ -7,11 +7,14 @@
 //
 
 #import "ListBookingViewController.h"
+#import "ListBookingTableCell.h"
 
 @implementation ListBookingViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	[self.tableView registerNib:[UINib nibWithNibName:@"ListBookingTableCell" bundle:nil] forCellReuseIdentifier:@"ListBookingTableCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -25,15 +28,33 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+	ListBookingTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListBookingTableCell"];
 	
-	if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+	//don't need to do this here - we can register the nib early to save on loading it each time.
+	//if(!cell) {
+		//cell = [[ListBookingTableCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ListBookingTableCell"];
+		
+		//NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListBookingTableCell" owner:self options:nil];
+		//cell = [nib objectAtIndex:0];
+	//}
+	
+	[cell setBookingAndLabelsFromBooking:((Booking *)_bookingList[indexPath.row])];
+	
+	//stripe even rows with a very light grey background.
+	if(indexPath.row % 2) {
+		cell.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
+	}
+	//cells get reused! reset for odd rows.
+	else {
+		cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 	}
 	
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", ((Booking *)_bookingList[indexPath.row]).confirmationNumber];
-	
 	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return [ListBookingTableCell height];
 }
 
 -(void)retrieveBookingData {

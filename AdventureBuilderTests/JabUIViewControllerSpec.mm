@@ -3,6 +3,7 @@
 
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
+#import "ReviewBookingDetailsViewController.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
@@ -38,6 +39,17 @@ describe(@"JabUIViewController", ^{
 	});
 	
 	describe(@"viewWillAppear:", ^{
+		
+		it(@"should set the nav items appropriately when presenting the detail view screen from the list", ^{
+			subject = [[ReviewBookingDetailsViewController alloc] init];
+			((ReviewBookingDetailsViewController *)subject).bookingService = [[BookingService alloc] init];
+			((ReviewBookingDetailsViewController *)subject).bookingService.booking = [[Booking alloc] initWithDictionary:@{@"confirmationNumber": @1234}];
+			
+			[subject viewWillAppear:YES];
+			
+			subject.navigationItem.rightBarButtonItem should be_nil;
+			subject.navigationItem.title should equal(@"1234");
+		});
 		
 		it(@"should set the rightBarButtonItem with the appropriate target and action", ^{
 			__block UIViewController *rightButtonTarget;

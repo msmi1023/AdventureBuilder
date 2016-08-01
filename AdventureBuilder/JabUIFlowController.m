@@ -16,6 +16,7 @@
 #import "SelectDepartingFlightViewController.h"
 #import "SelectReturningFlightViewController.h"
 #import "ReviewBookingDetailsViewController.h"
+#import "ListBookingTableCell.h"
 
 @implementation JabUIFlowController
 
@@ -83,7 +84,19 @@
 }
 
 -(void)transitionForwardFromController:(UIViewController *)vc {
-	if([vc isKindOfClass:[EnterCustomerInformationViewController class]]) {
+	[self transitionForwardFromController:vc fromSender:nil];
+};
+
+-(void)transitionForwardFromController:(UIViewController *)vc fromSender:(id)sender {
+	if([vc isKindOfClass:[ListBookingViewController class]] && [sender isKindOfClass:[ListBookingTableCell class]]) {
+		ReviewBookingDetailsViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"ReviewBookingDetails"];
+		
+		//semantically should probably live in setDeps method, but keeping here due to scoping
+		nextVc.bookingService.booking = ((ListBookingTableCell *)sender).booking;
+		
+		[vc.navigationController pushViewController:nextVc animated:YES];
+	}
+	else if([vc isKindOfClass:[EnterCustomerInformationViewController class]]) {
 		SelectAdventureViewController *nextVc = [self prepareControllerFromStoryboard:_addBookingStoryboard withIdentifier:@"SelectAdventure"];
 		
 		[vc.navigationController pushViewController:nextVc animated:YES];

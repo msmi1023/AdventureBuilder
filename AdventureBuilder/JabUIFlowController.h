@@ -22,6 +22,7 @@
 
 -(void)transitionBackFromController:(UIViewController *)vc;
 -(void)transitionForwardFromController:(UIViewController *)vc;
+-(void)transitionForwardFromController:(UIViewController *)vc fromSender:(id)sender;
 
 -(UINavigationController *)presentInitialViewControllerForStoryboardIdentifier:(NSString *)identifier fromController:(UIViewController *)currentVc onWindow:(UIWindow *)window;
 

@@ -16,8 +16,16 @@
 @implementation JabUIViewController
 
 -(void)viewWillAppear:(BOOL)animated {
-	self.navigationItem.rightBarButtonItem.target = self;
-	self.navigationItem.rightBarButtonItem.action = @selector(nextButtonPressed:);
+	//this checks to see if we are loading up the detail view from the list booking screen.
+	//if we are, adjust the nav items to reflect this.
+	if([self isKindOfClass:[ReviewBookingDetailsViewController class]] && self.navigationController.childViewControllers.count < 3) {
+		self.navigationItem.title = [((ReviewBookingDetailsViewController *)self).bookingService.booking.confirmationNumber stringValue];
+		self.navigationItem.rightBarButtonItem = nil;
+	}
+	else {
+		self.navigationItem.rightBarButtonItem.target = self;
+		self.navigationItem.rightBarButtonItem.action = @selector(nextButtonPressed:);
+	}
 	
 	if([self isKindOfClass:[EnterCustomerInformationViewController class]]) {
 		self.navigationItem.leftBarButtonItem.target = self;

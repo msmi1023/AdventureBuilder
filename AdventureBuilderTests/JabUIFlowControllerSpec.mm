@@ -9,6 +9,8 @@
 #import "SelectReturningFlightViewController.h"
 #import "ReviewBookingDetailsViewController.h"
 
+#import "ListBookingTableCell.h"
+
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
@@ -44,10 +46,12 @@ describe(@"JabUIFlowController", ^{
 		newResult == subject should be_truthy;
 	});
 	
-	it(@"should return an instance with bookingService, mainStoryboard and addBookingStoryboard references", ^{
+	it(@"should return an instance with bookingService, adventureService, flightService, mainStoryboard and addBookingStoryboard references", ^{
 		subject = [JabUIFlowController sharedController];
 		
 		[subject.bookingServiceInstance isKindOfClass:[BookingService class]] should be_truthy;
+		[subject.adventureServiceInstance isKindOfClass:[AdventureService class]] should be_truthy;
+		[subject.flightServiceInstance isKindOfClass:[FlightService class]] should be_truthy;
 		[subject.mainStoryboard isKindOfClass:[UIStoryboard class]] should be_truthy;
 		[subject.mainStoryboard valueForKey:@"name"] should equal(@"Main");
 		[subject.addBookingStoryboard isKindOfClass:[UIStoryboard class]] should be_truthy;
@@ -142,6 +146,7 @@ describe(@"JabUIFlowController", ^{
 	});
 	
 	describe(@"transitionForwardFromController:", ^{
+		__block ListBookingViewController *vc0;
 		__block EnterCustomerInformationViewController *vc1;
 		__block SelectAdventureViewController *vc2;
 		__block SelectBookingOptionsViewController *vc3;
@@ -161,6 +166,10 @@ describe(@"JabUIFlowController", ^{
 			.and_do_block(^(UIViewController *viewController, BOOL animated){
 				args = @[viewController, [NSNumber numberWithBool:animated]];
 			});
+			
+			vc0 = [[ListBookingViewController alloc] init];
+			spy_on(vc0);
+			vc0 stub_method(@selector(navigationController)).and_return(mockNavVc);
 			
 			vc1 = [[EnterCustomerInformationViewController alloc] init];
 			spy_on(vc1);
@@ -186,6 +195,26 @@ describe(@"JabUIFlowController", ^{
 			spy_on(vc6);
 			vc6 stub_method(@selector(navigationController)).and_return(mockNavVc);
 			
+		});
+		
+		it(@"should call the two-arg method if the single arg version is called", ^{
+			[subject transitionForwardFromController:nil];
+			
+			subject should have_received(@selector(transitionForwardFromController:fromSender:)).with(nil, nil);
+		});
+		
+		it(@"should push the ReviewBookingDetailsController if the passed in vc is a ListBookingViewController and the sender is a ListBookingTableCell", ^{
+			ListBookingTableCell *cell = [[ListBookingTableCell alloc] init];
+			cell.booking = [[Booking alloc] initWithDictionary:nil];
+			
+			[subject transitionForwardFromController:vc0 fromSender:cell];
+			
+			subject should have_received(@selector(prepareControllerFromStoryboard:withIdentifier:)).with(subject.addBookingStoryboard, @"ReviewBookingDetails");
+			mockNavVc should have_received(@selector(pushViewController:animated:));
+			
+			[args[0] isKindOfClass:[ReviewBookingDetailsViewController class]] should be_truthy;
+			((ReviewBookingDetailsViewController *)args[0]).bookingService.booking should equal(cell.booking);
+			args[1] should be_truthy;
 		});
 		
 		it(@"should push the SelectAdventureViewController if the passed in vc is an EnterCustomerInformationViewController", ^{

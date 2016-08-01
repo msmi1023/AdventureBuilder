@@ -10,6 +10,7 @@
 		2469E3872DD8B9B845FA5D46 /* libPods-AdventureBuilderUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 355655D15C5F9568C0838655 /* libPods-AdventureBuilderUITests.a */; };
 		3496328667F7ACD9A1AB2408 /* libPods-AdventureBuilderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EE31C21E7504B8F974CD5 /* libPods-AdventureBuilderTests.a */; };
 		8C5D08F393D75FE466A98597 /* libPods-AdventureBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */; };
+		D41C38081D4FC318000064C9 /* ListBookingTableCellSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */; };
 		D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */; };
 		D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */; };
 		D44860071D3FFE2C001A2FDF /* SelectAdventureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860061D3FFE2C001A2FDF /* SelectAdventureViewController.m */; };
@@ -51,6 +52,8 @@
 		D4FE301B1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301A1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm */; };
 		D4FE301D1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301C1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm */; };
 		D4FE301F1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4FE301E1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm */; };
+		D4FE30211D4F81EF001742B5 /* ListBookingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FE30201D4F81EF001742B5 /* ListBookingTableCell.xib */; };
+		D4FE30241D4F8346001742B5 /* ListBookingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FE30231D4F8346001742B5 /* ListBookingTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,7 @@
 		6F000A1220A730D0B5BAB9FC /* Pods-AdventureBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.release.xcconfig"; sourceTree = "<group>"; };
 		7513C79C360E229E8A096D9F /* Pods-AdventureBuilderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilderTests/Pods-AdventureBuilderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdventureBuilder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListBookingTableCellSpec.mm; sourceTree = "<group>"; };
 		D4485FFD1D3FB844001A2FDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBooking.storyboard; sourceTree = "<group>"; };
 		D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterCustomerInformationViewController.h; sourceTree = "<group>"; };
 		D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterCustomerInformationViewController.m; sourceTree = "<group>"; };
@@ -142,6 +146,9 @@
 		D4FE301A1D4A98BA001742B5 /* SelectDepartingFlightViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectDepartingFlightViewControllerSpec.mm; sourceTree = "<group>"; };
 		D4FE301C1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectReturningFlightViewControllerSpec.mm; sourceTree = "<group>"; };
 		D4FE301E1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ReviewBookingDetailsViewControllerSpec.mm; sourceTree = "<group>"; };
+		D4FE30201D4F81EF001742B5 /* ListBookingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListBookingTableCell.xib; sourceTree = "<group>"; };
+		D4FE30221D4F8346001742B5 /* ListBookingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListBookingTableCell.h; sourceTree = "<group>"; };
+		D4FE30231D4F8346001742B5 /* ListBookingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListBookingTableCell.m; sourceTree = "<group>"; };
 		FF2B928207F2EB2C444B58D8 /* Pods-AdventureBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilder/Pods-AdventureBuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +230,7 @@
 				D45057451D33E15100AC630E /* Main.storyboard */,
 				D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */,
 				D450574A1D33E15100AC630E /* LaunchScreen.storyboard */,
+				D4FE30201D4F81EF001742B5 /* ListBookingTableCell.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -283,6 +291,8 @@
 				D448601E1D425C5E001A2FDF /* JabUIFlowController.m */,
 				D44860201D427BB6001A2FDF /* JabUIViewController.h */,
 				D44860211D427BB6001A2FDF /* JabUIViewController.m */,
+				D4FE30221D4F8346001742B5 /* ListBookingTableCell.h */,
+				D4FE30231D4F8346001742B5 /* ListBookingTableCell.m */,
 				D450573F1D33E15100AC630E /* AppDelegate.h */,
 				D45057401D33E15100AC630E /* AppDelegate.m */,
 				D45057481D33E15100AC630E /* Assets.xcassets */,
@@ -367,6 +377,7 @@
 				D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */,
 				D4A1B3551D46939B008A00D8 /* JabUIFlowControllerSpec.mm */,
 				D4A1B3571D47D683008A00D8 /* JabUIViewControllerSpec.mm */,
+				D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -486,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D450574C1D33E15100AC630E /* LaunchScreen.storyboard in Resources */,
+				D4FE30211D4F81EF001742B5 /* ListBookingTableCell.xib in Resources */,
 				D45057491D33E15100AC630E /* Assets.xcassets in Resources */,
 				D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */,
 				D45057471D33E15100AC630E /* Main.storyboard in Resources */,
@@ -640,6 +652,7 @@
 			files = (
 				D49F30511D3D076300382F5C /* JabApiManager.m in Sources */,
 				D4FE30191D4A8749001742B5 /* FlightService.m in Sources */,
+				D4FE30241D4F8346001742B5 /* ListBookingTableCell.m in Sources */,
 				D45057411D33E15100AC630E /* AppDelegate.m in Sources */,
 				D45CE8EF1D39706400132ED3 /* BookingService.m in Sources */,
 				D448600A1D3FFF7D001A2FDF /* SelectBookingOptionsViewController.m in Sources */,
@@ -673,6 +686,7 @@
 				D4A1B3561D46939B008A00D8 /* JabUIFlowControllerSpec.mm in Sources */,
 				D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */,
 				D4A1B3581D47D683008A00D8 /* JabUIViewControllerSpec.mm in Sources */,
+				D41C38081D4FC318000064C9 /* ListBookingTableCellSpec.mm in Sources */,
 				D49F30581D3D613900382F5C /* BookingSpec.mm in Sources */,
 				D4FE30141D4A48AE001742B5 /* SelectAdventureViewControllerSpec.mm in Sources */,
 				D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */,

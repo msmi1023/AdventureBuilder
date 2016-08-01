@@ -31,6 +31,8 @@
 -(NSString *)serializeToJSONStringForAction:(NSString *)action;
 -(NSString *)startDateString;
 -(NSString *)endDateString;
+-(NSString *)startDateStringForCell;
+-(NSString *)endDateStringForCell;
 -(NSNumber *)totalPrice;
 
 @end

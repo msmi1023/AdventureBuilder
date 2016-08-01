@@ -9,7 +9,7 @@
 #import "Booking.h"
 
 @implementation Booking {
-	NSDateFormatter *dateFormatter, *timeFormatter;
+	NSDateFormatter *dateFormatter, *dateFormatterForCell, *timeFormatter;
 	NSTimeZone *gmt;
 }
 
@@ -24,6 +24,10 @@
 	[dateFormatter setDateFormat:@"MMM-dd-yyyy"];
 	gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
 	[dateFormatter setTimeZone:gmt];
+	
+	dateFormatterForCell = [[NSDateFormatter alloc] init];
+	[dateFormatterForCell setDateFormat:@"MM/dd/yy"];
+	[dateFormatterForCell setTimeZone:gmt];
 	
 	timeFormatter = [[NSDateFormatter alloc]init];
 	[timeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
@@ -145,6 +149,14 @@
 
 -(NSString *)endDateString {
 	return [dateFormatter stringFromDate:_endDate];
+}
+
+-(NSString *)startDateStringForCell {
+	return [dateFormatterForCell stringFromDate:_startDate];
+}
+
+-(NSString *)endDateStringForCell {
+	return [dateFormatterForCell stringFromDate:_endDate];
 }
 
 -(NSNumber *)totalPrice {

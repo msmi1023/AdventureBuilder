@@ -20,16 +20,13 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyI-nd-6ys">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="VsD-CL-MEu">
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                                 <color key="barTintColor" red="0.0" green="0.1160392831" blue="0.53453525639999999" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-jf-JuG">
-                                <rect key="frame" x="0.0" y="89" width="600" height="457"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="pya-mW-9xU" id="Dnv-Cg-r4b"/>
                                     <outlet property="delegate" destination="pya-mW-9xU" id="SfG-PI-Rbc"/>
@@ -39,8 +36,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gyI-nd-6ys" firstAttribute="leading" secondItem="uoc-ru-1r0" secondAttribute="leadingMargin" constant="-20" id="2TQ-S1-veC"/>
-                            <constraint firstItem="Ggd-jf-JuG" firstAttribute="top" secondItem="yLl-Gk-NCi" secondAttribute="bottom" constant="25" id="I2k-Ft-ELM"/>
-                            <constraint firstItem="gyI-nd-6ys" firstAttribute="top" secondItem="Ggd-jf-JuG" secondAttribute="bottom" constant="10" id="SK9-R5-O0B"/>
+                            <constraint firstItem="Ggd-jf-JuG" firstAttribute="top" secondItem="yLl-Gk-NCi" secondAttribute="bottom" id="I2k-Ft-ELM"/>
+                            <constraint firstItem="gyI-nd-6ys" firstAttribute="top" secondItem="Ggd-jf-JuG" secondAttribute="bottom" id="SK9-R5-O0B"/>
                             <constraint firstItem="Ggd-jf-JuG" firstAttribute="leading" secondItem="uoc-ru-1r0" secondAttribute="leadingMargin" constant="-20" id="VPP-27-EqR"/>
                             <constraint firstItem="zBL-Ay-i9F" firstAttribute="top" secondItem="gyI-nd-6ys" secondAttribute="bottom" id="X0L-yD-w4h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gyI-nd-6ys" secondAttribute="trailing" constant="-20" id="f47-JJ-6m9"/>

@@ -22,6 +22,9 @@
 	_maxFlightPrice.delegate = self;
 	_maxFlightPrice.dataSource = self;
 	
+	_startDate.date = [[NSDate alloc] init];
+	_endDate.date = [[NSDate alloc] init];
+	
 	[_flightService getMaxFlightPricesWithCompletionBlock:^(id response){
 		maxFlightPrices = response;
 		
