@@ -29,8 +29,6 @@
 		D45057491D33E15100AC630E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D45057481D33E15100AC630E /* Assets.xcassets */; };
 		D450574C1D33E15100AC630E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D450574A1D33E15100AC630E /* LaunchScreen.storyboard */; };
 		D45057701D3410BA00AC630E /* AppDelegateSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D450576F1D3410BA00AC630E /* AppDelegateSpec.mm */; };
-		D45057721D3412BF00AC630E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D45057711D3412BF00AC630E /* Info.plist */; };
-		D45057741D3412C700AC630E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D45057731D3412C700AC630E /* Info.plist */; };
 		D45CE8E41D3818F400132ED3 /* ListBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8E31D3818F400132ED3 /* ListBookingViewController.m */; };
 		D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */; };
 		D45CE8EF1D39706400132ED3 /* BookingService.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EE1D39706400132ED3 /* BookingService.m */; };
@@ -520,7 +518,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45057721D3412BF00AC630E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +525,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45057741D3412C700AC630E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

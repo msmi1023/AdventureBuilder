@@ -20,7 +20,6 @@ describe(@"BookingService", ^{
 	
 	__block successHandler localSuccess = nil;
 	__block errorHandler localError = nil;
-	__block bodyBlock localBodyBlock = nil;
 
     beforeEach(^{
 		apiManager = fake_for([JabApiManager class]);

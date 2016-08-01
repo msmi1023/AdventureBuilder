@@ -31,6 +31,8 @@
 		self.navigationItem.leftBarButtonItem.target = self;
 		self.navigationItem.leftBarButtonItem.action = @selector(cancelButtonPressed:);
 	}
+	
+	[super viewWillAppear:animated];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
