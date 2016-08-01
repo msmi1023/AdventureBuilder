@@ -11,6 +11,9 @@
 		3496328667F7ACD9A1AB2408 /* libPods-AdventureBuilderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EE31C21E7504B8F974CD5 /* libPods-AdventureBuilderTests.a */; };
 		8C5D08F393D75FE466A98597 /* libPods-AdventureBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */; };
 		D41C38081D4FC318000064C9 /* ListBookingTableCellSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */; };
+		D41C380A1D4FCEAF000064C9 /* ListFlightTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41C38091D4FCEAF000064C9 /* ListFlightTableCell.xib */; };
+		D41C380D1D4FCF27000064C9 /* ListFlightTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D41C380C1D4FCF27000064C9 /* ListFlightTableCell.m */; };
+		D41C380F1D4FD314000064C9 /* ListFlightTableCellSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D41C380E1D4FD314000064C9 /* ListFlightTableCellSpec.mm */; };
 		D4485FFE1D3FB844001A2FDF /* AddBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */; };
 		D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */; };
 		D44860071D3FFE2C001A2FDF /* SelectAdventureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44860061D3FFE2C001A2FDF /* SelectAdventureViewController.m */; };
@@ -83,6 +86,10 @@
 		7513C79C360E229E8A096D9F /* Pods-AdventureBuilderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdventureBuilderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdventureBuilderTests/Pods-AdventureBuilderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97C1EBF18636711E5229A898 /* libPods-AdventureBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdventureBuilder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListBookingTableCellSpec.mm; sourceTree = "<group>"; };
+		D41C38091D4FCEAF000064C9 /* ListFlightTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListFlightTableCell.xib; sourceTree = "<group>"; };
+		D41C380B1D4FCF27000064C9 /* ListFlightTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFlightTableCell.h; sourceTree = "<group>"; };
+		D41C380C1D4FCF27000064C9 /* ListFlightTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFlightTableCell.m; sourceTree = "<group>"; };
+		D41C380E1D4FD314000064C9 /* ListFlightTableCellSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListFlightTableCellSpec.mm; sourceTree = "<group>"; };
 		D4485FFD1D3FB844001A2FDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBooking.storyboard; sourceTree = "<group>"; };
 		D4485FFF1D3FC6A2001A2FDF /* EnterCustomerInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterCustomerInformationViewController.h; sourceTree = "<group>"; };
 		D44860001D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterCustomerInformationViewController.m; sourceTree = "<group>"; };
@@ -231,6 +238,7 @@
 				D4485FFC1D3FB844001A2FDF /* AddBooking.storyboard */,
 				D450574A1D33E15100AC630E /* LaunchScreen.storyboard */,
 				D4FE30201D4F81EF001742B5 /* ListBookingTableCell.xib */,
+				D41C38091D4FCEAF000064C9 /* ListFlightTableCell.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -293,6 +301,8 @@
 				D44860211D427BB6001A2FDF /* JabUIViewController.m */,
 				D4FE30221D4F8346001742B5 /* ListBookingTableCell.h */,
 				D4FE30231D4F8346001742B5 /* ListBookingTableCell.m */,
+				D41C380B1D4FCF27000064C9 /* ListFlightTableCell.h */,
+				D41C380C1D4FCF27000064C9 /* ListFlightTableCell.m */,
 				D450573F1D33E15100AC630E /* AppDelegate.h */,
 				D45057401D33E15100AC630E /* AppDelegate.m */,
 				D45057481D33E15100AC630E /* Assets.xcassets */,
@@ -378,6 +388,7 @@
 				D4A1B3551D46939B008A00D8 /* JabUIFlowControllerSpec.mm */,
 				D4A1B3571D47D683008A00D8 /* JabUIViewControllerSpec.mm */,
 				D41C38071D4FC318000064C9 /* ListBookingTableCellSpec.mm */,
+				D41C380E1D4FD314000064C9 /* ListFlightTableCellSpec.mm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -496,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41C380A1D4FCEAF000064C9 /* ListFlightTableCell.xib in Resources */,
 				D450574C1D33E15100AC630E /* LaunchScreen.storyboard in Resources */,
 				D4FE30211D4F81EF001742B5 /* ListBookingTableCell.xib in Resources */,
 				D45057491D33E15100AC630E /* Assets.xcassets in Resources */,
@@ -664,6 +676,7 @@
 				D49F305E1D3D673A00382F5C /* Adventure.m in Sources */,
 				D450573E1D33E15100AC630E /* main.m in Sources */,
 				D44860011D3FC6A2001A2FDF /* EnterCustomerInformationViewController.m in Sources */,
+				D41C380D1D4FCF27000064C9 /* ListFlightTableCell.m in Sources */,
 				D45CE8E41D3818F400132ED3 /* ListBookingViewController.m in Sources */,
 				D49F305B1D3D672C00382F5C /* Customer.m in Sources */,
 				D44860101D400591001A2FDF /* SelectReturningFlightViewController.m in Sources */,
@@ -694,6 +707,7 @@
 				D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */,
 				D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */,
 				D4FE301D1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm in Sources */,
+				D41C380F1D4FD314000064C9 /* ListFlightTableCellSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,7 @@
 	static dispatch_once_t pred;
 	static JabApiManager *sharedManager = nil;
 	dispatch_once(&pred, ^{
-		sharedManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:9500/api"]];
+		sharedManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.3.70.115:9500/api"]];
 		//[_sharedManager setUsername:@"wasadm01" andPassword:@"wasadm01"];
 	});
 	

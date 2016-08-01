@@ -255,9 +255,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAO-cI-oTS">
-                                <rect key="frame" x="0.0" y="89" width="600" height="503"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAO-cI-oTS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lTa-3m-EAA" id="thm-V5-U0g"/>
                                     <outlet property="delegate" destination="lTa-3m-EAA" id="Y8y-NO-n6O"/>
@@ -266,8 +267,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vAO-cI-oTS" firstAttribute="top" secondItem="2VP-Xy-k0n" secondAttribute="bottom" constant="25" id="5kp-bh-ngK"/>
-                            <constraint firstItem="2oz-Rz-wX3" firstAttribute="top" secondItem="vAO-cI-oTS" secondAttribute="bottom" constant="10" id="GXE-Kc-jXQ"/>
+                            <constraint firstItem="vAO-cI-oTS" firstAttribute="top" secondItem="2VP-Xy-k0n" secondAttribute="bottom" id="5kp-bh-ngK"/>
+                            <constraint firstItem="2oz-Rz-wX3" firstAttribute="top" secondItem="vAO-cI-oTS" secondAttribute="bottom" id="GXE-Kc-jXQ"/>
                             <constraint firstItem="vAO-cI-oTS" firstAttribute="centerX" secondItem="feg-Vz-GYs" secondAttribute="centerX" id="NSm-O4-8pw"/>
                             <constraint firstItem="vAO-cI-oTS" firstAttribute="leading" secondItem="feg-Vz-GYs" secondAttribute="leadingMargin" constant="-20" id="cd6-5L-dnn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAO-cI-oTS" secondAttribute="trailing" constant="-20" id="gB4-zu-1Tv"/>
@@ -298,9 +299,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o6v-At-Z7T">
-                                <rect key="frame" x="0.0" y="84" width="600" height="503"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o6v-At-Z7T">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hDD-RD-qcs" id="u3K-Fg-1gS"/>
                                     <outlet property="delegate" destination="hDD-RD-qcs" id="BzR-gJ-8tV"/>
@@ -309,9 +311,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="j7z-7p-BXk" firstAttribute="top" secondItem="o6v-At-Z7T" secondAttribute="bottom" id="4XF-tM-jWw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="o6v-At-Z7T" secondAttribute="trailing" constant="-20" id="Fke-6V-hRt"/>
                             <constraint firstItem="o6v-At-Z7T" firstAttribute="centerX" secondItem="NfT-1r-9WF" secondAttribute="centerX" id="dtS-fC-CGZ"/>
-                            <constraint firstItem="o6v-At-Z7T" firstAttribute="top" secondItem="v21-uA-U3b" secondAttribute="bottom" constant="20" id="ruE-jH-Pp7"/>
+                            <constraint firstItem="o6v-At-Z7T" firstAttribute="top" secondItem="v21-uA-U3b" secondAttribute="bottom" id="ruE-jH-Pp7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Returning Flight" id="7j9-Us-B2d">
@@ -453,7 +456,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNN-xi-sPa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNN-xi-sPa">
                                 <rect key="frame" x="258" y="374" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -496,6 +499,7 @@
                             <constraint firstItem="7FS-8D-NDY" firstAttribute="top" secondItem="g7b-ot-ezN" secondAttribute="bottom" constant="10" id="OUK-CQ-crt"/>
                             <constraint firstItem="QMf-M0-69U" firstAttribute="leading" secondItem="BMf-PM-Raa" secondAttribute="leadingMargin" constant="10" id="Ocv-by-WVV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ixa-v0-mnx" secondAttribute="trailing" priority="750" constant="10" id="TjC-Lz-uaC"/>
+                            <constraint firstItem="oNN-xi-sPa" firstAttribute="top" secondItem="Aup-Lo-09A" secondAttribute="bottom" constant="25" id="Tt4-TS-c2m"/>
                             <constraint firstItem="SEg-vn-I2p" firstAttribute="top" secondItem="myb-St-tI4" secondAttribute="bottom" constant="10" id="WyH-X3-hIB"/>
                             <constraint firstItem="3kc-Rk-rPA" firstAttribute="leading" secondItem="YYt-6e-Cvz" secondAttribute="trailing" constant="22" id="Wyz-Zu-6pW"/>
                             <constraint firstItem="j4W-Lg-eEX" firstAttribute="leading" secondItem="1sd-U5-b0g" secondAttribute="trailing" constant="22" id="aAg-O8-xWY"/>
@@ -541,6 +545,7 @@
                                 <exclude reference="Lzc-BK-I3A"/>
                                 <exclude reference="xIR-2l-FNY"/>
                                 <exclude reference="B2D-zg-Ucy"/>
+                                <exclude reference="L0b-u9-OVo"/>
                             </mask>
                         </variation>
                     </view>

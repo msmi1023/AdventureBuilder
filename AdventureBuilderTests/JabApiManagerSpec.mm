@@ -61,7 +61,7 @@ describe(@"JabApiManager", ^{
 	it(@"should set the instance up with the appropriate url", ^{
 		subject = [JabApiManager sharedManager];
 		
-		subject.baseURL.absoluteString should equal(@"http://localhost:9500/api/");
+		subject.baseURL.absoluteString should equal(@"http://10.3.70.115:9500/api/");
 	});
 	
 	/*describe(@"api manager setup", ^{

@@ -7,6 +7,7 @@
 //
 
 #import "SelectReturningFlightViewController.h"
+#import "ListFlightTableCell.h"
 
 @implementation SelectReturningFlightViewController {
 	NSArray *flights;
@@ -14,6 +15,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	[self.tableView registerNib:[UINib nibWithNibName:@"ListFlightTableCell" bundle:nil] forCellReuseIdentifier:@"ListFlightTableCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,15 +41,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+	ListFlightTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListFlightTableCell"];
 	
-	if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+	[cell setFlightandLabelsFromFlight:((Flight *)flights[indexPath.row])];
+	
+	//stripe even rows with a very light grey background.
+	if(indexPath.row % 2) {
+		cell.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
+	}
+	//cells get reused! reset for odd rows.
+	else {
+		cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 	}
 	
-	cell.textLabel.text = ((Flight *)flights[indexPath.row]).flightNumber;
-	
 	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [ListFlightTableCell height];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

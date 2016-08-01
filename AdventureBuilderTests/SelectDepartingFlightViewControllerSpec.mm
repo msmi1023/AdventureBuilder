@@ -1,5 +1,6 @@
 #import <Cedar/Cedar.h>
 #import "SelectDepartingFlightViewController.h"
+#import "ListFlightTableCell.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
@@ -49,6 +50,7 @@ describe(@"SelectDepartingFlightViewController", ^{
 	it(@"should implement the necessary ui table view delegate selectors", ^{
 		[vc respondsToSelector:@selector(tableView:numberOfRowsInSection:)] should be_truthy;
 		[vc respondsToSelector:@selector(tableView:cellForRowAtIndexPath:)] should be_truthy;
+		[vc respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)] should be_truthy;
 		[vc respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)] should be_truthy;
 	});
 	
@@ -100,6 +102,20 @@ describe(@"SelectDepartingFlightViewController", ^{
 		});
 	});
 	
+	describe(@"viewDidLoad", ^{
+		beforeEach(^{
+			//get our spys in place
+			//use nice fake here as we don't need to fully stub out
+			vc.tableView = nice_fake_for([UITableView class]);
+		});
+		
+		it(@"should set up the nib for cell creation", ^{
+			[vc viewDidLoad];
+			
+			vc.tableView should have_received(@selector(registerNib:forCellReuseIdentifier:));
+		});
+	});
+	
 	describe(@"table view delegate methods", ^{
 		__block NSArray *flights;
 		
@@ -124,10 +140,30 @@ describe(@"SelectDepartingFlightViewController", ^{
 		});
 		
 		describe(@"tableView:cellForRowAtIndexPath", ^{
-			it(@"should return a cell with the appropriate text set", ^{
-				//not going to test how the cell is created. just care that it's got the right text
+			it(@"should return a create a ListFlightTableCell with the appropriate flight object provided", ^{
+				vc.tableView = [[UITableView alloc] init];
+				spy_on(vc.tableView);
+				vc.tableView stub_method(@selector(dequeueReusableCellWithIdentifier:))
+				.and_do_block(^(NSString *identifier){
+					return [[ListFlightTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+				});
 				
-				[vc tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text should equal(((Flight *)flights[1]).flightNumber);
+				UITableViewCell *resultCell = resultCell = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+				
+				[resultCell isKindOfClass:[ListFlightTableCell class]] should be_truthy;
+				((ListFlightTableCell *)resultCell).flight should equal(flights[0]);
+			});
+		});
+		
+		describe(@"table view delegate - heightForRowAtIndexPath", ^{
+			__block CGFloat result;
+			
+			beforeEach(^{
+				result = [vc tableView:nil heightForRowAtIndexPath:nil];
+			});
+			
+			it(@"should return the appropriate height for the custom cells", ^{
+				result should equal([ListFlightTableCell height]);
 			});
 		});
 		
