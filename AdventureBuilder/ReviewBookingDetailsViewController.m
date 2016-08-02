@@ -10,10 +10,6 @@
 
 @implementation ReviewBookingDetailsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
@@ -27,11 +23,6 @@
 	_departingFlight.text = _bookingService.booking.departingFlight.flightNumber;
 	_returningFlight.text = _bookingService.booking.returningFlight.flightNumber;
 	_totalPrice.text = [NSString stringWithFormat:@"Total Price: $%@",[_bookingService.booking totalPrice]];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

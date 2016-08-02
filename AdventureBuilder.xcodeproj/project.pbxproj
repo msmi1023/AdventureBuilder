@@ -33,6 +33,8 @@
 		D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EB1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm */; };
 		D45CE8EF1D39706400132ED3 /* BookingService.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8EE1D39706400132ED3 /* BookingService.m */; };
 		D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */; };
+		D47294821D50DF72009735E4 /* FlightServiceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D47294811D50DF72009735E4 /* FlightServiceSpec.mm */; };
+		D47294841D50DF7F009735E4 /* AdventureServiceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D47294831D50DF7F009735E4 /* AdventureServiceSpec.mm */; };
 		D49F30511D3D076300382F5C /* JabApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F30501D3D076300382F5C /* JabApiManager.m */; };
 		D49F30561D3D610400382F5C /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F30551D3D610400382F5C /* Booking.m */; };
 		D49F30581D3D613900382F5C /* BookingSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D49F30571D3D613900382F5C /* BookingSpec.mm */; };
@@ -124,6 +126,8 @@
 		D45CE8ED1D39706400132ED3 /* BookingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingService.h; sourceTree = "<group>"; };
 		D45CE8EE1D39706400132ED3 /* BookingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingService.m; sourceTree = "<group>"; };
 		D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BookingServiceSpec.mm; sourceTree = "<group>"; };
+		D47294811D50DF72009735E4 /* FlightServiceSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FlightServiceSpec.mm; sourceTree = "<group>"; };
+		D47294831D50DF7F009735E4 /* AdventureServiceSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdventureServiceSpec.mm; sourceTree = "<group>"; };
 		D49F304F1D3D076300382F5C /* JabApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JabApiManager.h; sourceTree = "<group>"; };
 		D49F30501D3D076300382F5C /* JabApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JabApiManager.m; sourceTree = "<group>"; };
 		D49F30541D3D610400382F5C /* Booking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Booking.h; sourceTree = "<group>"; };
@@ -314,8 +318,8 @@
 			children = (
 				D4F721471D4650AD0082549B /* Supporting Files */,
 				D44860041D3FC784001A2FDF /* Controllers */,
-				D49F30691D3E810900382F5C /* API */,
 				D49F30681D3E6B6400382F5C /* Models */,
+				D49F30691D3E810900382F5C /* API */,
 			);
 			path = AdventureBuilderTests;
 			sourceTree = "<group>";
@@ -374,6 +378,8 @@
 			children = (
 				D45CE8F01D3970FB00132ED3 /* BookingServiceSpec.mm */,
 				D4F721491D4668BA0082549B /* JabApiManagerSpec.mm */,
+				D47294831D50DF7F009735E4 /* AdventureServiceSpec.mm */,
+				D47294811D50DF72009735E4 /* FlightServiceSpec.mm */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -691,6 +697,7 @@
 				D4F7214A1D4668BA0082549B /* JabApiManagerSpec.mm in Sources */,
 				D4FE30161D4A8438001742B5 /* SelectBookingOptionsViewControllerSpec.mm in Sources */,
 				D4FE300F1D492691001742B5 /* EnterCustomerInformationViewControllerSpec.mm in Sources */,
+				D47294841D50DF7F009735E4 /* AdventureServiceSpec.mm in Sources */,
 				D49F30651D3E66AE00382F5C /* AdventureSpec.mm in Sources */,
 				D4A1B3561D46939B008A00D8 /* JabUIFlowControllerSpec.mm in Sources */,
 				D49F30631D3E5AB200382F5C /* CustomerSpec.mm in Sources */,
@@ -701,6 +708,7 @@
 				D45CE8F11D3970FB00132ED3 /* BookingServiceSpec.mm in Sources */,
 				D4FE301F1D4BA105001742B5 /* ReviewBookingDetailsViewControllerSpec.mm in Sources */,
 				D49F30671D3E6A6000382F5C /* FlightSpec.mm in Sources */,
+				D47294821D50DF72009735E4 /* FlightServiceSpec.mm in Sources */,
 				D45CE8EC1D381C1F00132ED3 /* ListBookingViewControllerSpec.mm in Sources */,
 				D4FE301D1D4B9F8E001742B5 /* SelectReturningFlightViewControllerSpec.mm in Sources */,
 				D41C380F1D4FD314000064C9 /* ListFlightTableCellSpec.mm in Sources */,

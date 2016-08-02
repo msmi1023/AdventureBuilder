@@ -16,9 +16,6 @@
 
 -(id)initWithDictionary:(NSDictionary *)jsonFlight {
 	self = [super init];
-	if(!self) {
-		return nil;
-	}
 	
 	if(jsonFlight == nil || [jsonFlight allKeys].count == 0) {
 		_flightNumber = @"";
@@ -43,7 +40,7 @@
 			 @"airline":_airline,
 			 @"arrivalTime":_arrivalTime,
 			 @"departureTime":_departureTime,
-			 @"price":_price};;
+			 @"price":_price};
 }
 
 -(NSString *)serializeToJSON {

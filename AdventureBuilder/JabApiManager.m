@@ -21,9 +21,6 @@
 
 -(id)initWithBaseURL:(NSURL *)url {
 	self = [super initWithBaseURL:url];
-	if(!self) {
-		return nil;
-	}
 	
 	self.requestSerializer = [AFJSONRequestSerializer serializer];
 	[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];

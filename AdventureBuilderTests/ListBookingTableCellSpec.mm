@@ -87,6 +87,18 @@ describe(@"ListBookingTableCell", ^{
 		subject.dateLabel.text should equal([NSString stringWithFormat:@"%@ - %@", [booking startDateStringForCell], [booking endDateStringForCell]]);
 		subject.priceLabel.text should equal([NSString stringWithFormat:@"$%.2f", [[booking totalPrice] floatValue]]);
 	});
+	
+	describe(@"detailIconPressed", ^{
+		beforeEach(^{
+			spy_on([JabUIFlowController sharedController]);
+		});
+		
+		it(@"should use the flow controller to transition forward when the detail icon is pressed", ^{
+			[subject detailIconPressed:nil];
+			[JabUIFlowController sharedController] should have_received(@selector(transitionForwardFromController:fromSender:));
+			//would like to test params, but not sure how to do it appropriately as in test context we aren't actually in a table view
+		});
+	});
 });
 
 SPEC_END

@@ -16,9 +16,6 @@
 //our api manager is a singleton, so we can hard-code the dependency in init
 -(instancetype)initWithApiManager:(JabApiManager *)jabApiManager {
 	self = [super init];
-	if(!self) {
-		return nil;
-	}
 	apiManager = jabApiManager;
 	_booking = [[Booking alloc] initWithDictionary:nil];
 	return self;

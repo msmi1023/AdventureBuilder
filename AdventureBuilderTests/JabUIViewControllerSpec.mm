@@ -146,6 +146,7 @@ describe(@"JabUIViewController", ^{
 		beforeEach(^{
 			spy_on([JabUIFlowController sharedController]);
 		});
+		
 		it(@"should use the flow controller to present the add booking workflow if we are on the ListBooking screen", ^{
 			subject = [[ListBookingViewController alloc] init];
 			spy_on(subject);
@@ -153,6 +154,20 @@ describe(@"JabUIViewController", ^{
 			[subject nextButtonPressed:nil];
 			[JabUIFlowController sharedController] should have_received(@selector(presentInitialViewControllerForStoryboardIdentifier:fromController:onWindow:)).with(@"AddBooking", subject, nil);
 		});
+		
+		it(@"should use the booking service to create the booking before navigating back if we are on the ReviewBooking screen", ^{
+			subject = [[ReviewBookingDetailsViewController alloc] init];
+			((ReviewBookingDetailsViewController *)subject).bookingService = [JabUIFlowController sharedController].bookingServiceInstance;
+			
+			spy_on(subject);
+			spy_on(((ReviewBookingDetailsViewController *)subject).bookingService);
+			((ReviewBookingDetailsViewController *)subject).bookingService stub_method(@selector(createBookingWithCompletionBlock:));
+			
+			[subject nextButtonPressed:nil];
+			((ReviewBookingDetailsViewController *)subject).bookingService should have_received(@selector(createBookingWithCompletionBlock:));
+			[JabUIFlowController sharedController] should have_received(@selector(transitionForwardFromController:)).with(subject);
+		});
+		
 		it(@"should use the flow controller to navigate forward for other controllers", ^{
 			[subject nextButtonPressed:nil];
 			[JabUIFlowController sharedController] should have_received(@selector(transitionForwardFromController:)).with(subject);

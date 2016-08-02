@@ -140,21 +140,30 @@ describe(@"SelectReturningFlightViewController", ^{
 		});
 		
 		describe(@"tableView:cellForRowAtIndexPath", ^{
-			it(@"should return a create a ListFlightTableCell with the appropriate flight object provided", ^{
+			beforeEach(^{
 				vc.tableView = [[UITableView alloc] init];
 				spy_on(vc.tableView);
 				vc.tableView stub_method(@selector(dequeueReusableCellWithIdentifier:))
 				.and_do_block(^(NSString *identifier){
 					return [[ListFlightTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 				});
-				
-				UITableViewCell *resultCell = resultCell = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+			});
+			
+			it(@"should return a create a ListFlightTableCell with the appropriate flight object provided", ^{
+				UITableViewCell *resultCell = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 				
 				[resultCell isKindOfClass:[ListFlightTableCell class]] should be_truthy;
 				((ListFlightTableCell *)resultCell).flight should equal(flights[0]);
 			});
+			
+			it(@"should stripe the cell backgrounds based on indexPath", ^{
+				UITableViewCell *resultCell1 = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+				UITableViewCell *resultCell2 = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+				
+				resultCell1.backgroundColor should equal([UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]);
+				resultCell2.backgroundColor should equal([UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]);
+			});
 		});
-		
 		describe(@"table view delegate - heightForRowAtIndexPath", ^{
 			__block CGFloat result;
 			

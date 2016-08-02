@@ -45,9 +45,7 @@
 	}
 	else {
 		if([self isKindOfClass:[ReviewBookingDetailsViewController class]]) {
-			[((ReviewBookingDetailsViewController *) self).bookingService createBookingWithCompletionBlock:^(id response){
-				
-			}];
+			[((ReviewBookingDetailsViewController *) self).bookingService createBookingWithCompletionBlock:nil];
 		}
 		
 		[[JabUIFlowController sharedController] transitionForwardFromController:self];

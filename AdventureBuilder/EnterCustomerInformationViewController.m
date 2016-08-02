@@ -20,11 +20,6 @@
 	_phone.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)textFieldDidEndEditing:(UITextField *)textField {
 	if(textField == _emailAddress) {
 		_bookingService.booking.customer.emailAddress = _emailAddress.text;

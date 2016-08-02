@@ -17,6 +17,13 @@ describe(@"Customer", ^{
 		subject should_not be_nil;
 	});
 	
+	it(@"should call initWithDictionary when init is called", ^{
+		spy_on(subject);
+		
+		[subject init];
+		subject should have_received(@selector(initWithDictionary:)).with(nil);
+	});
+	
 	it(@"should respond to the initWithDictionary selector", ^{
 		[subject respondsToSelector:@selector(initWithDictionary:)] should be_truthy;
 	});

@@ -107,9 +107,43 @@ describe(@"ListBookingViewController", ^{
 																  @"endDate":@"Sep-11-2016",
 																  @"updateTime":@"2016-07-13 13:53:38.609"
 																  }];
+		Booking *booking2 = [[Booking alloc] initWithDictionary:@{
+																  @"uuid":@"1",
+																  @"confirmationNumber":@78531998,
+																  @"note":@"Hawaii vacation",
+																  @"customer": @{
+																		  @"emailAddress":@"wasadm01@ford.com",
+																		  @"firstName":@"Unit",
+																		  @"lastName":@"Test",
+																		  @"phone":@"313-0000000"
+																		  },
+																  @"adventure": @{
+																		  @"type":@"Island",
+																		  @"name":@"Maui Survival",
+																		  @"dailyPrice":@165,
+																		  @"activities":@[@"Helicopter Ride",@"Snorkeling",@"Surfing"]
+																		  },
+																  @"departingFlight": @{
+																		  @"flightNumber":@"NK211",
+																		  @"airline":@"",
+																		  @"arrivalTime":@"",
+																		  @"departureTime":@"",
+																		  @"price":@389.7
+																		  },
+																  @"returningFlight": @{
+																		  @"flightNumber":@"NK701",
+																		  @"airline":@"",
+																		  @"arrivalTime":@"",
+																		  @"departureTime":@"",
+																		  @"price":@289.7
+																		  },
+																  @"startDate":@"Aug-12-2016",
+																  @"endDate":@"Sep-11-2016",
+																  @"updateTime":@"2016-07-13 13:53:38.609"
+																  }];
 		
 		beforeEach(^{
-			vc.bookingList = @[booking1];
+			vc.bookingList = @[booking1, booking2];
 			vc.tableView = [[UITableView alloc] init];
 			spy_on(vc.tableView);
 			vc.tableView stub_method(@selector(dequeueReusableCellWithIdentifier:))
@@ -123,6 +157,14 @@ describe(@"ListBookingViewController", ^{
 		it(@"should create a ListBookingTableCell with the appropriate booking object provided", ^{
 			[resultCell isKindOfClass:[ListBookingTableCell class]] should be_truthy;
 			((ListBookingTableCell *)resultCell).booking should equal(booking1);
+		});
+		
+		it(@"should stripe the cell backgrounds based on indexPath", ^{
+			UITableViewCell *resultCell1 = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+			UITableViewCell *resultCell2 = [vc tableView:vc.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+			
+			resultCell1.backgroundColor should equal([UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]);
+			resultCell2.backgroundColor should equal([UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]);
 		});
 	});
 	

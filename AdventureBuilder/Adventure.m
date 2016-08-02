@@ -16,9 +16,6 @@
 
 -(id)initWithDictionary:(NSDictionary *)jsonAdventure {
 	self = [super init];
-	if(!self) {
-		return nil;
-	}
 	
 	if(jsonAdventure == nil || [jsonAdventure allKeys].count == 0) {
 		_type = @"";

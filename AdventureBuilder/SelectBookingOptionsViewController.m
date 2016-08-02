@@ -12,10 +12,6 @@
 	NSArray *maxFlightPrices;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
@@ -33,11 +29,6 @@
 		//on load we default to 0,0 selection. kick off our didSelect calls
 		[self pickerView:_maxFlightPrice didSelectRow:0 inComponent:0];
 	}];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)startDateSelected:(id)sender {

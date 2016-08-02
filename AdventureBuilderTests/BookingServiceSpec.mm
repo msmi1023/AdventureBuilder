@@ -14,7 +14,6 @@ describe(@"BookingService", ^{
 	//doing it this way gives us access to the success and failure callbacks, so we can test them appropriately.
 	//unfortunately the GET call takes lots of params, so we have to prep the stub with the appropriate types (including these block typedefs)
 	typedef void (^downloadProgress)(NSProgress * _Nonnull);
-	typedef void (^bodyBlock)(id<AFMultipartFormData> _Nonnull __strong);
 	typedef void (^successHandler)(NSURLSessionDataTask * _Nonnull, id _Nullable);
 	typedef void (^errorHandler)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull);
 	
@@ -47,7 +46,7 @@ describe(@"BookingService", ^{
 		
 		it(@"should call the api manager's GET selector when getBookings is called", ^{
 			[subject getBookingsWithCompletionBlock:^(id response){}];
-			apiManager should have_received(@selector(GET:parameters:progress:success:failure:));
+			apiManager should have_received(@selector(GET:parameters:progress:success:failure:)).with(@"bookings", Arguments::anything, Arguments::anything, Arguments::anything, Arguments::anything);
 		});
 		
 		context(@"when the service returns data", ^{
@@ -115,6 +114,35 @@ describe(@"BookingService", ^{
 				localError = failure;
 				return nil;
 			});
+			
+			subject.booking = [[Booking alloc] initWithDictionary:@{
+																	@"uuid":@"1",
+																	@"confirmationNumber":@78531998,
+																	@"note":@"Hawaii vacation",
+																	@"customer": @{
+																			@"emailAddress":@"wasadm01@ford.com",
+																			@"firstName":@"Unit",
+																			@"lastName":@"Test",
+																			@"phone":@"313-0000000"
+																			},
+																	@"adventure": @{
+																			@"type":@"Island",
+																			@"name":@"Maui Survival",
+																			@"dailyPrice":@165,
+																			@"activities":@[@"Helicopter Ride",@"Snorkeling",@"Surfing"]
+																			},
+																	@"departingFlight": @{
+																			@"flightNumber":@"NK211",
+																			@"price":@389.7
+																			},
+																	@"returningFlight": @{
+																			@"flightNumber":@"NK701",
+																			@"price":@289.7
+																			},
+																	@"startDate":@"Aug-12-2016",
+																	@"endDate":@"Sep-11-2016",
+																	@"updateTime":@"2016-07-13 13:53:38.609"
+																	}];
 		});
 	
 		it(@"should have a property to hold an in-progress booking", ^{
@@ -125,15 +153,59 @@ describe(@"BookingService", ^{
 			[subject respondsToSelector:@selector(createBookingWithCompletionBlock:)] should be_truthy;
 		});
 		
-		/*describe(@"createBookingWithCompletionBlock", ^{
+		describe(@"createBookingWithCompletionBlock", ^{
 			it(@"should call the api manager's POST selector when createBooking is called", ^{
 				[subject createBookingWithCompletionBlock:^(id response){}];
-				apiManager should have_received(@selector(POST:parameters:progress:success:failure:));
+				apiManager should have_received(@selector(POST:parameters:progress:success:failure:)).with(@"bookings", [subject.booking getDictionaryRepresentationForAction:@"create"], Arguments::anything, Arguments::anything, Arguments::anything);
 			});
-		});*/
-	
+		});
+		
+		context(@"when the service returns successfully", ^{
+			__block NSArray *testData = nil;
+			
+			beforeEach(^{
+				__block completion_t localComplete = ^(id response) {
+					//do something with success here. doesn't matter what (we're overriding the prod callback with our own for testing), just do something to show it's called.
+					testData = response;
+				};
+				
+				[subject createBookingWithCompletionBlock:localComplete];
+				
+				localSuccess should_not be_nil;
+			});
+			
+			it(@"should call the success callback with the response", ^{
+				__block NSDictionary *sampleResponse = @{@"code": @"201"};
+				
+				localSuccess(nil, sampleResponse);
+				
+				testData should equal(sampleResponse);
+			});
+		});
+		
+		context(@"when the service returns an error", ^{
+			__block NSError *testError = nil;
+			
+			beforeEach(^{
+				__block completion_t localComplete = ^(id response) {
+					//do something with success here. doesn't matter what (we're overriding the prod callback with our own for testing), just do something to show it's called.
+					testError = response;
+				};
+				
+				[subject createBookingWithCompletionBlock:localComplete];
+				
+				localError should_not be_nil;
+			});
+			
+			it(@"should call the error callback with the error", ^{
+				__block NSError *sampleError = [NSError errorWithDomain:@"testing" code:000 userInfo:nil];
+				
+				localError(nil, sampleError);
+				
+				testError should equal(sampleError);
+			});
+		});
 	});
-	
 });
 
 SPEC_END
