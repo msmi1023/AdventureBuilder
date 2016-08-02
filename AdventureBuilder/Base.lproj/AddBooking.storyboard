@@ -179,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LTc-jp-KqG">
-                                <rect key="frame" x="0.0" y="104" width="600" height="100"/>
+                                <rect key="frame" x="140" y="61" width="321" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="09s-TA-tdl"/>
                                 </constraints>
@@ -191,19 +191,23 @@
                                 </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLk-f3-kyG">
-                                <rect key="frame" x="0.0" y="354" width="600" height="100"/>
+                                <rect key="frame" x="140" y="343" width="321" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="pLo-js-2gC"/>
                                 </constraints>
                             </pickerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rpj-TJ-jSj">
-                                <rect key="frame" x="0.0" y="479" width="600" height="100"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rpj-TJ-jSj">
+                                <rect key="frame" x="140" y="457" width="321" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Ghs-M2-A5f"/>
+                                    <constraint firstAttribute="width" constant="321" id="Q33-rI-kJD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aOM-Kx-wBn">
-                                <rect key="frame" x="0.0" y="229" width="600" height="100"/>
+                                <rect key="frame" x="140" y="202" width="321" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="iKS-mk-Ikx"/>
                                 </constraints>
@@ -214,18 +218,52 @@
                                     <action selector="endDateSelected:" destination="mu4-jV-Gwa" eventType="valueChanged" id="czS-Lp-VVz"/>
                                 </connections>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMT-oy-Dlf">
+                                <rect key="frame" x="20" y="35" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L73-9A-XNE">
+                                <rect key="frame" x="20" y="176" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Flight Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-gM-ucY">
+                                <rect key="frame" x="20" y="317" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LTc-jp-KqG" firstAttribute="top" secondItem="oMT-oy-Dlf" secondAttribute="bottom" constant="5" id="3Dk-dM-CeI"/>
                             <constraint firstItem="LTc-jp-KqG" firstAttribute="centerX" secondItem="SdB-dd-GFp" secondAttribute="centerX" id="5Jf-5b-TwT"/>
+                            <constraint firstItem="oMT-oy-Dlf" firstAttribute="top" secondItem="ach-qe-d7A" secondAttribute="bottom" constant="15" id="7AF-pc-lga"/>
                             <constraint firstItem="aOM-Kx-wBn" firstAttribute="top" secondItem="LTc-jp-KqG" secondAttribute="bottom" constant="25" id="Nv0-Tu-3gl"/>
+                            <constraint firstItem="L73-9A-XNE" firstAttribute="top" secondItem="LTc-jp-KqG" secondAttribute="bottom" constant="15" id="O17-Uw-dUl"/>
+                            <constraint firstItem="8eg-gM-ucY" firstAttribute="leading" secondItem="SdB-dd-GFp" secondAttribute="leadingMargin" id="OBU-e9-KjA"/>
                             <constraint firstItem="LTc-jp-KqG" firstAttribute="top" secondItem="ach-qe-d7A" secondAttribute="bottom" constant="40" id="QKr-gv-ald"/>
                             <constraint firstItem="aOM-Kx-wBn" firstAttribute="centerX" secondItem="SdB-dd-GFp" secondAttribute="centerX" id="SPW-lg-tta"/>
+                            <constraint firstItem="8eg-gM-ucY" firstAttribute="top" secondItem="aOM-Kx-wBn" secondAttribute="bottom" constant="15" id="WO2-jW-jeG"/>
                             <constraint firstItem="KLk-f3-kyG" firstAttribute="centerX" secondItem="SdB-dd-GFp" secondAttribute="centerX" id="b6a-Sv-1NF"/>
+                            <constraint firstItem="KLk-f3-kyG" firstAttribute="top" secondItem="8eg-gM-ucY" secondAttribute="bottom" constant="5" id="bGh-1N-rP4"/>
                             <constraint firstItem="Rpj-TJ-jSj" firstAttribute="centerX" secondItem="SdB-dd-GFp" secondAttribute="centerX" id="hWV-8y-O3L"/>
-                            <constraint firstItem="Rpj-TJ-jSj" firstAttribute="top" secondItem="KLk-f3-kyG" secondAttribute="bottom" constant="25" id="iT1-p6-57p"/>
+                            <constraint firstItem="Rpj-TJ-jSj" firstAttribute="top" secondItem="KLk-f3-kyG" secondAttribute="bottom" constant="15" id="iT1-p6-57p"/>
+                            <constraint firstItem="aOM-Kx-wBn" firstAttribute="top" secondItem="L73-9A-XNE" secondAttribute="bottom" constant="5" id="oYB-KO-vb8"/>
+                            <constraint firstItem="oMT-oy-Dlf" firstAttribute="leading" secondItem="SdB-dd-GFp" secondAttribute="leadingMargin" id="pAJ-7G-Jup"/>
                             <constraint firstItem="KLk-f3-kyG" firstAttribute="top" secondItem="aOM-Kx-wBn" secondAttribute="bottom" constant="25" id="s6C-mh-uM4"/>
+                            <constraint firstItem="L73-9A-XNE" firstAttribute="leading" secondItem="SdB-dd-GFp" secondAttribute="leadingMargin" id="zcV-FG-6o8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QKr-gv-ald"/>
+                                <exclude reference="Nv0-Tu-3gl"/>
+                                <exclude reference="s6C-mh-uM4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Select Booking Options" id="duy-e8-28D" userLabel="Select Booking Options">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="OrF-zD-tsp">

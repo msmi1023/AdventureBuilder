@@ -59,11 +59,17 @@ describe(@"SelectBookingOptionsViewController", ^{
 		[vc respondsToSelector:@selector(pickerView:didSelectRow:inComponent:)] should be_truthy;
 	});
 	
-	it(@"should have set itself as delegate and data source for the picker in the viewDidLoad", ^{
+	it(@"should implement the necessary ui text view delegate selectors", ^{
+		[vc respondsToSelector:@selector(textViewDidBeginEditing:)] should be_truthy;
+		[vc respondsToSelector:@selector(textViewDidEndEditing:)] should be_truthy;
+	});
+	
+	it(@"should have set itself as delegate and data source for the picker and as delegate for the text view in the viewDidAppear", ^{
 		[vc viewWillAppear:NO];
 		
 		vc.maxFlightPrice.delegate should equal(vc);
 		vc.maxFlightPrice.dataSource should equal(vc);
+		vc.notes.delegate should equal(vc);
 	});
 	
 	describe(@"viewWillAppear", ^{
@@ -79,6 +85,15 @@ describe(@"SelectBookingOptionsViewController", ^{
 			.and_do_block(^(completion_t block){
 				localCallback = block;
 			});
+		});
+		
+		it(@"should configure the text view", ^{
+			[vc viewWillAppear:NO];
+			
+			vc.notes.text should equal(@"Enter notes here...");
+			vc.notes.textColor should equal([UIColor lightGrayColor]);
+			vc.notes.layer.borderColor should equal([[UIColor grayColor] CGColor]);
+			vc.notes.layer.cornerRadius should equal(5);
 		});
 		
 		it(@"should retrieve maxFlightPrices from the flight service inside of viewWillAppear", ^{
@@ -131,6 +146,53 @@ describe(@"SelectBookingOptionsViewController", ^{
 			[vc pickerView:nil didSelectRow:1 inComponent:0];
 			
 			vc.flightService.maxFlightPrice should equal(@"2");
+		});
+	});
+	
+	describe(@"textViewDidBeginEditing", ^{
+		it(@"should remove placeholder text and placeholder styling when editing begins", ^{
+			vc.notes.text = @"Enter notes here...";
+			
+			[vc textViewDidBeginEditing:vc.notes];
+			
+			vc.notes.text should equal(@"");
+			vc.notes.textColor should equal([UIColor blackColor]);
+		});
+		
+		it(@"should become first responder in the call", ^{
+			spy_on(vc.notes);
+			[vc textViewDidBeginEditing:vc.notes];
+			
+			vc.notes should have_received(@selector(becomeFirstResponder));
+		});
+	});
+	
+	describe(@"textViewDidEndEditing", ^{
+		beforeEach(^{
+			spy_on(vc.notes);
+		});
+		
+		it(@"should set the typed text on the booking service's booking object", ^{
+			vc.notes.text = @"some notes here";
+			[vc textViewDidEndEditing:vc.notes];
+			
+			vc.bookingService.booking.note should equal(vc.notes.text);
+		});
+		
+		it(@"should reset placeholder text and styling when editing ends, if necessary", ^{
+			vc.notes.text = @"";
+			
+			[vc textViewDidEndEditing:vc.notes];
+			
+			vc.notes.text should equal(@"Enter notes here...");
+			vc.notes.textColor should equal([UIColor lightGrayColor]);
+		});
+		
+		it(@"should resign first responder in the call", ^{
+			spy_on(vc.notes);
+			[vc textViewDidEndEditing:vc.notes];
+			
+			vc.notes should have_received(@selector(resignFirstResponder));
 		});
 	});
 	
