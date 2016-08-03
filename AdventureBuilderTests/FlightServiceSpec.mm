@@ -79,6 +79,28 @@ describe(@"FlightService", ^{
 			});
 		});
 		
+		context(@"when the service returns data and a max flight price was set", ^{
+			__block NSArray *testData = nil;
+			
+			beforeEach(^{
+				__block completion_t localComplete = ^(id response) {
+					//do something with success here. doesn't matter what (we're overriding the prod callback with our own for testing), just do something to show it's called.
+					testData = response;
+				};
+				
+				subject.maxFlightPrice = @"400";
+				
+				[subject getFlightsOfType:@"type" withCompletionBlock:localComplete];
+				
+				localSuccess should_not be_nil;
+			});
+			
+			it(@"should call the success callback with the data processed as a filtered flights array", ^{
+				localSuccess(nil, @[@{@"flightNumber": @"A1", @"price": @200}, @{@"flightNumber": @"A2", @"price": @500}]);
+				testData.count should equal(1);
+			});
+		});
+		
 		context(@"when the service returns an error", ^{
 			__block NSError *testError = nil;
 			

@@ -17,6 +17,7 @@
 -(instancetype)initWithApiManager:(JabApiManager *)jabApiManager {
 	self = [super init];
 	apiManager = jabApiManager;
+	_maxFlightPrice = @"";
 	return self;
 }
 
@@ -32,9 +33,21 @@
 	[apiManager GET:endpoint parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
 		NSMutableArray *toReturn = [[NSMutableArray alloc] init];
 		
-		//create array of booking objects
-		for(NSDictionary *jsonFlight in responseObject) {
-			[toReturn addObject:[[Flight alloc] initWithDictionary:jsonFlight]];
+		if(![_maxFlightPrice isEqualToString:@""]) {
+			float max = [_maxFlightPrice floatValue];
+			
+			//create array of flight objects
+			for(NSDictionary *jsonFlight in responseObject) {
+				if([((NSNumber *)jsonFlight[@"price"]) floatValue] <= max) {
+					[toReturn addObject:[[Flight alloc] initWithDictionary:jsonFlight]];
+				}
+			}
+		}
+		else {
+			//create array of flight objects
+			for(NSDictionary *jsonFlight in responseObject) {
+				[toReturn addObject:[[Flight alloc] initWithDictionary:jsonFlight]];
+			}
 		}
 		
 		completionBlock([toReturn copy]);
