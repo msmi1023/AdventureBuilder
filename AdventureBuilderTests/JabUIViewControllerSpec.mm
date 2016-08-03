@@ -17,6 +17,10 @@ using namespace Cedar::Doubles;
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)nextButtonPressed:(id)sender;
 
+-(BOOL)testField:(UITextField *)field withPredicate:(NSPredicate *)test;
+- (void)markValidationFailure:(UITextField *)field;
+- (void)markValidationSuccess:(UITextField *)field;
+
 @end
 
 SPEC_BEGIN(JabUIViewControllerSpec)
@@ -212,6 +216,100 @@ describe(@"JabUIViewController", ^{
 		it(@"should use the flow controller to navigate forward for other controllers", ^{
 			[subject nextButtonPressed:nil];
 			[JabUIFlowController sharedController] should have_received(@selector(transitionForwardFromController:)).with(subject);
+		});
+	});
+	
+	describe(@"phoneValidation: and emailValidation:", ^{
+		it(@"should provide phone number and email input validation", ^{
+			[subject respondsToSelector:@selector(phoneValidation:)] should be_truthy;
+			[subject respondsToSelector:@selector(emailValidation:)] should be_truthy;
+		});
+		
+		it(@"should return false when given a field with invalid phone numbers", ^{
+			UITextField *field = [[UITextField alloc] init];
+			
+			field.text = @"";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"asdf";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"aaa.aaa.aaaa";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"aaa-aaa-aaaa";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"111.111.1111";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"111-111-11111";
+			[subject phoneValidation:field] should be_falsy;
+		});
+		
+		it(@"should return false when given a field with invalid email addresses", ^{
+			UITextField *field = [[UITextField alloc] init];
+			
+			field.text = @"";
+			[subject emailValidation:field] should be_falsy;
+			
+			field.text = @"asdf";
+			[subject emailValidation:field] should be_falsy;
+			
+			field.text = @"asdf@asdf";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"asdf.asdf";
+			[subject phoneValidation:field] should be_falsy;
+			
+			field.text = @"asdf@asdf.asdf";
+			[subject phoneValidation:field] should be_falsy;
+		});
+		
+		it(@"should return true when given a field with valid phone number or email address", ^{
+			UITextField *field = [[UITextField alloc] init];
+			
+			field.text = @"111-222-3333";
+			[subject phoneValidation:field] should be_truthy;
+		
+			field.text = @"test@test.com";
+			[subject emailValidation:field] should be_truthy;
+		});
+	});
+	
+	describe(@"testField:withPredicate:", ^{
+		it(@"should evaluate the text in the field against the given predicate", ^{
+			NSPredicate *pred = nice_fake_for([NSPredicate class]);
+			UITextField *field = [[UITextField alloc] init];
+			field.text = @"";
+			
+			[subject testField:field withPredicate:pred];
+			
+			pred should have_received(@selector(evaluateWithObject:)).with(field.text);
+		});
+		
+		it(@"should call markValidationSuccess and return true if the predicate test passes", ^{
+			NSPredicate *pred = nice_fake_for([NSPredicate class]);
+			pred stub_method(@selector(evaluateWithObject:)).and_return(YES);
+			UITextField *field = [[UITextField alloc] init];
+			field.text = @"";
+			
+			spy_on(subject);
+			
+			[subject testField:field withPredicate:pred] should be_truthy;
+			subject should have_received(@selector(markValidationSuccess:));
+		});
+		
+		it(@"should call markValidationFailure and return false if the predicate test fails", ^{
+			NSPredicate *pred = nice_fake_for([NSPredicate class]);
+			pred stub_method(@selector(evaluateWithObject:)).and_return(NO);
+			UITextField *field = [[UITextField alloc] init];
+			field.text = @"";
+			
+			spy_on(subject);
+			
+			[subject testField:field withPredicate:pred] should be_falsy;
+			subject should have_received(@selector(markValidationFailure:));
 		});
 	});
 });

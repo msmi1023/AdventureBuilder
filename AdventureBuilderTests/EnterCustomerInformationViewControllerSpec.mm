@@ -103,13 +103,15 @@ describe(@"EnterCustomerInformationViewController", ^{
 			[vc respondsToSelector:@selector(textFieldValueChanged:)] should be_truthy;
 		});
 		
-		it(@"should set the right bar button item enabled if all the text fields have data entered", ^{
-			vc.emailAddress.text = @"test";
+		it(@"should set the right bar button item enabled if all the text fields have valid data entered", ^{
+			//call these the way the user interaction would, setting the internal vars
+			vc.emailAddress.text = @"test@test.com";
+			[vc textFieldValueChanged:vc.emailAddress];
 			vc.firstName.text = @"test";
 			vc.lastName.text = @"test";
-			vc.phone.text = @"test";
+			vc.phone.text = @"111-222-3333";
+			[vc textFieldValueChanged:vc.phone];
 			
-			[vc textFieldValueChanged:nil];
 			vc.navigationItem.rightBarButtonItem.enabled should be_truthy;
 		});
 		

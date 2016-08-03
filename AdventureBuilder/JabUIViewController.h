@@ -12,5 +12,7 @@
 @interface JabUIViewController : UIViewController
 
 -(void)viewWillAppear:(BOOL)animated;
+-(BOOL)phoneValidation:(id)sender;
+-(BOOL)emailValidation:(id)sender;
 
 @end

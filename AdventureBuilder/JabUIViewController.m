@@ -63,4 +63,43 @@
 	}
 }
 
+- (BOOL)phoneValidation:(id)sender {
+	NSString *regex = @"[0-9]{3}+[-][0-9]{3}+[-][0-9]{4}|[0-9]{10}";
+	NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+	
+	return [self testField:((UITextField *)sender) withPredicate:test];
+}
+
+- (BOOL)emailValidation:(id)sender {
+	NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+	NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+	
+	return [self testField:((UITextField *)sender) withPredicate:test];
+}
+
+-(BOOL)testField:(UITextField *)field withPredicate:(NSPredicate *)test {
+	if([test evaluateWithObject:field.text]){
+		[self markValidationSuccess:field];
+		return YES;
+	}
+	else {
+		[self markValidationFailure:field];
+		return NO;
+	}
+}
+
+- (void)markValidationFailure:(UITextField *)field {
+	field.layer.borderWidth = 1.0f;
+	field.layer.borderColor = [[UIColor redColor] CGColor];
+	field.layer.cornerRadius = 5;
+	field.clipsToBounds = YES;
+}
+
+- (void)markValidationSuccess:(UITextField *)field {
+	field.layer.borderWidth = 1.0f;
+	field.layer.borderColor = [[UIColor clearColor] CGColor];
+	field.layer.cornerRadius = 5;
+	field.clipsToBounds = YES;
+}
+
 @end

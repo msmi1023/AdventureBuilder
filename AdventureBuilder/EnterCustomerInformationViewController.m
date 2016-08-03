@@ -8,7 +8,9 @@
 
 #import "EnterCustomerInformationViewController.h"
 
-@implementation EnterCustomerInformationViewController
+@implementation EnterCustomerInformationViewController {
+	BOOL emailValid, phoneValid;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -18,6 +20,9 @@
 	_firstName.delegate = self;
 	_lastName.delegate = self;
 	_phone.delegate = self;
+	
+	emailValid = NO;
+	phoneValid = NO;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
@@ -36,8 +41,16 @@
 }
 
 -(IBAction)textFieldValueChanged:(id)sender {
-	if(![_emailAddress.text isEqualToString:@""] && ![_firstName.text isEqualToString:@""] &&
-	   ![_lastName.text isEqualToString:@""] && ![_phone.text isEqualToString:@""]) {
+	//can't run these directly in the if statement - they will be short-circuited
+	if(sender == _emailAddress) {
+		emailValid = [super emailValidation:_emailAddress];
+	}
+	else if(sender == _phone) {
+		phoneValid = [super phoneValidation:_phone];
+	}
+	
+	if(emailValid && ![_firstName.text isEqualToString:@""] &&
+	   ![_lastName.text isEqualToString:@""] && phoneValid) {
 		self.navigationItem.rightBarButtonItem.enabled = YES;
 	}
 	else {
