@@ -2,9 +2,7 @@
 //  FlightService.h
 //  AdventureBuilder
 //
-//  Created by tstone10 on 7/28/16.
-//  Copyright © 2016 DetroitLabs. All rights reserved.
-//
+//  Created by msmi1023 on 7/28/16.
 
 #import <Foundation/Foundation.h>
 #import "JabApiManager.h"

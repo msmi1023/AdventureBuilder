@@ -10,7 +10,7 @@ describe(@"BookingService", ^{
     __block BookingService *subject;
 	__block JabApiManager *apiManager;
 	
-	//all of this business (16 thru 33) is setting up a mock for the AFNetworking GET call.
+	//all of this business (16 thru 41) is setting up a mock for the AFNetworking GET call.
 	//doing it this way gives us access to the success and failure callbacks, so we can test them appropriately.
 	//unfortunately the GET call takes lots of params, so we have to prep the stub with the appropriate types (including these block typedefs)
 	typedef void (^downloadProgress)(NSProgress * _Nonnull);
@@ -75,8 +75,6 @@ describe(@"BookingService", ^{
 					//make sure the id is of type booking first. then typecast for the property check
 					((Booking *)testData[i]).confirmationNumber should equal(((Booking *)sampleReturn[i]).confirmationNumber);
 				}
-				
-				//testData should equal(sampleReturn);
 			});
 		});
 		

@@ -2,9 +2,7 @@
 //  JabApiManager.m
 //  AdventureBuilder
 //
-//  Created by tstone10 on 7/18/16.
-//  Copyright © 2016 DetroitLabs. All rights reserved.
-//
+//  Created by msmi1023 on 7/18/16.
 
 
 //implementation example from http://stackoverflow.com/questions/12440059/using-afnetworking-and-http-basic-authentication
@@ -13,11 +11,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 @implementation JabApiManager
-
-/*-(void)setUsername:(NSString *)username andPassword:(NSString *)password {
-	[self.requestSerializer clearAuthorizationHeader];
-	[self.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
-}*/
 
 -(id)initWithBaseURL:(NSURL *)url {
 	self = [super initWithBaseURL:url];
@@ -34,12 +27,9 @@
 	static JabApiManager *sharedManager = nil;
 	dispatch_once(&pred, ^{
 		sharedManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:9500/api"]];
-		//[_sharedManager setUsername:@"wasadm01" andPassword:@"wasadm01"];
 	});
 	
 	return sharedManager;
 }
-
-
 
 @end

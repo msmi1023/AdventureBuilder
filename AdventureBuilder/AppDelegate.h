@@ -2,9 +2,7 @@
 //  AppDelegate.h
 //  AdventureBuilder
 //
-//  Created by tstone10 on 7/11/16.
-//  Copyright © 2016 DetroitLabs. All rights reserved.
-//
+//  Created by msmi1023 on 7/11/16.
 
 #import <UIKit/UIKit.h>
 

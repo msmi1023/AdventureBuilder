@@ -43,7 +43,6 @@ describe(@"Customer", ^{
 			subject.firstName should equal(@"");
 			subject.lastName should equal(@"");
 			subject.phone should equal(@"");
-
 		});
 		
 		it(@"should create a new Customer object with the passed in dictionary values", ^{

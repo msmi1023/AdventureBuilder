@@ -10,9 +10,6 @@ describe(@"AdventureService", ^{
 	__block AdventureService *subject;
 	__block JabApiManager *apiManager;
 	
-	//all of this business (16 thru 33) is setting up a mock for the AFNetworking GET call.
-	//doing it this way gives us access to the success and failure callbacks, so we can test them appropriately.
-	//unfortunately the GET call takes lots of params, so we have to prep the stub with the appropriate types (including these block typedefs)
 	typedef void (^downloadProgress)(NSProgress * _Nonnull);
 	typedef void (^successHandler)(NSURLSessionDataTask * _Nonnull, id _Nullable);
 	typedef void (^errorHandler)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull);
@@ -74,8 +71,6 @@ describe(@"AdventureService", ^{
 					[testData[i] isKindOfClass:[Adventure class]] should be_truthy;
 					((Adventure *)testData[i]).type should equal(((Adventure *)sampleReturn[i]).type);
 				}
-				
-				//testData should equal(sampleReturn);
 			});
 		});
 		

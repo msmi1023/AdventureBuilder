@@ -29,8 +29,6 @@ describe(@"ListBookingViewController", ^{
 	__block ListBookingViewController *vc;
 
     beforeEach(^{
-		//UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-		//vc = (ListBookingViewController *)[[JabUIFlowController sharedController] presentInitialViewControllerForStoryboardIdentifier:@"Main" fromController:nil onWindow:window].childViewControllers.firstObject;
 		vc = [[JabUIFlowController sharedController] prepareControllerFromStoryboard:[JabUIFlowController sharedController].mainStoryboard withIdentifier:@"listBookingViewController"];
     });
 	
