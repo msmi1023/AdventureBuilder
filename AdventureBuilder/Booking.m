@@ -33,10 +33,6 @@
 	[timeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
 	[timeFormatter setTimeZone:gmt];
 	
-	if(!self) {
-		return nil;
-	}
-	
 	if(jsonBooking == nil || [jsonBooking allKeys].count == 0) {
 		_uuid = @"";
 		_confirmationNumber = nil;

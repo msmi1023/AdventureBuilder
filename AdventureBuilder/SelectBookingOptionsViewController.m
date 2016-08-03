@@ -20,6 +20,8 @@
 	
 	_startDate.date = [[NSDate alloc] init];
 	_endDate.date = [[NSDate alloc] init];
+	[self startDateSelected:nil];
+	[self endDateSelected:nil];
 	
 	_notes.delegate = self;
 	_notes.text = @"Enter notes here...";

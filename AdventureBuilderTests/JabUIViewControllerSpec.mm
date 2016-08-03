@@ -3,6 +3,10 @@
 
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
+#import "SelectAdventureViewController.h"
+#import "SelectBookingOptionsViewController.h"
+#import "SelectDepartingFlightViewController.h"
+#import "SelectReturningFlightViewController.h"
 #import "ReviewBookingDetailsViewController.h"
 
 using namespace Cedar::Matchers;
@@ -83,6 +87,41 @@ describe(@"JabUIViewController", ^{
 			subject.navigationItem.rightBarButtonItem.action should equal(@selector(nextButtonPressed:));
 		});
 		
+		it(@"should set the right bar button to disabled for enter customer information, select departing and select returning flights screens", ^{
+			subject = [[EnterCustomerInformationViewController alloc] init];
+			
+			//need to build a nested mock for the nav items we are dealing with
+			spy_on(subject);
+			
+			UIBarButtonItem *rightBarButtonFake = nice_fake_for([UIBarButtonItem class]);
+			UIBarButtonItem *leftBarButtonFake = nice_fake_for([UIBarButtonItem class]);
+			UINavigationItem *navItemFake = fake_for([UINavigationItem class]);
+			navItemFake stub_method(@selector(rightBarButtonItem)).and_return(rightBarButtonFake);
+			navItemFake stub_method(@selector(leftBarButtonItem)).and_return(leftBarButtonFake);
+			subject stub_method(@selector(navigationItem)).and_return(navItemFake);
+			
+			[subject viewWillAppear:YES];
+			subject.navigationItem.rightBarButtonItem.enabled should be_falsy;
+			
+			subject = [[SelectDepartingFlightViewController alloc] init];
+			
+			//need to build a nested mock for the nav items we are dealing with
+			spy_on(subject);
+			subject stub_method(@selector(navigationItem)).and_return(navItemFake);
+			
+			[subject viewWillAppear:YES];
+			subject.navigationItem.rightBarButtonItem.enabled should be_falsy;
+			
+			subject = [[SelectReturningFlightViewController alloc] init];
+			
+			//need to build a nested mock for the nav items we are dealing with
+			spy_on(subject);
+			subject stub_method(@selector(navigationItem)).and_return(navItemFake);
+			
+			[subject viewWillAppear:YES];
+			subject.navigationItem.rightBarButtonItem.enabled should be_falsy;
+		});
+		
 		it(@"should set the leftBarButtonItem with the appropriate target and action if the controller is an EnterCustomerInformationViewController", ^{
 			__block UIViewController *rightButtonTarget, *leftButtonTarget;
 			__block SEL rightButtonAction, leftButtonAction;
@@ -104,6 +143,8 @@ describe(@"JabUIViewController", ^{
 			rightBarButtonFake stub_method(@selector(action)).and_do_block(^{
 				return rightButtonAction;
 			});
+			rightBarButtonFake stub_method(@selector(setEnabled:));
+			rightBarButtonFake stub_method(@selector(isEnabled));
 			
 			UIBarButtonItem *leftBarButtonFake = fake_for([UIBarButtonItem class]);
 			leftBarButtonFake stub_method(@selector(setTarget:)).and_do_block(^(id target){

@@ -44,9 +44,13 @@
 
 -(void)createBookingWithCompletionBlock:(completion_t)completionBlock {
 	[apiManager POST:@"bookings" parameters:[_booking getDictionaryRepresentationForAction:@"create"] progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-		completionBlock(responseObject);
+		if(completionBlock) {
+			completionBlock(responseObject);
+		}
 	} failure:^(NSURLSessionTask *task, NSError *error) {
-		completionBlock(error);
+		if(completionBlock) {
+			completionBlock(error);
+		}
 	}];
 }
 

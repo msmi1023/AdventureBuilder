@@ -11,6 +11,10 @@
 //need these here for dependency logic. can't have in .h, causes circular deps
 #import "ListBookingViewController.h"
 #import "EnterCustomerInformationViewController.h"
+#import "SelectAdventureViewController.h"
+#import "SelectBookingOptionsViewController.h"
+#import "SelectDepartingFlightViewController.h"
+#import "SelectReturningFlightViewController.h"
 #import "ReviewBookingDetailsViewController.h"
 
 @implementation JabUIViewController
@@ -23,6 +27,13 @@
 		self.navigationItem.rightBarButtonItem = nil;
 	}
 	else {
+		//adventure and booking options select screens start with pre-selected values.
+		//no need to disable the button there.
+		//review booking screen doesn't require selections, so no need to disable there either.
+		if([self isKindOfClass:[EnterCustomerInformationViewController class]] || [self isKindOfClass:[SelectDepartingFlightViewController class]] ||
+		   [self isKindOfClass:[SelectReturningFlightViewController class]]) {
+			self.navigationItem.rightBarButtonItem.enabled = NO;
+		}
 		self.navigationItem.rightBarButtonItem.target = self;
 		self.navigationItem.rightBarButtonItem.action = @selector(nextButtonPressed:);
 	}

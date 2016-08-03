@@ -58,6 +58,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	_bookingService.booking.departingFlight = flights[indexPath.row];
+	
+	self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 @end

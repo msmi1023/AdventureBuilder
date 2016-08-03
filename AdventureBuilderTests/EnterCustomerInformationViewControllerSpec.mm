@@ -11,6 +11,7 @@ using namespace Cedar::Doubles;
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 -(BOOL)textFieldShouldReturn:(UITextField *)textField;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
+-(IBAction)textFieldValueChanged:(id)sender;
 
 @end
 
@@ -94,6 +95,32 @@ describe(@"EnterCustomerInformationViewController", ^{
 			vc.phone.text = @"123-4567890";
 			[vc textFieldDidEndEditing:vc.phone];
 			vc.bookingService.booking.customer.phone should equal(vc.phone.text);
+		});
+	});
+	
+	describe(@"textFieldValueChanged:", ^{
+		it(@"should have an outlet action defined to catch when any text fields change", ^{
+			[vc respondsToSelector:@selector(textFieldValueChanged:)] should be_truthy;
+		});
+		
+		it(@"should set the right bar button item enabled if all the text fields have data entered", ^{
+			vc.emailAddress.text = @"test";
+			vc.firstName.text = @"test";
+			vc.lastName.text = @"test";
+			vc.phone.text = @"test";
+			
+			[vc textFieldValueChanged:nil];
+			vc.navigationItem.rightBarButtonItem.enabled should be_truthy;
+		});
+		
+		it(@"should set the right bar button item disabled if any of the text fields don't have data entered", ^{
+			vc.emailAddress.text = @"";
+			vc.firstName.text = @"";
+			vc.lastName.text = @"";
+			vc.phone.text = @"";
+			
+			[vc textFieldValueChanged:nil];
+			vc.navigationItem.rightBarButtonItem.enabled should be_falsy;
 		});
 	});
 });

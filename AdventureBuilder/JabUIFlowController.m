@@ -34,10 +34,6 @@
 -(instancetype)init {
 	self = [super init];
 	
-	if(!self) {
-		return nil;
-	}
-	
 	//first time setup - get instances we need and configure the window
 	_bookingServiceInstance = [[BookingService alloc] init];
 	_adventureServiceInstance = [[AdventureService alloc] init];

@@ -26,7 +26,7 @@ app.post('/api/bookings', function(req, res) {
 	var dateFormat = require('dateformat');
 	var now = new Date();
 	bookingList[bookingList.length-1].updateTime = dateFormat(now, "yyyy-MM-dd HH:mm:ss.SSS");
-	res.sendStatus(bookingList.length-1);
+	res.send({"confirmationNumber": bookingList.length-1});
 
 	console.log(bookingList);
 });

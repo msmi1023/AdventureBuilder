@@ -33,8 +33,16 @@
 	else if(textField == _phone) {
 		_bookingService.booking.customer.phone = _phone.text;
 	}
-	
-	//other fields don't matter right now
+}
+
+-(IBAction)textFieldValueChanged:(id)sender {
+	if(![_emailAddress.text isEqualToString:@""] && ![_firstName.text isEqualToString:@""] &&
+	   ![_lastName.text isEqualToString:@""] && ![_phone.text isEqualToString:@""]) {
+		self.navigationItem.rightBarButtonItem.enabled = YES;
+	}
+	else {
+		self.navigationItem.rightBarButtonItem.enabled = NO;
+	}
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

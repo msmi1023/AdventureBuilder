@@ -25,7 +25,10 @@
                                     <constraint firstAttribute="width" constant="240" id="t3q-10-1qy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="PK2-CM-Kbc"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Qp-ov-ePb">
                                 <rect key="frame" x="180" y="269" width="240" height="30"/>
@@ -35,6 +38,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <connections>
+                                    <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="aNZ-28-BiH"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-6B-eiG">
                                 <rect key="frame" x="180" y="159" width="240" height="30"/>
@@ -44,6 +50,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="ZEF-y3-9tS"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3t-Vs-efP">
                                 <rect key="frame" x="180" y="214" width="240" height="30"/>
@@ -53,6 +62,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="Rrh-d1-cZH"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -284,7 +296,7 @@
         <!--Select Departing Flight-->
         <scene sceneID="Ope-QK-hTu">
             <objects>
-                <viewController storyboardIdentifier="SelectDepartingFlight" id="lTa-3m-EAA" userLabel="Select Departing Flight" customClass="SelectDepartingFlightViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectDepartingFlight" automaticallyAdjustsScrollViewInsets="NO" id="lTa-3m-EAA" userLabel="Select Departing Flight" customClass="SelectDepartingFlightViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2VP-Xy-k0n"/>
                         <viewControllerLayoutGuide type="bottom" id="2oz-Rz-wX3"/>
@@ -328,7 +340,7 @@
         <!--Select Returning Flight-->
         <scene sceneID="F6x-gv-C49">
             <objects>
-                <viewController storyboardIdentifier="SelectReturningFlight" id="hDD-RD-qcs" userLabel="Select Returning Flight" customClass="SelectReturningFlightViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectReturningFlight" automaticallyAdjustsScrollViewInsets="NO" id="hDD-RD-qcs" userLabel="Select Returning Flight" customClass="SelectReturningFlightViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v21-uA-U3b"/>
                         <viewControllerLayoutGuide type="bottom" id="j7z-7p-BXk"/>
