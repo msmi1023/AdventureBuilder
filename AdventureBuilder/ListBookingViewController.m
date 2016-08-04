@@ -13,12 +13,42 @@
 	[super viewDidLoad];
 	
 	[self.tableView registerNib:[UINib nibWithNibName:@"ListBookingTableCell" bundle:nil] forCellReuseIdentifier:@"ListBookingTableCell"];
+	
+	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+	[refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+	[self.tableView addSubview:refreshControl];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+	[self retrieveBookingData];
+	
+	[refreshControl endRefreshing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
 	[self retrieveBookingData];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	if(_bookingList.count) {
+		tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+		return 1;
+	}
+	else {
+		UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
+		
+		messageLabel.text = @"Booking data could not be retreived. Please pull down to attempt a refresh.";
+		messageLabel.numberOfLines = 0;
+		messageLabel.textAlignment = NSTextAlignmentCenter;
+		[messageLabel sizeToFit];
+		
+		tableView.backgroundView = messageLabel;
+		
+		tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+		return 0;
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,6 +86,8 @@
 
 -(void)retrieveBookingData {
 	[_bookingService getBookingsWithCompletionBlock:^(id response) {
+		//only update if we successfully got something.
+		//this allows the previously-retrieved list to be used if a subsequent request fails.
 		if(![response isKindOfClass:[NSError class]]) {
 			_bookingList = response;
 			[_tableView reloadData];

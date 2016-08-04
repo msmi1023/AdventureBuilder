@@ -4,10 +4,12 @@
 
 @interface ListBookingViewController (Test)
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)viewDidLoad;
+- (void)refresh:(UIRefreshControl *)refreshControl;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)retrieveBookingData;
 - (IBAction)unwindToListBooking:(UIStoryboardSegue *)segue;
@@ -49,9 +51,32 @@ describe(@"ListBookingViewController", ^{
 	});
 	
 	it(@"should implement the necessary table view delegate and data source selectors", ^{
+		[vc respondsToSelector:@selector(numberOfSectionsInTableView:)] should be_truthy;
 		[vc respondsToSelector:@selector(tableView:numberOfRowsInSection:)] should be_truthy;
 		[vc respondsToSelector:@selector(tableView:cellForRowAtIndexPath:)] should be_truthy;
 		[vc respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)] should be_truthy;
+	});
+	
+	describe(@"table view delegate - numberOfSectionsInTableView", ^{
+		beforeEach(^{
+			vc.tableView = [[UITableView alloc] init];
+			vc.bookingList = [NSArray arrayWithObjects:@"", nil];
+		});
+		
+		it(@"should set the separator style appropriately and return 1 if there is a booking in the list", ^{
+			vc.bookingList = [NSArray arrayWithObjects:@"", nil];
+			
+			[vc numberOfSectionsInTableView:vc.tableView] should equal(1);
+			vc.tableView.separatorStyle should equal(UITableViewCellSeparatorStyleSingleLine);
+		});
+		
+		it(@"should create a message, add it to the table view, remove separators and return 0 if there are no bookings in the list", ^{
+			vc.bookingList = [[NSArray alloc] init];
+			
+			[vc numberOfSectionsInTableView:vc.tableView] should equal(0);
+			vc.tableView.separatorStyle should equal(UITableViewCellSeparatorStyleNone);
+			((UILabel *)vc.tableView.backgroundView).text should equal(@"Booking data could not be retreived. Please pull down to attempt a refresh.");
+		});
 	});
 	
 	describe(@"table view delegate - numberOfRowsInSection", ^{
@@ -189,6 +214,24 @@ describe(@"ListBookingViewController", ^{
 			[vc viewDidLoad];
 			
 			vc.tableView should have_received(@selector(registerNib:forCellReuseIdentifier:));
+		});
+		
+		it(@"should add a refresh control to the table view", ^{
+			[vc viewDidLoad];
+			
+			//nice! can match on an arg of a certain class.
+			vc.tableView should have_received(@selector(addSubview:)).with(Arguments::any([UIRefreshControl class]));
+		});
+	});
+	
+	describe(@"refresh", ^{
+		it(@"should call to retrieve bookings and should call to end the refresh control animation", ^{
+			spy_on(vc);
+			UIRefreshControl *refCtrl = nice_fake_for([UIRefreshControl class]);
+			
+			[vc refresh:refCtrl];
+			
+			refCtrl should have_received(@selector(endRefreshing));
 		});
 	});
 	

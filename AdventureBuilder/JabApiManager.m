@@ -16,6 +16,7 @@
 	self = [super initWithBaseURL:url];
 	
 	self.requestSerializer = [AFJSONRequestSerializer serializer];
+	[self.requestSerializer setTimeoutInterval:10];
 	[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 	
 	return self;
