@@ -75,16 +75,20 @@
 	return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
 	return YES;
 }
 
-// It is important for you to hide the keyboard
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
 	return YES;
+}
+
+//if this fires, the user didn't tap on a text field.
+//don't even need to check anything, just end editing.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self.view endEditing:YES];
+	[super touchesBegan:touches withEvent:event];
 }
 
 @end

@@ -14,6 +14,7 @@ using namespace Cedar::Doubles;
 -(IBAction)textFieldValueChanged:(id)sender;
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 -(void)autoformatPhone;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 
 @end
 
@@ -209,6 +210,15 @@ describe(@"EnterCustomerInformationViewController", ^{
 			
 			[vc autoformatPhone];
 			vc.phone.text should equal(@"123-456-");
+		});
+	});
+	
+	describe(@"touchesBegan:withEvent:", ^{
+		it(@"should call to end editing", ^{
+			spy_on(vc.view);
+			
+			[vc touchesBegan:nil withEvent:nil];
+			vc.view should have_received(@selector(endEditing:)).with(YES);
 		});
 	});
 });
