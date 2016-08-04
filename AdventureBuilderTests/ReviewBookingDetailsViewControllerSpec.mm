@@ -100,7 +100,7 @@ describe(@"ReviewBookingDetailsViewController", ^{
 			vc.endDate.text should equal([vc.bookingService.booking endDateString]);
 			vc.departingFlight.text should equal(vc.bookingService.booking.departingFlight.flightNumber);
 			vc.returningFlight.text should equal(vc.bookingService.booking.returningFlight.flightNumber);
-			vc.totalPrice.text should equal([NSString stringWithFormat:@"Total Price: $%@",[vc.bookingService.booking totalPrice]]);
+			vc.totalPrice.text should equal([NSString stringWithFormat:@"Total Price: $%.2f",[[vc.bookingService.booking totalPrice] floatValue]]);
 		});
 	});
 });

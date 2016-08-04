@@ -20,7 +20,7 @@
 	_endDate.text = [_bookingService.booking endDateString];
 	_departingFlight.text = _bookingService.booking.departingFlight.flightNumber;
 	_returningFlight.text = _bookingService.booking.returningFlight.flightNumber;
-	_totalPrice.text = [NSString stringWithFormat:@"Total Price: $%@",[_bookingService.booking totalPrice]];
+	_totalPrice.text = [NSString stringWithFormat:@"Total Price: $%.2f",[[_bookingService.booking totalPrice] floatValue]];
 }
 
 @end
