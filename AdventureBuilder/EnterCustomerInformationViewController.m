@@ -44,6 +44,8 @@
 		emailValid = [super emailValidation:_emailAddress];
 	}
 	else if(sender == _phone) {
+		//[self addDashesToPhone];
+		
 		phoneValid = [super phoneValidation:_phone];
 	}
 	
@@ -54,6 +56,23 @@
 	else {
 		self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
+}
+
+-(void)autoformatPhone {
+	if([_phone.text length] == 3 || [_phone.text length] == 7) {
+		_phone.text = [_phone.text stringByAppendingString:@"-"];
+	}
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+	if(textField == _phone) {
+		//if we are adding a new character and just hit a separator
+		if(range.length == 0 && range.location == [_phone.text length]) {
+			[self autoformatPhone];
+		}
+	}
+
+	return YES;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

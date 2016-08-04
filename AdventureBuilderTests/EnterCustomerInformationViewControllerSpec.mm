@@ -12,6 +12,8 @@ using namespace Cedar::Doubles;
 -(BOOL)textFieldShouldReturn:(UITextField *)textField;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
 -(IBAction)textFieldValueChanged:(id)sender;
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+-(void)autoformatPhone;
 
 @end
 
@@ -123,6 +125,90 @@ describe(@"EnterCustomerInformationViewController", ^{
 			
 			[vc textFieldValueChanged:nil];
 			vc.navigationItem.rightBarButtonItem.enabled should be_falsy;
+		});
+	});
+	
+	describe(@"textField:shouldChangeCharactersInRange:", ^{
+		it(@"should always return true", ^{
+			[vc textField:nil shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:nil] should be_truthy;
+		});
+		
+		it(@"should not trigger auto-formatting when a different field is interacted with", ^{
+			spy_on(vc);
+			
+			//loc, len
+			NSRange range = NSMakeRange(0, 0);
+			
+			[vc textField:vc.emailAddress shouldChangeCharactersInRange:range replacementString:@""];
+			vc should_not have_received(@selector(autoformatPhone));
+		});
+		
+		it(@"should trigger auto-formatting of phone numbers when the phone field is interacted with appropriately", ^{
+			spy_on(vc);
+			
+			//loc, len
+			NSRange range = NSMakeRange(0, 0);
+			vc.phone.text = @"";
+			
+			[vc textField:vc.phone shouldChangeCharactersInRange:range replacementString:@"1"];
+			vc should have_received(@selector(autoformatPhone));
+			
+			range = NSMakeRange(3, 0);
+			vc.phone.text = @"123";
+			[vc textField:vc.phone shouldChangeCharactersInRange:range replacementString:@"1"];
+			vc should have_received(@selector(autoformatPhone));
+		});
+		
+		it(@"should not trigger auto-formatting of phone numbers when the phone field is interacted with inappropriately", ^{
+			spy_on(vc);
+			
+			//loc, len
+			NSRange range = NSMakeRange(0, 1);
+			vc.phone.text = @"";
+			
+			[vc textField:vc.phone shouldChangeCharactersInRange:range replacementString:@"1"];
+			vc should_not have_received(@selector(autoformatPhone));
+			
+			range = NSMakeRange(2, 0);
+			vc.phone.text = @"123";
+			[vc textField:vc.phone shouldChangeCharactersInRange:range replacementString:@"1"];
+			vc should_not have_received(@selector(autoformatPhone));
+		});
+	});
+	
+	describe(@"autoformatPhone", ^{
+		it(@"should do nothing when not at a separator boundary", ^{
+			vc.phone.text = @"";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"");
+			
+			vc.phone.text = @"123-";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"123-");
+			
+			vc.phone.text = @"123-456-";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"123-456-");
+
+			vc.phone.text = @"123-456-7890";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"123-456-7890");
+		});
+		
+		it(@"should add a hyphen separator where necessary", ^{
+			vc.phone.text = @"123";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"123-");
+			
+			vc.phone.text = @"123-456";
+			
+			[vc autoformatPhone];
+			vc.phone.text should equal(@"123-456-");
 		});
 	});
 });
