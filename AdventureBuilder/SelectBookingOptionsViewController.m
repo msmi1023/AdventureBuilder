@@ -13,6 +13,9 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	
 	_maxFlightPrice.delegate = self;
 	_maxFlightPrice.dataSource = self;
 	
@@ -34,6 +37,30 @@
 		
 		//on load we default to 0,0 selection. kick off our didSelect calls
 		[self pickerView:_maxFlightPrice didSelectRow:0 inComponent:0];
+	}];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+	CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		CGRect f = self.view.frame;
+		f.origin.y = -keyboardSize.height;
+		self.view.frame = f;
+	}];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		CGRect f = self.view.frame;
+		f.origin.y = 0.0f;
+		self.view.frame = f;
 	}];
 }
 
@@ -81,5 +108,11 @@
 	_flightService.maxFlightPrice = maxFlightPrices[row];
 }
 
+//if this fires, the user didn't tap on a text field.
+//don't even need to check anything, just end editing.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self.view endEditing:YES];
+	[super touchesBegan:touches withEvent:event];
+}
 
 @end

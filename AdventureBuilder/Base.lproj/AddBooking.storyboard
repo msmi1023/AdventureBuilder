@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="width" constant="240" id="wud-uV-ZFc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                 <connections>
                                     <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="aNZ-28-BiH"/>
                                 </connections>
@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="width" constant="240" id="Jdp-1i-AtU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="ZEF-y3-9tS"/>
                                 </connections>
@@ -85,7 +85,7 @@
                                     <constraint firstAttribute="height" constant="30" id="j1A-gP-bpC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="textFieldValueChanged:" destination="Boy-Tw-2Py" eventType="editingChanged" id="Rrh-d1-cZH"/>
                                 </connections>

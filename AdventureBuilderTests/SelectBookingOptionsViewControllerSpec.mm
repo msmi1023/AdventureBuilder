@@ -19,6 +19,8 @@ using namespace Cedar::Doubles;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (void)keyboardWillShow:(NSNotification *)notification;
+- (void)keyboardWillHide:(NSNotification *)notification;
 
 @end
 
@@ -86,6 +88,15 @@ describe(@"SelectBookingOptionsViewController", ^{
 				localCallback = block;
 			});
 		});
+		
+		//it(@"should subscribe to keyboard events through the notification center", ^{
+			//spy_on([NSNotificationCenter defaultCenter]);
+			
+			//[vc viewWillAppear:NO];
+			
+			//[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:));//.with(vc, @selector(keyboardWillShow:), UIKeyboardWillShowNotification, nil);
+			//[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:));//.with(vc, @selector(keyboardWillHide:), UIKeyboardWillHideNotification, nil);
+		//});
 		
 		it(@"should configure the text view", ^{
 			[vc viewWillAppear:NO];
@@ -218,6 +229,15 @@ describe(@"SelectBookingOptionsViewController", ^{
 			
 			vc.bookingService.booking.endDate should equal(vc.endDate.date);
 
+		});
+	});
+	
+	describe(@"touchesBegan:withEvent:", ^{
+		it(@"should call to end editing", ^{
+			spy_on(vc.view);
+			
+			[vc touchesBegan:nil withEvent:nil];
+			vc.view should have_received(@selector(endEditing:)).with(YES);
 		});
 	});
 });
