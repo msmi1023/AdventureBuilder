@@ -55,8 +55,7 @@
 	}];
 }
 
--(void)keyboardWillHide:(NSNotification *)notification
-{
+- (void)keyboardWillHide:(NSNotification *)notification {
 	[UIView animateWithDuration:0.3 animations:^{
 		CGRect f = self.view.frame;
 		f.origin.y = 0.0f;

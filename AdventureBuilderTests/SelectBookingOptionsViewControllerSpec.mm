@@ -89,14 +89,33 @@ describe(@"SelectBookingOptionsViewController", ^{
 			});
 		});
 		
-		//it(@"should subscribe to keyboard events through the notification center", ^{
-			//spy_on([NSNotificationCenter defaultCenter]);
+		xdescribe(@"NotificationCenter use", ^{
+			beforeEach(^{
+				//here's the trick. don't try to spy on defaultCenter.
+				//instead, mock out the notification center class so we can stub the defaultCenter method.
+				//this lets us return the fake we really need without screwing up the
+				//singleton for the rest of the app lifecycle.
+				spy_on([NSNotificationCenter class]);
+				NSNotificationCenter *fake = fake_for([NSNotificationCenter class]);
+				fake stub_method(@selector(addObserver:selector:name:object:));
+				fake stub_method(@selector(postNotificationName:object:));
+				fake stub_method(@selector(addObserverForName:object:queue:usingBlock:));
+				fake stub_method(@selector(removeObserver:));
+				[NSNotificationCenter class] stub_method(@selector(defaultCenter)).and_return(fake);
+			});
 			
-			//[vc viewWillAppear:NO];
+			afterEach(^{
+				//make sure we stop spying when we're done, to put the singleton back to normal.
+				stop_spying_on([NSNotificationCenter class]);
+			});
 			
-			//[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:));//.with(vc, @selector(keyboardWillShow:), UIKeyboardWillShowNotification, nil);
-			//[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:));//.with(vc, @selector(keyboardWillHide:), UIKeyboardWillHideNotification, nil);
-		//});
+			it(@"should subscribe to keyboard events through the notification center", ^{
+				[vc viewWillAppear:NO];
+				
+				[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:)).with(vc, @selector(keyboardWillShow:), UIKeyboardWillShowNotification, nil);
+				[NSNotificationCenter defaultCenter] should have_received(@selector(addObserver:selector:name:object:)).with(vc, @selector(keyboardWillHide:), UIKeyboardWillHideNotification, nil);
+			});
+		});
 		
 		it(@"should configure the text view", ^{
 			[vc viewWillAppear:NO];
@@ -122,6 +141,75 @@ describe(@"SelectBookingOptionsViewController", ^{
 			[vc valueForKey:@"maxFlightPrices"] should equal(prices);
 			vc.maxFlightPrice should have_received(@selector(reloadAllComponents));
 			vc should have_received(@selector(pickerView:didSelectRow:inComponent:)).with(vc.maxFlightPrice, 0, 0);
+		});
+	});
+	
+	xdescribe(@"viewWillDisappear:", ^{
+		beforeEach(^{
+			spy_on([NSNotificationCenter class]);
+			NSNotificationCenter *fake = fake_for([NSNotificationCenter class]);
+			fake stub_method(@selector(removeObserver:name:object:));
+			[NSNotificationCenter class] stub_method(@selector(defaultCenter)).and_return(fake);
+		});
+		
+		afterEach(^{
+			stop_spying_on([NSNotificationCenter class]);
+		});
+		
+		it(@"should unsubscribe to keyboard events through the notification center", ^{
+			[vc viewWillDisappear:NO];
+			
+			[NSNotificationCenter defaultCenter] should have_received(@selector(removeObserver:name:object:));//.with(vc, @selector(keyboardWillShow:), UIKeyboardWillShowNotification, nil);
+			[NSNotificationCenter defaultCenter] should have_received(@selector(removeObserver:name:object:));//.with(vc, @selector(keyboardWillHide:), UIKeyboardWillHideNotification, nil);
+		});
+	});
+	
+	describe(@"keyboard events", ^{
+		
+		typedef void (^animateBlock)(void);
+		__block animateBlock localBlock;
+		__block NSNotification *fake;
+		__block CGRect fakeFrame;
+		
+		beforeEach(^{
+			spy_on([UIView class]);
+			//stub out the animate method so we can have a handle on the animate callback
+			[UIView class] stub_method(@selector(animateWithDuration:animations:))
+			.and_do_block(^(NSTimeInterval duration, animateBlock animation){
+				localBlock = animation;
+			});
+			
+			//build a fake notification loaded with an appropriate keyboard frame
+			fake = nice_fake_for([NSNotification class]);
+			fake stub_method(@selector(userInfo)).and_return(@{UIKeyboardFrameBeginUserInfoKey: [NSValue valueWithCGRect:CGRectMake(0, 200, 320, 440)]});
+			
+			//mock out the view with a fake and a fake frame getter/setter
+			vc.view = nice_fake_for([UIView class]);
+			fakeFrame = CGRectMake(0, 0, 320, 640);
+			vc.view stub_method(@selector(frame)).and_do_block(^{
+				return fakeFrame;
+			});
+			vc.view stub_method(@selector(setFrame:)).and_do_block(^(CGRect frame){
+				fakeFrame = frame;
+			});
+		});
+		
+		afterEach(^{
+			stop_spying_on([UIView class]);
+			stop_spying_on(vc.view);
+		});
+		
+		it(@"should move the view up when the keyboard will appear", ^{
+			[vc keyboardWillShow:fake];
+			localBlock();
+			NSLog(@"%f", vc.view.frame.origin.y);
+			vc.view.frame.origin.y should equal(-440.0f);
+		});
+		
+		it(@"should move the view down when the keyboard will disappear", ^{
+			[vc keyboardWillHide:fake];
+			localBlock();
+			vc.view.frame.origin.y should equal(0.0f);
 		});
 	});
 	
